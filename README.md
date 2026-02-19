@@ -181,24 +181,128 @@ python create_steps_commands.py --version planning --mode both --domains blocksw
 
 For information on how to run individual steps separately, refer to the [Wiki](https://github.com/coli-saar/autoplanbench/wiki/Running-individual-steps).
 
-**Generating only NL descriptions**<br>
+---
 
-Rund the domain setup as explained above then use the following functions to generate the NL descriptions: 
+## Scripts reference
 
-Functions to generate the NL domain description, NL descriptions of a specific PDDL problem or a plan
+All commands below are run from the **project root** (the directory containing `run_domain_setup.py`, `utils/`, `data/`, etc.).
 
-`python utils/run_save_descriptions.py --type domain --out [output_path] --d-nl [nl_domain] -t [template_file]`
+### Environment
 
-`python utils/run_save_descriptions.py --type instance --out [output_path] --d-nl [nl_domain] -d [pddl_domain] --prob [pddl_problem] --plan [pddl_plan] --out-plan [output_path_plan]`
+Set in the shell (or in `set_env.py` / env file) before running:
 
-* `type`: "domain" if NL description for the domain and "instance" if the domain description for a problem (and plan) should be created
-* `output_path`: path to the output file
-* `nl_domain`: path to the .json file with the generated nl descriptions
-* `template_file`: file to the jinja template for the domain description, defaults to _utils.paths.DOMAIN_DESCRIPTION_TEMPLATE_
-* `pddl_domain`: path to the pddl domain file
-* `pddl_problem`: path to the pddl problem file for which the NL descriptions is generated
-* `pddl_plan`: optional; if provided also generates NL plan
-* `output_path_plan`: path for output file if plan is converted
+```bash
+export OPENAI_API_KEY=sk-...          # for OpenAI models
+export OPENROUTER_API_KEY=sk-or-...   # optional; for OpenRouter (e.g. gpt-5-mini)
+export VAL=/path/to/VAL               # VAL repo root; binary is looked up at VAL/build/bin/Validate or VAL/validate
+export FAST_DOWNWARD=/path/to/fast-downward-22.12   # for gold plan generation
+```
+
+### 1. Domain setup (`run_domain_setup.py`)
+
+Generates NL descriptions for the domain (predicates and actions), adapts instances, creates gold plans, selects problems, and builds few-shot examples.
+
+```bash
+python run_domain_setup.py -o ./data/<domain_dir> --llm <model> [options]
+```
+
+**Required:**
+- `-o` — output directory for the domain (must contain `domain.pddl` and usually `orig_problems/`).
+- `--llm` — model name (e.g. `openai/gpt-4o`, `gpt-5-mini` for OpenRouter).
+
+**Common options:**
+- `-d` — path to `domain.pddl` (default: `-o/domain.pddl`).
+- `-i` — path to original instances (default: `-o/orig_problems`).
+- `-n` — max number of instances to select.
+- `--seed` — seed for the LLM (default: random).
+- `--parallel N` — number of parallel HTTP requests for PDDL→NL (e.g. `16`); use with OpenRouter for speed. Default `1` (sequential).
+- `--no-cache` — disable LLM response cache.
+- `--base-url`, `--api-key` — override API endpoint and key (otherwise OpenRouter is used when `OPENROUTER_API_KEY` is set).
+
+**Example (OpenRouter, parallel):**
+
+```bash
+python run_domain_setup.py -o ./data/finance3/credit --llm gpt-5-mini --seed 0 --parallel 16
+```
+
+Outputs in `-o`: `domain_description_seedN.json`, `domain_nl_combined.txt`, `adapted_instances/`, gold plans, few-shot examples, etc.
+
+### 2. Domain NL only (`utils/run_save_descriptions.py` — type domain)
+
+Build domain encoding from an existing `domain_description_*.json` using a Jinja template.
+
+```bash
+python utils/run_save_descriptions.py --type domain --out <path> --d-nl <domain_description_seedN.json> [-t <template>]
+```
+
+### 3. Problem (instance) translation (`utils/run_save_descriptions.py` — type instance)
+
+Translate a single PDDL problem to natural language (initial state + goal, and optionally the plan).
+
+```bash
+python utils/run_save_descriptions.py --type instance \
+  --prob <problem.pddl> \
+  --d-nl <domain_description_seedN.json> \
+  -d <domain.pddl> \
+  --out <output.txt> \
+  [--plan <plan.txt> --out-plan <plan_nl.txt>]
+```
+
+**Example:**
+
+```bash
+python utils/run_save_descriptions.py --type instance \
+  --prob ./data/finance3/credit/adapted_instances/problem.pddl \
+  --d-nl ./data/finance3/credit/domain_description_seed0.json \
+  -d ./data/finance3/credit/domain.pddl \
+  --out ./data/finance3/credit/problem_nl.txt
+```
+
+### 4. Fix indefinite action templates (`scripts/fix_domain_indefinite_templates.py`)
+
+Recomputes indefinite action templates (and action descriptions) from an existing `domain_description_*.json` so that types appear correctly (e.g. "a drawdown case A" instead of "a A"). Updates the JSON and `domain_nl_combined.txt`.
+
+```bash
+python scripts/fix_domain_indefinite_templates.py -d <domain.pddl> [--d-nl <domain_description_seedN.json>]
+```
+
+If `--d-nl` is omitted, uses `domain_description_seed0.json` in the same directory as the domain.
+
+### 5. Clear LLM cache for a domain (`scripts/clear_domain_cache.py`)
+
+Removes from the LLM cache only the entries that correspond to a given domain (so the next run refetches from the API).
+
+```bash
+python scripts/clear_domain_cache.py -d <domain.pddl> --llm <model> --seed <N> [--d-nl <domain_description_seedN.json>]
+```
+
+- `--d-nl` is required for `--to-text extended` (default) so the script can reconstruct cache keys.
+- To clear **all** cache for a model, delete the cache directory manually, e.g.  
+  `rm -rf llm_caches/openrouter_sdk_<model_path>/`
+
+### 6. Instance setup (`run_instance_setup.py`)
+
+Runs instance adaptation, gold plan generation, and instance selection for an already-configured domain. See `python run_instance_setup.py -h`.
+
+---
+
+**Generating only NL descriptions (summary)**<br>
+
+After domain setup you can regenerate specific outputs:
+
+- **Domain encoding (from template):**  
+  `python utils/run_save_descriptions.py --type domain --out [output_path] --d-nl [nl_domain] -t [template_file]`
+
+- **Problem + optional plan:**  
+  `python utils/run_save_descriptions.py --type instance --out [output_path] --d-nl [nl_domain] -d [pddl_domain] --prob [pddl_problem] [--plan [pddl_plan] --out-plan [output_path_plan]]`
+
+* `type`: `domain` for domain encoding, `instance` for a problem (and optionally plan).
+* `output_path`: path to the output file.
+* `nl_domain`: path to the generated `domain_description_*.json`.
+* `template_file`: Jinja template for domain encoding (default: `utils.paths.DOMAIN_DESCRIPTION_TEMPLATE`).
+* `pddl_domain`: path to the PDDL domain file.
+* `pddl_problem`: path to the PDDL problem file.
+* `pddl_plan` / `output_path_plan`: optional; if provided, the plan is also converted to NL.
 
 ### Output Files
 
