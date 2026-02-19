@@ -1,3 +1,4 @@
+import utils.python313_compat  # noqa: F401 - must run before tarski/antlr4
 import json
 import os
 import random
@@ -8,7 +9,7 @@ from collections import defaultdict
 from tarski.io import PDDLReader
 from tarski.syntax import Atom, CompoundFormula
 import atexit
-from utils.paths import TEMP_DIR
+from utils.paths import TEMP_DIR, get_val_validate_path
 
 
 class RawPDDLEnvironment:
@@ -55,10 +56,12 @@ class RawPDDLEnvironment:
         with open(self.tmp_action_file, 'w') as plan_file:
             plan_file.write('')
 
-        # need run VAL validate -v self.domain_file self.instance_file plan
-        val = os.environ.get('VAL')
-        cmd = f'{val}/validate -v {self.domain_file} {self.instance_file} {self.tmp_action_file}'
-        self.last_val_response = os.popen(cmd).read()
+        val_validate = get_val_validate_path()
+        if val_validate:
+            cmd = f'{val_validate} -v {self.domain_file} {self.instance_file} {self.tmp_action_file}'
+            self.last_val_response = os.popen(cmd).read()
+        else:
+            self.last_val_response = ''
 
         # store output somehow and parse it
         reached_goal, executable, effects, advice_goal, advice_precond = self.parse_val_output(self.last_val_response)
@@ -232,10 +235,12 @@ class RawPDDLEnvironment:
         # need an instance file that hast the current state as the initial state
         self.create_tmp_instance()
 
-        # need run VAL validate -v self.domain_file self.instance_file plan
-        val = os.environ.get('VAL')
-        cmd = f'{val}/validate -v {self.domain_file} {self.tmp_instance_file} {self.tmp_action_file}'
-        self.last_val_response = os.popen(cmd).read()
+        val_validate = get_val_validate_path()
+        if val_validate:
+            cmd = f'{val_validate} -v {self.domain_file} {self.tmp_instance_file} {self.tmp_action_file}'
+            self.last_val_response = os.popen(cmd).read()
+        else:
+            self.last_val_response = ''
 
         # store output somehow and parse it
         reached_goal, executable, effects, advice_goal, advice_precond = self.parse_val_output(self.last_val_response)
@@ -574,7 +579,8 @@ class RawPDDLEnvironment:
                     correct_type = True
 
             if not correct_type:
-                type_problems.append(f'{predicted_obj_names[arg_ind]} is a {pred_type}')
+                pred_type_nl = pred_type.replace('_', ' ').replace('-', ' ') if isinstance(pred_type, str) else pred_type
+                type_problems.append(f'{predicted_obj_names[arg_ind]} is a {pred_type_nl}')
 
         if type_problems:
             feedback = f'The action is not applicable because '

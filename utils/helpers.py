@@ -53,11 +53,19 @@ def change_determiners(action_str: str):
 
 
 def get_llm_type(llm_name: str):
-    if llm_name.startswith('gpt-4') or llm_name.startswith('gpt-3.5-turbo'):
-        llm_type = 'openai_chat'
-    else:
-        raise ValueError(f'The model {llm_name} could not be mapped to a model type / class. Please specify the type of the model using as "--llm-type", e.g. openai_chat for chat models, openai_comp for text completion models.')
-    return llm_type
+    """Map model name to backend type. openai_chat works for both OpenAI and OpenRouter (same API shape)."""
+    if (
+        llm_name.startswith('gpt-4')
+        or llm_name.startswith('gpt-3.5')
+        or llm_name.startswith('gpt-5')
+        or llm_name.startswith('openai/')
+        or '/' in llm_name
+    ):
+        return 'openai_chat'
+    raise ValueError(
+        f'The model {llm_name} could not be mapped to a model type. '
+        f'Use --llm-type openai_chat (or openai_comp for completion).'
+    )
 
 
 def find_duplicates(file_paths: list) -> list:

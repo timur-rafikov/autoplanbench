@@ -1,0 +1,24 @@
+{
+    "prefixes": {
+        "input": "Input:",
+        "output": "Output:"
+    },
+    "example_objs": [
+        "object_50",
+        "kumquat_8",
+        "rain",
+        "frame_9",
+        "kumquat",
+        "screen"
+    ],
+    "pos_examples": [
+        [
+            "Now, debark car object_50 at location rain.",
+            "(debark object_50 rain)"
+        ],
+        [
+            "Once you are done, please board car kumquat_8 from location screen onto the ferry.",
+            "(board kumquat_8 screen)"
+        ]
+    ]
+}

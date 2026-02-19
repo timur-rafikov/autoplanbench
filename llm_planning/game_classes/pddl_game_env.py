@@ -3,11 +3,17 @@ import re
 from typing import Tuple, List, Union
 from stanza import Pipeline
 from llm_planning.raw_pddl_input.raw_pddl_env import RawPDDLEnvironment
+from utils.paths import get_val_validate_path
 
 
 class IdentityEncodingDict(dict):
     def __getitem__(self, item):
         return item
+
+
+def _nl_clean(s: str) -> str:
+    """Human-readable: replace underscores and hyphens with spaces."""
+    return s.replace('_', ' ').replace('-', ' ') if isinstance(s, str) else s
 
 
 class PDDLWorldEnvironment(RawPDDLEnvironment):
@@ -69,7 +75,8 @@ class PDDLWorldEnvironment(RawPDDLEnvironment):
                     correct_type = True
 
             if not correct_type:
-                type_problems.append(f'{predicted_obj_names[arg_ind]} is a {pred_type}')
+                pred_type_nl = pred_type.replace('_', ' ').replace('-', ' ') if isinstance(pred_type, str) else pred_type
+                type_problems.append(f'{predicted_obj_names[arg_ind]} is a {pred_type_nl}')
 
         if type_problems:
             feedback = f'I cannot {self.get_description_action(action_instr)} because '
@@ -101,10 +108,12 @@ class PDDLWorldEnvironment(RawPDDLEnvironment):
         # need an instance file that has the current state as the initial state
         self.create_tmp_instance()
 
-        # need run VAL validate -v self.domain_file self.instance_file plan
-        val = os.environ.get('VAL')
-        cmd = f'{val}/validate -v {self.domain_file} {self.tmp_instance_file} {self.tmp_action_file}'
-        self.last_val_response = os.popen(cmd).read()
+        val_validate = get_val_validate_path()
+        if val_validate:
+            cmd = f'{val_validate} -v {self.domain_file} {self.tmp_instance_file} {self.tmp_action_file}'
+            self.last_val_response = os.popen(cmd).read()
+        else:
+            self.last_val_response = ''
 
         # store output somehow and parse it
         reached_goal, executable, effects, advice_goal, advice_precond = self.parse_val_output(self.last_val_response)
@@ -238,22 +247,24 @@ class PDDLWorldEnvironment(RawPDDLEnvironment):
                 else:
                     obj_descrip = f'There are {len(self.possible_objects)} objects: {", ".join(possible_objects_names)}'
             else:
+                t_nl = all_types[0].replace('_', ' ').replace('-', ' ') if isinstance(all_types[0], str) else all_types[0]
                 if len(self.possible_objects) == 1:
-                    obj_descrip = f'There is {len(self.possible_objects)} object that is a {all_types[0]}: {", ".join(possible_objects_names)}'
+                    obj_descrip = f'There is {len(self.possible_objects)} object that is a {t_nl}: {", ".join(possible_objects_names)}'
                 else:
-                    obj_descrip = f'There are {len(self.possible_objects)} objects that are a {all_types[0]}: {", ".join(possible_objects_names)}'
+                    obj_descrip = f'There are {len(self.possible_objects)} objects that are a {t_nl}: {", ".join(possible_objects_names)}'
             object_state_description = obj_descrip
         else:
             obj_descriptions = []
             for t in all_types:
                 if t == 'object':
                     continue
+                t_nl = t.replace('_', ' ').replace('-', ' ') if isinstance(t, str) else t
                 objects_of_t = self.types2objects[t]
                 objects_names = [self.encoded_objects[obj] for obj in objects_of_t]
                 if len(objects_of_t) == 1:
-                    obj_descrip = f'There is {len(objects_of_t)} object that is a {t}: {", ".join(objects_names)}'
+                    obj_descrip = f'There is {len(objects_of_t)} object that is a {t_nl}: {", ".join(objects_names)}'
                 else:
-                    obj_descrip = f'There are {len(objects_of_t)} objects that are a {t}: {", ".join(objects_names)}'
+                    obj_descrip = f'There are {len(objects_of_t)} objects that are a {t_nl}: {", ".join(objects_names)}'
                 obj_descriptions.append(obj_descrip)
 
             objects_of_object = self.types2objects['object']
@@ -321,7 +332,7 @@ class PDDLWorldEnvironment(RawPDDLEnvironment):
         object_names = self.order_args(pred_type='action', pred_name=action_name, obj_names_pddl_order=object_names)
         action_descr = action_str_template.format(*object_names)
 
-        return action_descr
+        return _nl_clean(action_descr)
 
     def get_description_pred(self, predicate: str) -> str:
         """
@@ -332,7 +343,7 @@ class PDDLWorldEnvironment(RawPDDLEnvironment):
         predicate_name, object_names = self.parse_pddl_tuple(predicate)
         object_names = self.order_args(pred_type='predicate', pred_name=predicate_name, obj_names_pddl_order=object_names)
         predicate_description = self.predicates_text[predicate_name].format(*object_names)
-        return predicate_description
+        return _nl_clean(predicate_description)
 
 
     def order_args(self, pred_type: str, pred_name: str, obj_names_pddl_order: list):

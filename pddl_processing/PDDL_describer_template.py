@@ -87,7 +87,7 @@ class PDDLDescriberTemplate(PDDLDescriber):
             raw_action_mapping = raw_action_mapping.strip()
             output_formatted, output_template = self.format_model_output(model_output=raw_action_mapping, is_action=True)
 
-            output_formatted_indef, output_indef_template = self.create_action_template_indefinite(model_output=raw_action_mapping)
+            output_formatted_indef, output_indef_template = self.create_action_template_indefinite(model_output=raw_action_mapping, action_name=action_name)
 
             self.action_mappings[action_name] = output_formatted
             self.action_nl_templates[action_name] = output_template

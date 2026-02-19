@@ -1,0 +1,37 @@
+{
+    "prefixes": {
+        "input": "Input:",
+        "output": "Output:"
+    },
+    "example_objs": [
+        "teddy",
+        "object_260",
+        "roof_11",
+        "dress_red",
+        "fire",
+        "kumquat",
+        "screen",
+        "rain",
+        "bastion",
+        "socket",
+        "fire_90"
+    ],
+    "pos_examples": [
+        [
+            "Now, verify authorization kyc record socket for participant person kumquat on drawdown case teddy.",
+            "(verify_person_authorization_record teddy kumquat socket)"
+        ],
+        [
+            "Once you are done, please create drawdown packet drawdown packet roof_11 for drawdown case teddy with signature slot fire and signature slot fire_90.",
+            "(create_drawdown_packet teddy roof_11 fire fire_90)"
+        ],
+        [
+            "First, create disbursement notice dress_red for case teddy addressed to borrower signatory yew using notice dispatch window token rain from drawdown packet roof_11 with facility document screen and then validate facility document screen for drawdown case teddy.",
+            "(create_disbursement_notice teddy dress_red yew rain roof_11 screen)\n(validate_facility_document teddy screen)"
+        ],
+        [
+            "The next step is to send disbursement notice dress_red via secure delivery package delivery package object_260 for drawdown case teddy with payment instruction bastion to borrower signatory yew.",
+            "(send_notice_via_secure_delivery dress_red bastion teddy object_260 yew)"
+        ]
+    ]
+}

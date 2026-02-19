@@ -1,0 +1,608 @@
+(r76 ?v12) -> 
+Revised: (r76 ?v12) -> 
+(r40 ?v1) -> 
+Revised: (r40 ?v1) -> 
+(r120 ?v1) -> 
+Revised: (r120 ?v1) -> 
+(r59 ?v9) -> 
+Revised: (r59 ?v9) -> 
+(r49 ?v9) -> 
+Revised: (r49 ?v9) -> 
+(r25 ?v8) -> 
+Revised: (r25 ?v8) -> 
+(r71 ?v11) -> 
+Revised: (r71 ?v11) -> 
+(r81 ?v3) -> 
+Revised: (r81 ?v3) -> 
+(r28 ?v1) -> 
+Revised: (r28 ?v1) -> 
+(r36 ?v7) -> 
+Revised: (r36 ?v7) -> 
+(r89 ?v10) -> 
+Revised: (r89 ?v10) -> 
+(r76 ?v12) -> 
+Revised: (r76 ?v12) -> 
+(r40 ?v1) -> 
+Revised: (r40 ?v1) -> 
+(r120 ?v1) -> 
+Revised: (r120 ?v1) -> 
+(r59 ?v9) -> 
+Revised: (r59 ?v9) -> 
+(r49 ?v9) -> 
+Revised: (r49 ?v9) -> 
+(r25 ?v8) -> 
+Revised: (r25 ?v8) -> 
+(r71 ?v11) -> 
+Revised: (r71 ?v11) -> 
+(r81 ?v3) -> 
+Revised: (r81 ?v3) -> 
+(r28 ?v1) -> 
+Revised: (r28 ?v1) -> 
+(r36 ?v7) -> 
+Revised: (r36 ?v7) -> 
+(r89 ?v10) -> 
+Revised: (r89 ?v10) -> 
+(r17 ?v8 ?v7) -> 
+Revised: (r17 ?v8 ?v7) -> 
+(r129 ?v4 ?v10) -> 
+Revised: (r129 ?v4 ?v10) -> 
+(r10 ?v4) -> 
+Revised: (r10 ?v4) -> 
+(r51 ?v9 ?v7) -> 
+Revised: (r51 ?v9 ?v7) -> 
+(r119 ?v1) -> 
+Revised: (r119 ?v1) -> 
+(r46 ?v1 ?v4) -> 
+Revised: (r46 ?v1 ?v4) -> 
+(r54 ?v9 ?v7) -> 
+Revised: (r54 ?v9 ?v7) -> 
+(r68 ?v2) -> 
+Revised: (r68 ?v2) -> 
+(r27 ?v1) -> 
+(r76 ?v12) -> 
+Revised: (r76 ?v12) -> 
+(r40 ?v1) -> 
+(r76 ?v12) -> 
+Revised: (r76 ?v12) -> 
+(r40 ?v1) -> 
+Revised: (r40 ?v1) -> 
+(r120 ?v1) -> 
+Revised: (r120 ?v1) -> 
+(r59 ?v9) -> 
+Revised: (r59 ?v9) -> 
+(r49 ?v9) -> 
+Revised: (r49 ?v9) -> 
+(r25 ?v8) -> 
+Revised: (r25 ?v8) -> 
+(r71 ?v11) -> 
+Revised: (r71 ?v11) -> 
+(r81 ?v3) -> 
+Revised: (r81 ?v3) -> 
+(r28 ?v1) -> 
+Revised: (r28 ?v1) -> 
+(r36 ?v7) -> 
+Revised: (r36 ?v7) -> 
+(r89 ?v10) -> 
+Revised: (r89 ?v10) -> 
+(r17 ?v8 ?v7) -> 
+Revised: (r17 ?v8 ?v7) -> 
+(r129 ?v4 ?v10) -> 
+Revised: (r129 ?v4 ?v10) -> 
+(r10 ?v4) -> 
+Revised: (r10 ?v4) -> 
+(r51 ?v9 ?v7) -> 
+Revised: (r51 ?v9 ?v7) -> 
+(r119 ?v1) -> 
+Revised: (r119 ?v1) -> 
+(r46 ?v1 ?v4) -> 
+Revised: (r46 ?v1 ?v4) -> 
+(r54 ?v9 ?v7) -> 
+Revised: (r54 ?v9 ?v7) -> 
+(r68 ?v2) -> 
+Revised: (r68 ?v2) -> 
+(r27 ?v1) -> 
+Revised: (r27 ?v1) -> 
+(r106 ?v2) -> 
+Revised: (r106 ?v2) -> 
+(r20 ?v8) -> 
+Revised: (r20 ?v8) -> 
+(r3 ?v1) -> 
+Revised: (r3 ?v1) -> 
+(r99 ?v1) -> 
+Revised: (r99 ?v1) -> 
+(r117 ?v9) -> 
+Revised: (r117 ?v9) -> 
+(r77 ?v12 ?v3) -> 
+Revised: (r77 ?v12 ?v3) -> 
+(r47 ?v4) -> 
+Revised: (r47 ?v4) -> 
+(r111 ?v1 ?v7) -> 
+Revised: (r111 ?v1 ?v7) -> 
+(r64 ?v1) -> 
+Revised: (r64 ?v1) -> 
+(r107 ?v2) -> 
+Revised: (r107 ?v2) -> 
+(r9 ?v4) -> 
+Revised: (r9 ?v4) -> 
+(r126 ?v1) -> 
+Revised: (r126 ?v1) -> 
+(r14 ?v1 ?v7) -> 
+Revised: (r14 ?v1 ?v7) -> 
+(r88 ?v1 ?v10) -> 
+Revised: (r88 ?v1 ?v10) -> 
+(r92 ?v9) -> 
+Revised: (r92 ?v9) -> 
+(r127 ?v1) -> 
+Revised: (r127 ?v1) -> 
+(r5 ?v1) -> 
+Revised: (r5 ?v1) -> 
+(r63 ?v1) -> 
+Revised: (r63 ?v1) -> 
+(r85 ?v1 ?v5) -> 
+Revised: (r85 ?v1 ?v5) -> 
+(r53 ?v9) -> 
+Revised: (r53 ?v9) -> 
+(r56 ?v9) -> 
+Revised: (r56 ?v9) -> 
+(r102 ?v12) -> 
+Revised: (r102 ?v12) -> 
+(r73 ?v2) -> 
+Revised: (r73 ?v2) -> 
+(r42 ?v1) -> 
+Revised: (r42 ?v1) -> 
+(r21 ?v8) -> 
+Revised: (r21 ?v8) -> 
+(r78 ?v12) -> 
+Revised: (r78 ?v12) -> 
+(r4 ?v1) -> 
+Revised: (r4 ?v1) -> 
+(r44 ?v1) -> 
+Revised: (r44 ?v1) -> 
+(r48 ?v9 ?v1) -> 
+Revised: (r48 ?v9 ?v1) -> 
+(r94 ?v9) -> 
+Revised: (r94 ?v9) -> 
+(r30 ?v1) -> 
+Revised: (r30 ?v1) -> 
+(r123 ?v9) -> 
+Revised: (r123 ?v9) -> 
+(r18 ?v8) -> 
+Revised: (r18 ?v8) -> 
+(r6 ?v1) -> 
+Revised: (r6 ?v1) -> 
+(r109 ?v7) -> 
+Revised: (r109 ?v7) -> 
+(r82 ?v3) -> 
+Revised: (r82 ?v3) -> 
+(r29 ?v1) -> 
+Revised: (r29 ?v1) -> 
+(r86 ?v5) -> 
+Revised: (r86 ?v5) -> 
+(r45 ?v1) -> 
+Revised: (r45 ?v1) -> 
+(r87 ?v1) -> 
+Revised: (r87 ?v1) -> 
+(r115 ?v1) -> 
+Revised: (r115 ?v1) -> 
+(r8 ?v3) -> 
+Revised: (r8 ?v3) -> 
+(r72 ?v11) -> 
+Revised: (r72 ?v11) -> 
+(r35 ?v7) -> 
+Revised: (r35 ?v7) -> 
+(r108 ?v7) -> 
+Revised: (r108 ?v7) -> 
+(r37 ?v1) -> 
+Revised: (r37 ?v1) -> 
+(r96 ?v1) -> 
+Revised: (r96 ?v1) -> 
+(r98 ?v1) -> 
+Revised: (r98 ?v1) -> 
+(r93 ?v9) -> 
+Revised: (r93 ?v9) -> 
+(r12 ?v1 ?v6) -> 
+Revised: (r12 ?v1 ?v6) -> 
+(r114 ?v1 ?v11) -> 
+Revised: (r114 ?v1 ?v11) -> 
+(r128 ?v4) -> 
+Revised: (r128 ?v4) -> 
+(r79 ?v12) -> 
+Revised: (r79 ?v12) -> 
+(r34 ?v7) -> 
+Revised: (r34 ?v7) -> 
+(r11 ?v1 ?v5) -> 
+Revised: (r11 ?v1 ?v5) -> 
+(r43 ?v1) -> 
+Revised: (r43 ?v1) -> 
+(r61 ?v1 ?v2) -> 
+Revised: (r61 ?v1 ?v2) -> 
+(r97 ?v1) -> 
+Revised: (r97 ?v1) -> 
+(r83 ?v1) -> 
+Revised: (r83 ?v1) -> 
+(r55 ?v9) -> 
+Revised: (r55 ?v9) -> 
+(r66 ?v2) -> 
+Revised: (r66 ?v2) -> 
+(r74 ?v3 ?v1 ?v7) -> 
+Revised: (r74 ?v3 ?v1 ?v7) -> 
+(r1 ?v1) -> 
+Revised: (r1 ?v1) -> 
+(r26 ?v1) -> 
+Revised: (r26 ?v1) -> 
+(r125 ?v10) -> 
+Revised: (r125 ?v10) -> 
+(r58 ?v1) -> 
+Revised: (r58 ?v1) -> 
+(r122 ?v9 ?v25) -> 
+Revised: (r122 ?v9 ?v25) -> 
+(r100 ?v3) -> 
+Revised: (r100 ?v3) -> 
+(r84 ?v1) -> 
+Revised: (r84 ?v1) -> 
+(r118 ?v9) -> 
+Revised: (r118 ?v9) -> 
+(r80 ?v12) -> 
+Revised: (r80 ?v12) -> 
+(r22 ?v8) -> 
+Revised: (r22 ?v8) -> 
+(r50 ?v9 ?v4) -> 
+Revised: (r50 ?v9 ?v4) -> 
+(r31 ?v7) -> 
+Revised: (r31 ?v7) -> 
+(r70 ?v2) -> 
+Revised: (r70 ?v2) -> 
+(r90 ?v9 ?v10) -> 
+Revised: (r90 ?v9 ?v10) -> 
+(r24 ?v8) -> 
+Revised: (r24 ?v8) -> 
+(r104 ?v3 ?v12) -> 
+(r76 ?v12) -> {?v12} has relation r76
+(r40 ?v1) -> {?v1} has relation r40
+(r120 ?v1) -> {?v1} has relation r120
+(r59 ?v9) -> {?v9} has relation r59
+(r49 ?v9) -> {?v9} has relation r49
+(r25 ?v8) -> {?v8} has relation r25
+(r71 ?v11) -> {?v11} has relation r71
+(r81 ?v3) -> {?v3} has relation r81
+(r28 ?v1) -> {?v1} has relation r28
+(r36 ?v7) -> {?v7} has relation r36
+(r89 ?v10) -> {?v10} has relation r89
+(r17 ?v8 ?v7) -> {?v8} has relation r17 with {?v7}
+(r129 ?v4 ?v10) -> {?v4} has relation r129 with {?v10}
+(r10 ?v4) -> {?v4} has relation r10
+(r51 ?v9 ?v7) -> {?v9} has relation r51 to {?v7}
+(r119 ?v1) -> {?v1} has relation r119
+(r46 ?v1 ?v4) -> {?v1} has relation r46 to {?v4}
+(r54 ?v9 ?v7) -> {?v9} has relation r54 to {?v7}
+(r68 ?v2) -> {?v2} has relation r68
+(r27 ?v1) -> {?v1} has relation r27
+(r106 ?v2) -> {?v2} has relation r106
+(r20 ?v8) -> {?v8} has relation r20
+(r3 ?v1) -> {?v1} has relation r3
+(r99 ?v1) -> {?v1} has relation r99
+(r117 ?v9) -> {?v9} has relation r117
+(r77 ?v12 ?v3) -> {?v12} has relation r77 with {?v3}
+(r47 ?v4) -> {?v4} has relation r47
+(r111 ?v1 ?v7) -> {?v1} has relation r111 to {?v7}
+(r64 ?v1) -> {?v1} has relation r64
+(r107 ?v2) -> {?v2} has relation r107
+(r9 ?v4) -> {?v4} has relation r9
+(r126 ?v1) -> {?v1} has relation r126
+(r14 ?v1 ?v7) -> {?v1} has relation r14 with {?v7}
+(r88 ?v1 ?v10) -> {?v1} has relation r88 with {?v10}
+(r92 ?v9) -> {?v9} has relation r92
+(r127 ?v1) -> {?v1} has relation r127
+(r5 ?v1) -> {?v1} has relation r5
+(r63 ?v1) -> {?v1} has relation r63
+(r85 ?v1 ?v5) -> {?v1} has relation r85 with {?v5}
+(r53 ?v9) -> {?v9} has relation r53
+(r56 ?v9) -> {?v9} has relation r56
+(r102 ?v12) -> {?v12} has relation r102
+(r73 ?v2) -> {?v2} has relation r73
+(r42 ?v1) -> {?v1} has relation r42
+(r21 ?v8) -> {?v8} has relation r21
+(r78 ?v12) -> {?v12} has relation r78
+(r4 ?v1) -> {?v1} has relation r4
+(r44 ?v1) -> {?v1} has relation r44
+(r48 ?v9 ?v1) -> {?v9} has relation r48 to {?v1}
+(r94 ?v9) -> {?v9} has relation r94
+(r30 ?v1) -> {?v1} has relation r30
+(r123 ?v9) -> {?v9} has relation r123
+(r18 ?v8) -> {?v8} has relation r18
+(r6 ?v1) -> {?v1} has relation r6
+(r109 ?v7) -> {?v7} has relation r109
+(r82 ?v3) -> {?v3} has relation r82
+(r29 ?v1) -> {?v1} has relation r29
+(r86 ?v5) -> {?v5} has relation r86
+(r45 ?v1) -> {?v1} has relation r45
+(r87 ?v1) -> {?v1} has relation r87
+(r115 ?v1) -> {?v1} has relation r115
+(r8 ?v3) -> {?v3} has relation r8
+(r72 ?v11) -> {?v11} has relation r72
+(r35 ?v7) -> {?v7} has relation r35
+(r108 ?v7) -> {?v7} has relation r108
+(r37 ?v1) -> {?v1} has relation r37
+(r96 ?v1) -> {?v1} has relation r96
+(r98 ?v1) -> {?v1} has relation r98
+(r76 ?v12) -> {?v12} has relation r76
+(r40 ?v1) -> {?v1} has relation r40
+(r120 ?v1) -> {?v1} has relation r120
+(r59 ?v9) -> {?v9} has relation r59
+(r49 ?v9) -> {?v9} has relation r49
+(r25 ?v8) -> {?v8} has relation r25
+(r71 ?v11) -> {?v11} has relation r71
+(r81 ?v3) -> {?v3} has relation r81
+(r28 ?v1) -> {?v1} has relation r28
+(r36 ?v7) -> {?v7} has relation r36
+(r89 ?v10) -> {?v10} has relation r89
+(r17 ?v8 ?v7) -> {?v8} has relation r17 with {?v7}
+(r129 ?v4 ?v10) -> {?v4} has relation r129 with {?v10}
+(r10 ?v4) -> {?v4} has relation r10
+(r51 ?v9 ?v7) -> {?v9} has relation r51 to {?v7}
+(r119 ?v1) -> {?v1} has relation r119
+(r46 ?v1 ?v4) -> {?v1} has relation r46 to {?v4}
+(r54 ?v9 ?v7) -> {?v9} has relation r54 to {?v7}
+(r68 ?v2) -> {?v2} has relation r68
+(r27 ?v1) -> {?v1} has relation r27
+(r106 ?v2) -> {?v2} has relation r106
+(r20 ?v8) -> {?v8} has relation r20
+(r3 ?v1) -> {?v1} has relation r3
+(r99 ?v1) -> {?v1} has relation r99
+(r117 ?v9) -> {?v9} has relation r117
+(r77 ?v12 ?v3) -> {?v12} has relation r77 with {?v3}
+(r47 ?v4) -> {?v4} has relation r47
+(r111 ?v1 ?v7) -> {?v1} has relation r111 to {?v7}
+(r64 ?v1) -> {?v1} has relation r64
+(r107 ?v2) -> {?v2} has relation r107
+(r9 ?v4) -> {?v4} has relation r9
+(r126 ?v1) -> {?v1} has relation r126
+(r14 ?v1 ?v7) -> {?v1} has relation r14 with {?v7}
+(r88 ?v1 ?v10) -> {?v1} has relation r88 with {?v10}
+(r92 ?v9) -> {?v9} has relation r92
+(r127 ?v1) -> {?v1} has relation r127
+(r5 ?v1) -> {?v1} has relation r5
+(r63 ?v1) -> {?v1} has relation r63
+(r85 ?v1 ?v5) -> {?v1} has relation r85 with {?v5}
+(r53 ?v9) -> {?v9} has relation r53
+(r56 ?v9) -> {?v9} has relation r56
+(r102 ?v12) -> {?v12} has relation r102
+(r73 ?v2) -> {?v2} has relation r73
+(r42 ?v1) -> {?v1} has relation r42
+(r21 ?v8) -> {?v8} has relation r21
+(r78 ?v12) -> {?v12} has relation r78
+(r4 ?v1) -> {?v1} has relation r4
+(r44 ?v1) -> {?v1} has relation r44
+(r48 ?v9 ?v1) -> {?v9} has relation r48 to {?v1}
+(r94 ?v9) -> {?v9} has relation r94
+(r30 ?v1) -> {?v1} has relation r30
+(r123 ?v9) -> {?v9} has relation r123
+(r18 ?v8) -> {?v8} has relation r18
+(r6 ?v1) -> {?v1} has relation r6
+(r109 ?v7) -> {?v7} has relation r109
+(r82 ?v3) -> {?v3} has relation r82
+(r29 ?v1) -> {?v1} has relation r29
+(r86 ?v5) -> {?v5} has relation r86
+(r45 ?v1) -> {?v1} has relation r45
+(r87 ?v1) -> {?v1} has relation r87
+(r115 ?v1) -> {?v1} has relation r115
+(r8 ?v3) -> {?v3} has relation r8
+(r72 ?v11) -> {?v11} has relation r72
+(r35 ?v7) -> {?v7} has relation r35
+(r108 ?v7) -> {?v7} has relation r108
+(r37 ?v1) -> {?v1} has relation r37
+(r96 ?v1) -> {?v1} has relation r96
+(r98 ?v1) -> {?v1} has relation r98
+(r93 ?v9) -> {?v9} has relation r93
+(r12 ?v1 ?v6) -> {?v1} has relation r12 with {?v6}
+(r114 ?v1 ?v11) -> {?v1} has relation r114 with {?v11}
+(r128 ?v4) -> {?v4} has relation r128
+(r79 ?v12) -> {?v12} has relation r79
+(r34 ?v7) -> {?v7} has relation r34
+(r11 ?v1 ?v5) -> {?v1} has relation r11 with {?v5}
+(r43 ?v1) -> {?v1} has relation r43
+(r61 ?v1 ?v2) -> {?v1} has relation r61 with {?v2}
+(r97 ?v1) -> {?v1} has relation r97
+(r83 ?v1) -> {?v1} has relation r83
+(r55 ?v9) -> {?v9} has relation r55
+(r66 ?v2) -> {?v2} has relation r66
+(r74 ?v3 ?v1 ?v7) -> {?v3} has relation r74 with {?v1} and {?v7}
+(r1 ?v1) -> {?v1} has relation r1
+(r26 ?v1) -> {?v1} has relation r26
+(r125 ?v10) -> {?v10} has relation r125
+(r58 ?v1) -> {?v1} has relation r58
+(r122 ?v9 ?v25) -> {?v9} has relation r122 with {?v25}
+(r100 ?v3) -> {?v3} has relation r100
+(r84 ?v1) -> {?v1} has relation r84
+(r118 ?v9) -> {?v9} has relation r118
+(r80 ?v12) -> {?v12} has relation r80
+(r22 ?v8) -> {?v8} has relation r22
+(r50 ?v9 ?v4) -> {?v9} has relation r50 to {?v4}
+(r31 ?v7) -> {?v7} has relation r31
+(r70 ?v2) -> {?v2} has relation r70
+(r90 ?v9 ?v10) -> {?v9} has relation r90 with {?v10}
+(r24 ?v8) -> {?v8} has relation r24
+(r104 ?v3 ?v12) -> {?v3} has relation r104 with {?v12}
+(r23 ?v8) -> {?v8} has relation r23
+(r101 ?v3) -> {?v3} has relation r101
+(r65 ?v1) -> {?v1} has relation r65
+(r19 ?v8) -> {?v8} has relation r19
+(r62 ?v2) -> {?v2} has relation r62
+(r91 ?v9) -> {?v9} has relation r91
+(r121 ?v1) -> {?v1} has relation r121
+(r38 ?v1) -> {?v1} has relation r38
+(r7 ?v2) -> {?v2} has relation r7
+(r57 ?v9) -> {?v9} has relation r57
+(r116 ?v1) -> {?v1} has relation r116
+(r13 ?v1 ?v7) -> {?v1} has relation r13 to {?v7}
+(r39 ?v1) -> {?v1} has relation r39
+(r105 ?v1 ?v2) -> {?v1} has relation r105 with {?v2}
+(r32 ?v7) -> {?v7} has relation r32
+(r69 ?v2) -> {?v2} has relation r69
+(r76 ?v12) -> {?v12} has property r76
+(r40 ?v1) -> {?v1} has property r40
+(r120 ?v1) -> {?v1} has property r120
+(r59 ?v9) -> {?v9} has property r59
+(r49 ?v9) -> {?v9} has property r49
+(r25 ?v8) -> {?v8} has property r25
+(r71 ?v11) -> {?v11} has property r71
+(r81 ?v3) -> {?v3} has property r81
+(r28 ?v1) -> {?v1} has property r28
+(r36 ?v7) -> {?v7} has property r36
+(r89 ?v10) -> {?v10} has property r89
+(r17 ?v8 ?v7) -> {?v8} has relation r17 to {?v7}
+(r129 ?v4 ?v10) -> {?v4} has relation r129 to {?v10}
+(r10 ?v4) -> {?v4} has relation r10
+(r51 ?v9 ?v7) -> {?v9} has relation r51 with {?v7}
+(r119 ?v1) -> {?v1} has relation r119
+(r46 ?v1 ?v4) -> {?v1} has relation r46 with {?v4}
+(r54 ?v9 ?v7) -> {?v9} has relation r54 with {?v7}
+(r68 ?v2) -> {?v2} has relation r68
+(r27 ?v1) -> {?v1} has relation r27
+(r106 ?v2) -> {?v2} has relation r106
+(r20 ?v8) -> {?v8} has relation r20
+(r3 ?v1) -> {?v1} has relation r3
+(r76 ?v12) -> {?v12} has property r76
+(r40 ?v1) -> {?v1} has property r40
+(r120 ?v1) -> {?v1} has property r120
+(r59 ?v9) -> {?v9} has property r59
+(r49 ?v9) -> {?v9} has property r49
+(r25 ?v8) -> {?v8} has property r25
+(r71 ?v11) -> {?v11} has property r71
+(r81 ?v3) -> {?v3} has property r81
+(r28 ?v1) -> {?v1} has property r28
+(r36 ?v7) -> {?v7} has property r36
+(r89 ?v10) -> {?v10} has property r89
+(r17 ?v8 ?v7) -> {?v8} has relation r17 with {?v7}
+(r129 ?v4 ?v10) -> {?v4} has relation r129 with {?v10}
+(r10 ?v4) -> {?v4} has relation r10
+(r51 ?v9 ?v7) -> {?v9} has relation r51 with {?v7}
+(r119 ?v1) -> {?v1} has relation r119
+(r46 ?v1 ?v4) -> {?v1} has relation r46 with {?v4}
+(r54 ?v9 ?v7) -> {?v9} has relation r54 with {?v7}
+(r68 ?v2) -> {?v2} has relation r68
+(r27 ?v1) -> {?v1} has relation r27
+(r106 ?v2) -> {?v2} has relation r106
+(r20 ?v8) -> {?v8} has relation r20
+(r3 ?v1) -> {?v1} has relation r3
+(r99 ?v1) -> {?v1} has relation r99
+(r117 ?v9) -> {?v9} has relation r117
+(r77 ?v12 ?v3) -> {?v12} has relation r77 with {?v3}
+(r47 ?v4) -> {?v4} has relation r47
+(r111 ?v1 ?v7) -> {?v1} has relation r111 with {?v7}
+(r64 ?v1) -> {?v1} has relation r64
+(r107 ?v2) -> {?v2} has relation r107
+(r9 ?v4) -> {?v4} has relation r9
+(r126 ?v1) -> {?v1} has relation r126
+(r14 ?v1 ?v7) -> {?v1} has relation r14 with {?v7}
+(r88 ?v1 ?v10) -> {?v1} has relation r88 with {?v10}
+(r92 ?v9) -> {?v9} has relation r92
+(r127 ?v1) -> {?v1} has relation r127
+(r5 ?v1) -> {?v1} has relation r5
+(r63 ?v1) -> {?v1} has relation r63
+(r85 ?v1 ?v5) -> {?v1} has relation r85 to {?v5}
+(r53 ?v9) -> {?v9} has relation r53
+(r56 ?v9) -> {?v9} has relation r56
+(r102 ?v12) -> {?v12} has relation r102
+(r73 ?v2) -> {?v2} has relation r73
+(r42 ?v1) -> {?v1} has relation r42
+(r21 ?v8) -> {?v8} has relation r21
+(r78 ?v12) -> {?v12} has relation r78
+(r4 ?v1) -> {?v1} has relation r4
+(r44 ?v1) -> {?v1} has relation r44
+(r48 ?v9 ?v1) -> {?v9} has relation r48 to {?v1}
+(r94 ?v9) -> {?v9} has relation r94
+(r30 ?v1) -> {?v1} has relation r30
+(r123 ?v9) -> {?v9} has relation r123
+(r18 ?v8) -> {?v8} has relation r18
+(r6 ?v1) -> {?v1} has relation r6
+(r109 ?v7) -> {?v7} has relation r109
+(r82 ?v3) -> {?v3} has relation r82
+(r29 ?v1) -> {?v1} has relation r29
+(r86 ?v5) -> {?v5} has relation r86
+(r45 ?v1) -> {?v1} has relation r45
+(r87 ?v1) -> {?v1} has relation r87
+(r115 ?v1) -> {?v1} has relation r115
+(r8 ?v3) -> {?v3} has relation r8
+(r72 ?v11) -> {?v11} has relation r72
+(r35 ?v7) -> {?v7} has relation r35
+(r108 ?v7) -> {?v7} has relation r108
+(r37 ?v1) -> {?v1} has relation r37
+(r96 ?v1) -> {?v1} has relation r96
+(r98 ?v1) -> {?v1} has relation r98
+(r93 ?v9) -> {?v9} has relation r93
+(r12 ?v1 ?v6) -> {?v1} has relation r12 with {?v6}
+(r114 ?v1 ?v11) -> {?v1} has relation r114 with {?v11}
+(r128 ?v4) -> {?v4} has relation r128
+(r79 ?v12) -> {?v12} has relation r79
+(r34 ?v7) -> {?v7} has relation r34
+(r11 ?v1 ?v5) -> {?v1} has relation r11 with {?v5}
+(r43 ?v1) -> {?v1} has relation r43
+(r61 ?v1 ?v2) -> {?v1} has relation r61 with {?v2}
+(r97 ?v1) -> {?v1} has relation r97
+(r83 ?v1) -> {?v1} has relation r83
+(r55 ?v9) -> {?v9} has relation r55
+(r66 ?v2) -> {?v2} has relation r66
+(r74 ?v3 ?v1 ?v7) -> {?v3} has relation r74 with {?v1} and {?v7}
+(r1 ?v1) -> {?v1} has relation r1
+(r26 ?v1) -> {?v1} has relation r26
+(r125 ?v10) -> {?v10} has relation r125
+(r58 ?v1) -> {?v1} has relation r58
+(r122 ?v9 ?v25) -> {?v9} has relation r122 to {?v25}
+(r100 ?v3) -> {?v3} has relation r100
+(r84 ?v1) -> {?v1} has relation r84
+(r118 ?v9) -> {?v9} has relation r118
+(r80 ?v12) -> {?v12} has relation r80
+(r22 ?v8) -> {?v8} has relation r22
+(r50 ?v9 ?v4) -> {?v9} has relation r50 to {?v4}
+(r31 ?v7) -> {?v7} has relation r31
+(r70 ?v2) -> {?v2} has relation r70
+(r90 ?v9 ?v10) -> {?v9} has relation r90 with {?v10}
+(r24 ?v8) -> {?v8} has relation r24
+(r104 ?v3 ?v12) -> {?v3} has relation r104 with {?v12}
+(r23 ?v8) -> {?v8} has relation r23
+(r101 ?v3) -> {?v3} has relation r101
+(r65 ?v1) -> {?v1} has relation r65
+(r19 ?v8) -> {?v8} has relation r19
+(r62 ?v2) -> {?v2} has relation r62
+(r91 ?v9) -> {?v9} has relation r91
+(r121 ?v1) -> {?v1} has relation r121
+(r38 ?v1) -> {?v1} has relation r38
+(r7 ?v2) -> {?v2} has relation r7
+(r57 ?v9) -> {?v9} has relation r57
+(r116 ?v1) -> {?v1} has relation r116
+(r13 ?v1 ?v7) -> {?v1} has relation r13 with {?v7}
+(r39 ?v1) -> {?v1} has relation r39
+(r105 ?v1 ?v2) -> {?v1} has relation r105 with {?v2}
+(r32 ?v7) -> {?v7} has relation r32
+(r69 ?v2) -> {?v2} has relation r69
+(r16 ?v8 ?v1) -> {?v8} has relation r16 to {?v1}
+(r113 ?v11) -> {?v11} has relation r113
+(r112 ?v11) -> {?v11} has relation r112
+(r15 ?v1 ?v8) -> {?v1} has relation r15 with {?v8}
+(r60 ?v1) -> {?v1} has relation r60
+(r41 ?v1) -> {?v1} has relation r41
+(r2 ?v1) -> {?v1} has relation r2
+(r67 ?v2) -> {?v2} has relation r67
+(r103 ?v12) -> {?v12} has relation r103
+(r52 ?v9 ?v10) -> {?v9} has relation r52 with {?v10}
+(r124 ?v3 ?v10) -> {?v3} has relation r124 with {?v10}
+(r110 ?v1 ?v7) -> {?v1} has relation r110 with {?v7}
+(r76 ?v12) -> {?v12} has property r76
+(r40 ?v1) -> {?v1} has property r40
+(r120 ?v1) -> {?v1} has property r120
+(r59 ?v9) -> {?v9} has property r59
+(r49 ?v9) -> {?v9} has property r49
+(r25 ?v8) -> {?v8} has property r25
+(r71 ?v11) -> {?v11} has property r71
+(r81 ?v3) -> {?v3} has property r81
+(r28 ?v1) -> {?v1} has property r28
+(r36 ?v7) -> {?v7} has property r36
+(r89 ?v10) -> {?v10} has property r89
+(r17 ?v8 ?v7) -> {?v8} has relation r17 with {?v7}
+(r129 ?v4 ?v10) -> {?v4} has relation r129 with {?v10}
+(r10 ?v4) -> {?v4} has relation r10
+(r76 ?v12) -> {?v12} is r76
+(r40 ?v1) -> {?v1} is r40
+(r120 ?v1) -> {?v1} is r120
+(r59 ?v9) -> {?v9} is r59

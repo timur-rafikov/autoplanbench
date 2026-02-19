@@ -1,0 +1,34 @@
+{
+    "prefixes": {
+        "input": "Input:",
+        "output": "Output:"
+    },
+    "example_objs": [
+        "object_260",
+        "roof_11",
+        "dress_red",
+        "dress_red_39",
+        "object_260_85",
+        "roof_11_86",
+        "dress_red_39_94",
+        "bastion"
+    ],
+    "pos_examples": [
+        [
+            "Now, create drawdown packet drawdown_packet object_260 for drawdown_case bastion with signature slots signature_slot roof_11 and signature_slot roof_11_86.",
+            "(create_drawdown_packet bastion object_260 roof_11 roof_11_86)"
+        ],
+        [
+            "Once you are done, please confirm drawdown packet object_260 for drawdown case bastion attached to facility document dress_red, facility document dress_red_39 and facility document dress_red_39_94 is complete.",
+            "(confirm_packet_has_three_facility_docs bastion object_260 dress_red dress_red_39 dress_red_39_94)"
+        ],
+        [
+            "First, finalize drawdown-packet object_260_85 after compliance check and stop signature collection for drawdown-packet object_260_85 and then validate facility document dress_red_39 for case bastion.",
+            "(finalize_drawdown_packet object_260)\n(validate_facility_document bastion dress_red_39)"
+        ],
+        [
+            "The next step is to attach facility document facility_document dress_red to packet drawdown_packet object_260 for case drawdown_case bastion.",
+            "(attach_facility_document_to_packet bastion object_260 dress_red)"
+        ]
+    ]
+}

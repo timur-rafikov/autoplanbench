@@ -150,6 +150,7 @@ class LLMModel(ABC):
         """
         prompt = self.prepare_for_generation(user_message)
         response_source = 'generated'
+        cache_query = None
         if self.temp == 0 and self.cache:
             cache_query = self.create_cache_query(prompt=prompt)
             with Cache(directory=self.cache) as cache:
@@ -163,13 +164,36 @@ class LLMModel(ABC):
                     response_source = 'cache'
                 else:
                     response = self._generate(prompt)
-                    cache[cache_query] = response
+                    if not self._is_response_empty(response):
+                        cache[cache_query] = response
 
         else:
             response = self._generate(prompt)
 
         actual_response = self.clean_up_from_generation(model_response=response,
                                                         response_source=response_source)
+
+        # If we got an empty response from cache, regenerate and overwrite cache with valid response
+        if response_source == 'cache' and (
+                actual_response is None or (isinstance(actual_response, str) and not actual_response.strip())):
+            print('Cached response was empty; regenerating.')
+            self.history.pop()
+            if self.full_history_w_source:
+                self.full_history_w_source.pop()
+            try:
+                response = self._generate(prompt)
+                actual_response = self.clean_up_from_generation(model_response=response, response_source='generated')
+            except Exception as e:
+                print(f'Warning: API call failed (timeout or error): {e}')
+                actual_response = ''
+            if not actual_response or (isinstance(actual_response, str) and not actual_response.strip()):
+                print('Warning: API returned empty response. Check API key, model name (e.g. openai/gpt-3.5-turbo), and provider status.')
+            elif self.cache and cache_query is not None and actual_response and (
+                    isinstance(actual_response, str) and actual_response.strip()):
+                with Cache(directory=self.cache) as cache:
+                    cache[cache_query] = response
+            self.update_history_length()
+            return actual_response
 
         self.update_history_length()  # make sure history is not exceeding the max_history length
 
@@ -186,6 +210,10 @@ class LLMModel(ABC):
         :return:
         """
         pass
+
+    def _is_response_empty(self, response) -> bool:
+        """Override in subclasses to avoid caching empty/invalid responses. Default: never treat as empty."""
+        return False
 
     @abstractmethod
     def create_cache_query(self, prompt: str):

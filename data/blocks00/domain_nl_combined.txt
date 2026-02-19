@@ -1,0 +1,40 @@
+============================================================
+DOMAIN IN NATURAL LANGUAGE
+============================================================
+
+--- TYPE HIERARCHY ---
+
+
+
+--- PREDICATES ---
+
+  {?x} is on {?y}
+  {?x} is on the table
+  there is nothing on {?x}
+  the hand is empty
+  {?x} is being held
+  {?x1} is equal to {?x2}
+  {?x1} is not equal to {?x2}
+
+
+--- ACTIONS ---
+
+  pick up an object A from the table
+    I can only pick up an object A from the table if it is the case that there is nothing on A and A is on the table and the hand is empty
+    Once I pick up an object A from the table, it is the case that A is being held
+    Once I pick up an object A from the table, it is not the case anymore that A is on the table and it is not the case anymore that there is nothing on A and it is not the case anymore that the hand is empty
+
+  put down an object A on the table
+    I can only put down an object A on the table if it is the case that A is being held
+    Once I put down an object A on the table, it is the case that there is nothing on A and the hand is empty and A is on the table
+    Once I put down an object A on the table, it is not the case anymore that A is being held
+
+  stack an object A on an object B
+    I can only stack an object A on an object B if it is the case that A is being held and there is nothing on B
+    Once I stack an object A on an object B, it is the case that there is nothing on A and the hand is empty and A is on B
+    Once I stack an object A on an object B, it is not the case anymore that A is being held and it is not the case anymore that there is nothing on B
+
+  unstack an object A from an object B
+    I can only unstack an object A from an object B if it is the case that A is on B and there is nothing on A and the hand is empty
+    Once I unstack an object A from an object B, it is the case that A is being held and there is nothing on B
+    Once I unstack an object A from an object B, it is not the case anymore that there is nothing on A and it is not the case anymore that the hand is empty and it is not the case anymore that A is on B

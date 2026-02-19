@@ -35,8 +35,13 @@ def validate_plans(domain_dir_path: str):
                 f.write(f'Warning: No plan for {instance_path}\n')
 
         else:
-            val = os.environ.get('VAL')
-            cmd = f'{val}/validate -v {domain_file_path} {instance_path} {plan_path}'
+            from utils.paths import get_val_validate_path
+            val_validate = get_val_validate_path()
+            if not val_validate:
+                with open('check_plans_output.txt', 'a') as f:
+                    f.write(f'VAL not found (set VAL env to repo root, e.g. /path/to/VAL)\n')
+                return
+            cmd = f'{val_validate} -v {domain_file_path} {instance_path} {plan_path}'
             response = os.popen(cmd).read()
             valid_plan = True if 'Plan valid' in response else False
             valid_instance = False if 'Bad plan file' in response else True

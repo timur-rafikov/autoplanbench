@@ -1,0 +1,34 @@
+{
+    "prefixes": {
+        "input": "Input:",
+        "output": "Output:"
+    },
+    "example_objs": [
+        "obj_15",
+        "bastion",
+        "dress_red",
+        "screen",
+        "dress_red_58",
+        "yew_21",
+        "object_50",
+        "kumquat_8"
+    ],
+    "pos_examples": [
+        [
+            "Now, create drawdown packet drawdown_packet yew for drawdown_case bastion with signature slots signature_slot dress_red and signature_slot dress_red_58.",
+            "(create_drawdown_packet bastion yew dress_red dress_red_58)"
+        ],
+        [
+            "Once you are done, please select facility_document obj_15 for drawdown_case bastion.",
+            "(select_facility_document bastion obj_15)"
+        ],
+        [
+            "First, attach facility_document obj_15 to drawdown_packet yew for drawdown_case bastion and then finalize drawdown_packet yew_21 that has been checked for packet compliance and stop signature collection for drawdown_packet yew_21.",
+            "(attach_facility_document_to_packet bastion yew obj_15)\n(finalize_drawdown_packet yew)"
+        ],
+        [
+            "The next step is to create disbursement notice disbursement_notice screen for drawdown_case bastion addressed to borrower_signatory object_50 using drawdown_packet yew_21 attached to facility_document obj_15 consuming notice_dispatch_window_token kumquat_8.",
+            "(create_disbursement_notice bastion screen object_50 kumquat_8 yew_21 obj_15)"
+        ]
+    ]
+}

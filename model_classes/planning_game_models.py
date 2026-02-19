@@ -7,8 +7,9 @@ from pathlib import Path
 from utils.paths import get_cache_dir
 from .llm_models import LLMModel
 from .vicuna_models import VicunaModel
-from .openai_models import OpenAIComplModel, OpenAIChatModel
+from .openai_models import OpenAIComplModel, OpenAIChatModel, OPENROUTER_BASE_URL
 from .openai_batch_model import OpenAIChatBatch
+from .openrouter_models import OpenRouterChatModel
 # from .llama_model import LlamaModel
 
 
@@ -207,11 +208,13 @@ class TranslationModel:
 def create_llm_model(model_type: str, model_param: dict) -> LLMModel:
     """
     Creates different kinds of llm models of the subclasses of LLMModel (in llm_models.py)
-    :param model_type: the name of the model to use
+    :param model_type: the name of the model to use (e.g. 'openai_chat')
     :param model_param: dictionary with the parameters for the model
                         required keys: 'model_path', 'max_tokens', 'temp', 'max_history'
                         if vicuna model additionally: 'cuda_n', 'load_method'
-                        optional_keys: "caching", "seed"
+                        optional: "caching", "seed", "api_key"
+                        For OpenRouter (openai_chat): "base_url" = "https://openrouter.ai/api/v1",
+                        "api_key" = OpenRouter key, "model_path" = e.g. "openai/gpt-4o"
     :return:
     """
     model_path = model_param['model_path']
@@ -251,9 +254,22 @@ def create_llm_model(model_type: str, model_param: dict) -> LLMModel:
         cache_dir = get_cache_dir(model_subdir_name=f'{model_type}_{model_path}',
                                   exp_subdir_name=cache_sub_dir)
 
-    model_input_param['cache_directory'] = cache_dir
+    base_url = model_input_param.get('base_url') or ''
+    use_openrouter_sdk = base_url and (OPENROUTER_BASE_URL in str(base_url))
 
-    if model_type == 'openai_chat' and batching:
+    if cache_dir is None:
+        model_input_param['cache_directory'] = None
+    elif model_type == 'openai_chat' and use_openrouter_sdk:
+        sdk_cache_dir = get_cache_dir(model_subdir_name=f'openrouter_sdk_{model_path}', exp_subdir_name=None)
+        model_input_param['cache_directory'] = sdk_cache_dir
+    else:
+        model_input_param['cache_directory'] = cache_dir
+
+    if model_type == 'openai_chat' and use_openrouter_sdk:
+        openrouter_param = {k: v for k, v in model_input_param.items() if k != 'base_url' and k != 'logprobs'}
+        openrouter_param.setdefault('http_referer', 'http://localhost')
+        model = OpenRouterChatModel(**openrouter_param)
+    elif model_type == 'openai_chat' and batching:
         model = OpenAIChatBatch(**model_input_param)
     elif model_type == 'openai_chat':
         model = OpenAIChatModel(**model_input_param)

@@ -1,0 +1,1903 @@
+{
+    "action_mappings": {
+        "open_drawdown_case": "open drawdown for drawdown_case {}",
+        "select_request_channel": "select request_channel {} for drawdown_case {}",
+        "select_facility_document": "select facility_document {} for drawdown_case {}",
+        "verify_borrowing_base_certificate": "verify borrowing base certificate for drawdown_case {} using drawdown_document {}",
+        "verify_compliance_certificate": "verify compliance certificate drawdown_document {} for drawdown_case {}",
+        "verify_covenant_compliance_statement": "verify covenant compliance statement drawdown_document {} for drawdown_case {}",
+        "verify_use_of_proceeds_statement": "verify use_of_proceeds_statement {} for drawdown_case {}",
+        "verify_fee_calculation_sheet": "verify drawdown_document {} for drawdown_case {}",
+        "record_two_officer_signoff": "record two-officer signoff for drawdown_case {} on fee_calculation_sheet {} by bank_drawdown_officer {} and bank_drawdown_officer {}",
+        "verify_person_authorization_record": "verify authorization kyc record {} for participant_person {} in drawdown_case {}",
+        "verify_person_contact_details": "verify participant_person {}'s contact details for drawdown_case {}",
+        "run_full_person_screening": "run full person screening for participant_person {} on drawdown_case {}",
+        "run_sanctions_screening_only": "run sanctions screening for drawdown_case {} on participant_person {}",
+        "run_pep_screening_only": "run pep screening only for participant_person {} on drawdown_case {}",
+        "complete_basic_drawdown_checks": "complete basic drawdown checks for drawdown_case {}",
+        "enable_fast_track": "enable fast track for drawdown_case {}",
+        "compile_drawdown_package": "compile drawdown package {} {} {} {} {} {} {} {} {} {}",
+        "approve_drawdown_package_four_eyes": "approve drawdown package for drawdown_case {} by borrower_signatory {} and borrower_signatory {} with approvals from bank_drawdown_officer {} and bank_drawdown_officer {}",
+        "approve_drawdown_package_fast_track": "approve fast-track drawdown package for case {}",
+        "authorize_packet_creation": "authorize packet creation for drawdown_case {}",
+        "raise_compliance_hold": "raise compliance hold on drawdown_case {}",
+        "validate_facility_document": "validate facility_document {} for drawdown_case {}",
+        "create_drawdown_packet": "create drawdown packet drawdown_packet {} for drawdown_case {} with signature slots signature_slot {} and signature_slot {}",
+        "attach_facility_document_to_packet": "attach facility_document {} to drawdown_packet {} for drawdown_case {}",
+        "assign_signer_to_packet_slot": "assign borrower_signatory {} to slot signature_slot {} on drawdown_packet {} for drawdown_case {}",
+        "start_signature_collection": "start signature collection for drawdown_packet {}",
+        "capture_signer_signature": "capture signature for drawdown_packet {} from borrower_signatory {}",
+        "verify_two_distinct_signatures": "verify two distinct signatures on drawdown_packet {} from borrower_signatory {} and borrower_signatory {}",
+        "perform_packet_compliance_check": "check packet compliance for drawdown_packet {}",
+        "finalize_drawdown_packet": "finalize drawdown_packet {} that has been checked for packet compliance and stop signature collection for drawdown_packet {}",
+        "confirm_packet_has_three_facility_docs": "confirm drawdown packet drawdown_packet {} for drawdown_case {} attached to facility documents facility_document {}, facility_document {} and facility_document {} is complete",
+        "reopen_packet_and_reset_signatures": "reopen drawdown_packet {} for drawdown_case {} using reopen_key_token {} and reset signature slots signature_slot {} and signature_slot {}",
+        "lock_case_for_execution": "lock drawdown_case {} for execution with drawdown_packet {}",
+        "reopen_locked_case": "reopen drawdown for drawdown_case {} with reopen_key_token {}",
+        "freeze_case_due_to_suspicious_payment": "freeze drawdown case drawdown_case {} due to suspicious payment instruction payment_instruction {}",
+        "draft_payment_instruction": "draft payment instruction payment_instruction {} for drawdown_case {}",
+        "validate_payment_instruction": "validate payment instruction for drawdown_case {}",
+        "approve_payment_instruction": "approve payment instruction for drawdown_case {}",
+        "sign_payment_instruction": "sign payment_instruction {} for drawdown_case {}",
+        "send_instruction_to_treasury": "send signed payment instruction {} to the treasury",
+        "execute_treasury_release": "execute treasury release payment_instruction {} for drawdown_case {} using drawdown_packet {} attached to facility_document {}",
+        "reserve_wire_cutoff_window": "reserve wire cutoff window for payment_instruction {} using wire_cutoff_window_token {}",
+        "consume_cutoff_window_without_reservation": "consume cutoff window without reservation for drawdown_case {} using wire_cutoff_window_token {}",
+        "release_wire_payment": "release payment_instruction {} by wire",
+        "confirm_beneficiary_credit": "confirm beneficiary credit for payment_instruction {}",
+        "mark_funds_settled": "mark funds settled for payment_instruction {}",
+        "create_disbursement_notice": "create disbursement notice disbursement_notice {} for drawdown_case {} addressed to borrower_signatory {} using drawdown_packet {} attached to facility_document {} consuming notice_dispatch_window_token {}",
+        "approve_disbursement_notice": "approve disbursement_notice {}",
+        "create_notice_delivery_package": "create delivery_package {} for disbursement_notice {}",
+        "apply_delivery_label": "apply delivery label to delivery_package {} using delivery_slot_token {}",
+        "assign_senior_override_review": "assign senior override review to drawdown_case {} using delivery_slot_token {}",
+        "print_delivery_label": "print delivery label for delivery_package {}",
+        "scan_delivery_label": "scan label of delivery_package {}",
+        "mark_notice_ready": "mark disbursement_notice {} ready to be sent",
+        "send_notice_via_secure_delivery": "send disbursement_notice {} for drawdown_case {} via secure delivery package delivery_package {} to borrower_signatory {} with payment instruction payment_instruction {}",
+        "complete_final_controls": "complete final controls for drawdown_case {} with borrower signatories borrower_signatory {} and borrower_signatory {}, bank drawdown officers bank_drawdown_officer {} and bank_drawdown_officer {}, payment instruction payment_instruction {} and disbursement notice disbursement_notice {}",
+        "close_drawdown_case": "close drawdown case drawdown_case {} with payment_instruction {} and disbursement_notice {}"
+    },
+    "action_mappings_indef": {
+        "open_drawdown_case": "open drawdown for drawdown_case a drawdown case {}",
+        "select_request_channel": "select request_channel a request channel {} for drawdown_case a drawdown case {}",
+        "select_facility_document": "select facility_document a facility document {} for drawdown_case a drawdown case {}",
+        "verify_borrowing_base_certificate": "verify borrowing base certificate for drawdown_case a drawdown case {} using drawdown_document a drawdown document {}",
+        "verify_compliance_certificate": "verify compliance certificate drawdown_document a drawdown document {} for drawdown_case a drawdown case {}",
+        "verify_covenant_compliance_statement": "verify covenant compliance statement drawdown_document a drawdown document {} for drawdown_case a drawdown case {}",
+        "verify_use_of_proceeds_statement": "verify use_of_proceeds_statement a drawdown document {} for drawdown_case a drawdown case {}",
+        "verify_fee_calculation_sheet": "verify drawdown_document a drawdown document {} for drawdown_case a drawdown case {}",
+        "record_two_officer_signoff": "record two-officer signoff for drawdown_case a drawdown case {} on fee_calculation_sheet a drawdown document {} by bank_drawdown_officer a bank drawdown officer {} and bank_drawdown_officer a bank drawdown officer {}",
+        "verify_person_authorization_record": "verify authorization kyc record a drawdown document {} for participant_person a participant person {} in drawdown_case a drawdown case {}",
+        "verify_person_contact_details": "verify participant_person a participant person {}'s contact details for drawdown_case a drawdown case {}",
+        "run_full_person_screening": "run full person screening for participant_person a participant person {} on drawdown_case a drawdown case {}",
+        "run_sanctions_screening_only": "run sanctions screening for drawdown_case a drawdown case {} on participant_person a participant person {}",
+        "run_pep_screening_only": "run pep screening only for participant_person a participant person {} on drawdown_case a drawdown case {}",
+        "complete_basic_drawdown_checks": "complete basic drawdown checks for drawdown_case a drawdown case {}",
+        "enable_fast_track": "enable fast track for drawdown_case a drawdown case {}",
+        "compile_drawdown_package": "compile drawdown package a drawdown case {} a borrower signatory {} a borrower signatory {} a bank drawdown officer {} a bank drawdown officer {} a drawdown document {} a drawdown document {} a drawdown document {} a drawdown document {} a drawdown document {}",
+        "approve_drawdown_package_four_eyes": "approve drawdown package for drawdown_case a drawdown case {} by borrower_signatory a borrower signatory {} and borrower_signatory a borrower signatory {} with approvals from bank_drawdown_officer a bank drawdown officer {} and bank_drawdown_officer a bank drawdown officer {}",
+        "approve_drawdown_package_fast_track": "approve fast-track drawdown package for case a drawdown case {}",
+        "authorize_packet_creation": "authorize packet creation for drawdown_case a drawdown case {}",
+        "raise_compliance_hold": "raise compliance hold on drawdown_case a drawdown case {}",
+        "validate_facility_document": "validate facility_document a facility document {} for drawdown_case a drawdown case {}",
+        "create_drawdown_packet": "create drawdown packet drawdown_packet a drawdown packet {} for drawdown_case a drawdown case {} with signature slots signature_slot a signature slot {} and signature_slot a signature slot {}",
+        "attach_facility_document_to_packet": "attach facility_document a facility document {} to drawdown_packet a drawdown packet {} for drawdown_case a drawdown case {}",
+        "assign_signer_to_packet_slot": "assign borrower_signatory a borrower signatory {} to slot signature_slot a signature slot {} on drawdown_packet a drawdown packet {} for drawdown_case a drawdown case {}",
+        "start_signature_collection": "start signature collection for drawdown_packet a drawdown packet {}",
+        "capture_signer_signature": "capture signature for drawdown_packet a drawdown packet {} from borrower_signatory a borrower signatory {}",
+        "verify_two_distinct_signatures": "verify two distinct signatures on drawdown_packet a drawdown packet {} from borrower_signatory a borrower signatory {} and borrower_signatory a borrower signatory {}",
+        "perform_packet_compliance_check": "check packet compliance for drawdown_packet a drawdown packet {}",
+        "finalize_drawdown_packet": "finalize drawdown_packet a drawdown packet {} that has been checked for packet compliance and stop signature collection for drawdown_packet a drawdown packet {}",
+        "confirm_packet_has_three_facility_docs": "confirm drawdown packet drawdown_packet a drawdown packet {} for drawdown_case a drawdown case {} attached to facility documents facility_document a facility document {}, facility_document a facility document {} and facility_document a facility document {} is complete",
+        "reopen_packet_and_reset_signatures": "reopen drawdown_packet a drawdown packet {} for drawdown_case a drawdown case {} using reopen_key_token a reopen key token {} and reset signature slots signature_slot a signature slot {} and signature_slot a signature slot {}",
+        "lock_case_for_execution": "lock drawdown_case a drawdown case {} for execution with drawdown_packet a drawdown packet {}",
+        "reopen_locked_case": "reopen drawdown for drawdown_case a drawdown case {} with reopen_key_token a reopen key token {}",
+        "freeze_case_due_to_suspicious_payment": "freeze drawdown case drawdown_case a drawdown case {} due to suspicious payment instruction payment_instruction a payment instruction {}",
+        "draft_payment_instruction": "draft payment instruction payment_instruction a payment instruction {} for drawdown_case a drawdown case {}",
+        "validate_payment_instruction": "validate payment instruction for drawdown_case a drawdown case {}",
+        "approve_payment_instruction": "approve payment instruction for drawdown_case a drawdown case {}",
+        "sign_payment_instruction": "sign payment_instruction a payment instruction {} for drawdown_case a drawdown case {}",
+        "send_instruction_to_treasury": "send signed payment instruction a payment instruction {} to the treasury",
+        "execute_treasury_release": "execute treasury release payment_instruction a payment instruction {} for drawdown_case a drawdown case {} using drawdown_packet a drawdown packet {} attached to facility_document a facility document {}",
+        "reserve_wire_cutoff_window": "reserve wire cutoff window for payment_instruction a payment instruction {} using wire_cutoff_window_token a wire cutoff window token {}",
+        "consume_cutoff_window_without_reservation": "consume cutoff window without reservation for drawdown_case a drawdown case {} using wire_cutoff_window_token a wire cutoff window token {}",
+        "release_wire_payment": "release payment_instruction a payment instruction {} by wire",
+        "confirm_beneficiary_credit": "confirm beneficiary credit for payment_instruction a payment instruction {}",
+        "mark_funds_settled": "mark funds settled for payment_instruction a payment instruction {}",
+        "create_disbursement_notice": "create disbursement notice disbursement_notice a disbursement notice {} for drawdown_case a drawdown case {} addressed to borrower_signatory a borrower signatory {} using drawdown_packet a drawdown packet {} attached to facility_document a facility document {} consuming notice_dispatch_window_token a notice dispatch window token {}",
+        "approve_disbursement_notice": "approve disbursement_notice a disbursement notice {}",
+        "create_notice_delivery_package": "create delivery_package a delivery package {} for disbursement_notice a disbursement notice {}",
+        "apply_delivery_label": "apply delivery label to delivery_package a delivery package {} using delivery_slot_token a delivery slot token {}",
+        "assign_senior_override_review": "assign senior override review to drawdown_case a drawdown case {} using delivery_slot_token a delivery slot token {}",
+        "print_delivery_label": "print delivery label for delivery_package a delivery package {}",
+        "scan_delivery_label": "scan label of delivery_package a delivery package {}",
+        "mark_notice_ready": "mark disbursement_notice a disbursement notice {} ready to be sent",
+        "send_notice_via_secure_delivery": "send disbursement_notice a disbursement notice {} for drawdown_case a drawdown case {} via secure delivery package delivery_package a delivery package {} to borrower_signatory a borrower signatory {} with payment instruction payment_instruction a payment instruction {}",
+        "complete_final_controls": "complete final controls for drawdown_case a drawdown case {} with borrower signatories borrower_signatory a borrower signatory {} and borrower_signatory a borrower signatory {}, bank drawdown officers bank_drawdown_officer a bank drawdown officer {} and bank_drawdown_officer a bank drawdown officer {}, payment instruction payment_instruction a payment instruction {} and disbursement notice disbursement_notice a disbursement notice {}",
+        "close_drawdown_case": "close drawdown case drawdown_case a drawdown case {} with payment_instruction a payment instruction {} and disbursement_notice a disbursement notice {}"
+    },
+    "predicate_mappings": {
+        "drawdown_open": "the drawdown for {} is open",
+        "drawdown_locked": "{} is drawdown locked",
+        "drawdown_completed": "the drawdown for {} is completed",
+        "drawdown_frozen": "{} has a frozen drawdown",
+        "compliance_hold_flag": "{} has a compliance hold flag",
+        "suspicious_payment_flag": "{} has a suspicious payment flag",
+        "wire_released": "{} has been released by wire",
+        "notice_created": "{} has been created",
+        "facility_requires_fx_review": "{} requires fx review",
+        "facility_requires_agent_notice": "the facility requires agent notice for {}",
+        "channel_selected": "{} is selected for case {}",
+        "facility_selected": "the facility {} is selected for case {}",
+        "required_person": "{} is the required person for {}",
+        "person_linked_to_case": "{} is linked to the case {}",
+        "required_document": "{} is a required document for {}",
+        "document_for_case": "{} is a document for case {}",
+        "document_for_person": "{} is a document for {}",
+        "document_received": "{} has been received",
+        "document_verified": "{} is verified",
+        "doc_is_borrowing_base_certificate": "{} is borrowing the base certificate",
+        "doc_is_compliance_certificate": "the document {} is a compliance certificate",
+        "doc_is_covenant_compliance_statement": "{} is a covenant compliance statement",
+        "doc_is_fee_calculation_sheet": "{} is a fee calculation sheet",
+        "doc_is_use_of_proceeds_statement": "{} is a use of proceeds statement",
+        "doc_is_authorization_kyc_record": "{} is an authorization kyc record",
+        "borrowing_base_verified": "{} has a verified borrowing base",
+        "compliance_certificate_verified": "{} has a verified compliance certificate",
+        "covenant_statement_verified": "the covenant statement for {} is verified",
+        "use_of_proceeds_verified": "the use of proceeds for {} has been verified",
+        "two_officer_signoff_recorded": "a two-officer signoff is recorded for {}",
+        "person_auth_doc_verified": "{} has their authorization documents verified",
+        "person_contact_verified": "{}'s contact is verified",
+        "person_in_required_set": "{} is in the required set",
+        "person_sanctions_checked": "sanctions have been checked for {}",
+        "person_pep_checked": "{} has been pep checked",
+        "person_full_clearance": "{} has full clearance",
+        "availability_calculated": "availability for {} has been calculated",
+        "limit_headroom_confirmed": "limit headroom is confirmed for {}",
+        "basic_drawdown_checks_complete": "basic drawdown checks are complete for {}",
+        "fast_track_enabled": "{} has fast track enabled",
+        "drawdown_package_compiled": "the drawdown package for {} is compiled",
+        "credit_ops_approved": "{} is approved by credit operations",
+        "risk_approved": "{} is approved for risk",
+        "auto_approved": "{} is auto approved",
+        "packet_creation_authorized": "{} is authorized for packet creation",
+        "facility_eligible_for_case": "the facility {} is eligible for the case {}",
+        "facility_document_validated": "{} is a validated facility document",
+        "packet_for_case": "{} is a packet for case {}",
+        "packet_created": "{} has been created",
+        "packet_attached_facility_document": "{} is attached to the facility document {}",
+        "packet_assigned_signer": "{} is assigned to signer {}",
+        "packet_has_signature_slot": "{} has signature slot {}",
+        "signature_collection_started": "signature collection has started for {}",
+        "signature_captured": "{}'s signature is captured on {}",
+        "two_signatures_verified": "the two signatures on {} are verified",
+        "packet_compliance_checked": "{} has been checked for packet compliance",
+        "packet_finalized": "{} is finalized",
+        "drawdown_packet_complete": "the drawdown packet for {} is complete",
+        "packet_reopened": "{} has been reopened",
+        "payment_instruction_drafted": "a payment instruction has been drafted for {}",
+        "case_has_payment_instruction": "{} has the payment instruction {}",
+        "payment_instruction_created": "{} payment instruction was created",
+        "payment_instruction_validated": "{} payment instruction has been validated",
+        "payment_instruction_approved": "the payment instruction for {} is approved",
+        "payment_instruction_ready_to_sign": "the payment instruction for {} is ready to be signed",
+        "payment_instruction_signed": "{} is a signed payment instruction",
+        "payment_instruction_sent_to_treasury": "{} is sent to the treasury",
+        "payment_instruction_executed": "{} payment instruction has been executed",
+        "beneficiary_credited": "the beneficiary of {} is credited",
+        "funds_settled": "funds for {} are settled",
+        "token_available": "{} is available",
+        "token_consumed": "{} is consumed",
+        "wire_cutoff_reserved": "wire cutoff is reserved for {}",
+        "notice_addressed_to_signer": "{} is addressed to the signer {} in case {}",
+        "notice_approved": "{} is approved",
+        "delivery_package_created": "the delivery package {} has been created",
+        "package_for_notice": "the package {} is for the notice {}",
+        "package_labeled": "{} is a labeled package",
+        "label_printed": "{} has a printed label",
+        "label_scanned": "the label of {} has been scanned",
+        "notice_ready_to_send": "{} is ready to be sent",
+        "notice_sent": "{} has been sent",
+        "senior_override_assigned": "{} is assigned a senior override",
+        "final_controls_complete": "final controls are complete for {}",
+        "=": "{} is equal to {}",
+        "!=": "{} is not equal to {}"
+    },
+    "actions": {
+        "open_drawdown_case": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(open_drawdown_case ?case)",
+            "description": "open drawdown for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only open drawdown for drawdown_case a drawdown case A if it is not the case that the drawdown for A is open and it is not the case that the drawdown for A is completed and it is not the case that A has a frozen drawdown"
+            ],
+            "effects": [
+                "Once I open drawdown for drawdown_case a drawdown case A, it is the case that the drawdown for A is open"
+            ]
+        },
+        "select_request_channel": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?channel": "request_channel"
+            },
+            "pddl": "(select_request_channel ?case ?channel)",
+            "description": "select request_channel a request channel B for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only select request_channel a request channel B for drawdown_case a drawdown case A if it is the case that the drawdown for A is open",
+                "I can only select request_channel a request channel B for drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that A has a frozen drawdown"
+            ],
+            "effects": [
+                "Once I select request_channel a request channel B for drawdown_case a drawdown case A, it is the case that B is selected for case A"
+            ]
+        },
+        "select_facility_document": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?facility_doc": "facility_document"
+            },
+            "pddl": "(select_facility_document ?case ?facility_doc)",
+            "description": "select facility_document a facility document B for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only select facility_document a facility document B for drawdown_case a drawdown case A if it is the case that the drawdown for A is open",
+                "I can only select facility_document a facility document B for drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that A has a frozen drawdown"
+            ],
+            "effects": [
+                "Once I select facility_document a facility document B for drawdown_case a drawdown case A, it is the case that the facility B is selected for case A"
+            ]
+        },
+        "verify_borrowing_base_certificate": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?borrowing_base_doc": "drawdown_document"
+            },
+            "pddl": "(verify_borrowing_base_certificate ?case ?borrowing_base_doc)",
+            "description": "verify borrowing base certificate for drawdown_case a drawdown case A using drawdown_document a drawdown document B",
+            "preconditions": [
+                "I can only verify borrowing base certificate for drawdown_case a drawdown case A using drawdown_document a drawdown document B if it is the case that the drawdown for A is open and B is a required document for A and B is a document for case A and B has been received and B is borrowing the base certificate",
+                "I can only verify borrowing base certificate for drawdown_case a drawdown case A using drawdown_document a drawdown document B if it is not the case that A is drawdown locked and it is not the case that B is verified"
+            ],
+            "effects": [
+                "Once I verify borrowing base certificate for drawdown_case a drawdown case A using drawdown_document a drawdown document B, it is the case that B is verified and A has a verified borrowing base"
+            ]
+        },
+        "verify_compliance_certificate": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?compliance_cert_doc": "drawdown_document"
+            },
+            "pddl": "(verify_compliance_certificate ?case ?compliance_cert_doc)",
+            "description": "verify compliance certificate drawdown_document a drawdown document B for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only verify compliance certificate drawdown_document a drawdown document B for drawdown_case a drawdown case A if it is the case that the drawdown for A is open and B is a required document for A and B is a document for case A and B has been received and the document B is a compliance certificate",
+                "I can only verify compliance certificate drawdown_document a drawdown document B for drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B is verified"
+            ],
+            "effects": [
+                "Once I verify compliance certificate drawdown_document a drawdown document B for drawdown_case a drawdown case A, it is the case that B is verified and A has a verified compliance certificate"
+            ]
+        },
+        "verify_covenant_compliance_statement": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?covenant_statement_doc": "drawdown_document"
+            },
+            "pddl": "(verify_covenant_compliance_statement ?case ?covenant_statement_doc)",
+            "description": "verify covenant compliance statement drawdown_document a drawdown document B for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only verify covenant compliance statement drawdown_document a drawdown document B for drawdown_case a drawdown case A if it is the case that the drawdown for A is open and B is a required document for A and B is a document for case A and B has been received and B is a covenant compliance statement",
+                "I can only verify covenant compliance statement drawdown_document a drawdown document B for drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B is verified"
+            ],
+            "effects": [
+                "Once I verify covenant compliance statement drawdown_document a drawdown document B for drawdown_case a drawdown case A, it is the case that B is verified and the covenant statement for A is verified"
+            ]
+        },
+        "verify_use_of_proceeds_statement": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?use_of_proceeds_doc": "drawdown_document"
+            },
+            "pddl": "(verify_use_of_proceeds_statement ?case ?use_of_proceeds_doc)",
+            "description": "verify use_of_proceeds_statement a drawdown document B for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only verify use_of_proceeds_statement a drawdown document B for drawdown_case a drawdown case A if it is the case that the drawdown for A is open and B is a required document for A and B is a document for case A and B has been received and B is a use of proceeds statement",
+                "I can only verify use_of_proceeds_statement a drawdown document B for drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B is verified"
+            ],
+            "effects": [
+                "Once I verify use_of_proceeds_statement a drawdown document B for drawdown_case a drawdown case A, it is the case that B is verified and the use of proceeds for A has been verified"
+            ]
+        },
+        "verify_fee_calculation_sheet": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?fee_calc_doc": "drawdown_document"
+            },
+            "pddl": "(verify_fee_calculation_sheet ?case ?fee_calc_doc)",
+            "description": "verify drawdown_document a drawdown document B for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only verify drawdown_document a drawdown document B for drawdown_case a drawdown case A if it is the case that the drawdown for A is open and B is a required document for A and B is a document for case A and B has been received and B is a fee calculation sheet",
+                "I can only verify drawdown_document a drawdown document B for drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B is verified"
+            ],
+            "effects": [
+                "Once I verify drawdown_document a drawdown document B for drawdown_case a drawdown case A, it is the case that B is verified"
+            ]
+        },
+        "record_two_officer_signoff": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?fee_calc_doc": "drawdown_document",
+                "?officer_1": "bank_drawdown_officer",
+                "?officer_2": "bank_drawdown_officer"
+            },
+            "pddl": "(record_two_officer_signoff ?case ?fee_calc_doc ?officer_1 ?officer_2)",
+            "description": "record two-officer signoff for drawdown_case a drawdown case A on fee_calculation_sheet a drawdown document B by bank_drawdown_officer a bank drawdown officer C and bank_drawdown_officer a bank drawdown officer D",
+            "preconditions": [
+                "I can only record two-officer signoff for drawdown_case a drawdown case A on fee_calculation_sheet a drawdown document B by bank_drawdown_officer a bank drawdown officer C and bank_drawdown_officer a bank drawdown officer D if it is the case that the drawdown for A is open and B is a document for case A and B is a fee calculation sheet and B is verified and C is the required person for A and D is the required person for A and C has full clearance and D has full clearance",
+                "I can only record two-officer signoff for drawdown_case a drawdown case A on fee_calculation_sheet a drawdown document B by bank_drawdown_officer a bank drawdown officer C and bank_drawdown_officer a bank drawdown officer D if it is not the case that A is drawdown locked and it is not the case that C is equal to D"
+            ],
+            "effects": [
+                "Once I record two-officer signoff for drawdown_case a drawdown case A on fee_calculation_sheet a drawdown document B by bank_drawdown_officer a bank drawdown officer C and bank_drawdown_officer a bank drawdown officer D, it is the case that a two-officer signoff is recorded for A"
+            ]
+        },
+        "verify_person_authorization_record": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?person": "participant_person",
+                "?auth_kyc_doc": "drawdown_document"
+            },
+            "pddl": "(verify_person_authorization_record ?case ?person ?auth_kyc_doc)",
+            "description": "verify authorization kyc record a drawdown document C for participant_person a participant person B in drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only verify authorization kyc record a drawdown document C for participant_person a participant person B in drawdown_case a drawdown case A if it is the case that the drawdown for A is open and C is a required document for A and C is a document for B and C has been received and C is an authorization kyc record",
+                "I can only verify authorization kyc record a drawdown document C for participant_person a participant person B in drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that C is verified"
+            ],
+            "effects": [
+                "Once I verify authorization kyc record a drawdown document C for participant_person a participant person B in drawdown_case a drawdown case A, it is the case that C is verified and B has their authorization documents verified"
+            ]
+        },
+        "verify_person_contact_details": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?person": "participant_person"
+            },
+            "pddl": "(verify_person_contact_details ?case ?person)",
+            "description": "verify participant_person a participant person B's contact details for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only verify participant_person a participant person B's contact details for drawdown_case a drawdown case A if it is the case that the drawdown for A is open and B has their authorization documents verified and B is in the required set",
+                "I can only verify participant_person a participant person B's contact details for drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B's contact is verified"
+            ],
+            "effects": [
+                "Once I verify participant_person a participant person B's contact details for drawdown_case a drawdown case A, it is the case that B's contact is verified"
+            ]
+        },
+        "run_full_person_screening": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?person": "participant_person"
+            },
+            "pddl": "(run_full_person_screening ?case ?person)",
+            "description": "run full person screening for participant_person a participant person B on drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only run full person screening for participant_person a participant person B on drawdown_case a drawdown case A if it is the case that the drawdown for A is open and B is linked to the case A and B has their authorization documents verified and B's contact is verified",
+                "I can only run full person screening for participant_person a participant person B on drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B has full clearance"
+            ],
+            "effects": [
+                "Once I run full person screening for participant_person a participant person B on drawdown_case a drawdown case A, it is the case that sanctions have been checked for B and B has been pep checked and B has full clearance"
+            ]
+        },
+        "run_sanctions_screening_only": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?person": "participant_person"
+            },
+            "pddl": "(run_sanctions_screening_only ?case ?person)",
+            "description": "run sanctions screening for drawdown_case a drawdown case A on participant_person a participant person B",
+            "preconditions": [
+                "I can only run sanctions screening for drawdown_case a drawdown case A on participant_person a participant person B if it is the case that the drawdown for A is open and B is linked to the case A and B has their authorization documents verified",
+                "I can only run sanctions screening for drawdown_case a drawdown case A on participant_person a participant person B if it is not the case that A is drawdown locked and it is not the case that sanctions have been checked for B"
+            ],
+            "effects": [
+                "Once I run sanctions screening for drawdown_case a drawdown case A on participant_person a participant person B, it is the case that sanctions have been checked for B"
+            ]
+        },
+        "run_pep_screening_only": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?person": "participant_person"
+            },
+            "pddl": "(run_pep_screening_only ?case ?person)",
+            "description": "run pep screening only for participant_person a participant person B on drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only run pep screening only for participant_person a participant person B on drawdown_case a drawdown case A if it is the case that the drawdown for A is open and B is linked to the case A and B has their authorization documents verified",
+                "I can only run pep screening only for participant_person a participant person B on drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B has been pep checked"
+            ],
+            "effects": [
+                "Once I run pep screening only for participant_person a participant person B on drawdown_case a drawdown case A, it is the case that B has been pep checked"
+            ]
+        },
+        "complete_basic_drawdown_checks": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(complete_basic_drawdown_checks ?case)",
+            "description": "complete basic drawdown checks for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only complete basic drawdown checks for drawdown_case a drawdown case A if it is the case that the drawdown for A is open and A has a verified borrowing base",
+                "I can only complete basic drawdown checks for drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that basic drawdown checks are complete for A"
+            ],
+            "effects": [
+                "Once I complete basic drawdown checks for drawdown_case a drawdown case A, it is the case that availability for A has been calculated and limit headroom is confirmed for A and basic drawdown checks are complete for A"
+            ]
+        },
+        "enable_fast_track": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(enable_fast_track ?case)",
+            "description": "enable fast track for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only enable fast track for drawdown_case a drawdown case A if it is the case that the drawdown for A is open and A has a verified borrowing base",
+                "I can only enable fast track for drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that A has fast track enabled"
+            ],
+            "effects": [
+                "Once I enable fast track for drawdown_case a drawdown case A, it is the case that A has fast track enabled"
+            ]
+        },
+        "compile_drawdown_package": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?borrower_signer_1": "borrower_signatory",
+                "?borrower_signer_2": "borrower_signatory",
+                "?bank_officer_1": "bank_drawdown_officer",
+                "?bank_officer_2": "bank_drawdown_officer",
+                "?borrowing_base_doc": "drawdown_document",
+                "?covenant_statement_doc": "drawdown_document",
+                "?compliance_cert_doc": "drawdown_document",
+                "?use_of_proceeds_doc": "drawdown_document",
+                "?fee_calc_doc": "drawdown_document"
+            },
+            "pddl": "(compile_drawdown_package ?case ?borrower_signer_1 ?borrower_signer_2 ?bank_officer_1 ?bank_officer_2 ?borrowing_base_doc ?covenant_statement_doc ?compliance_cert_doc ?use_of_proceeds_doc ?fee_calc_doc)",
+            "description": "compile drawdown package a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E a drawdown document F a drawdown document G a drawdown document H a drawdown document I a drawdown document J",
+            "preconditions": [
+                "I can only compile drawdown package a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E a drawdown document F a drawdown document G a drawdown document H a drawdown document I a drawdown document J if it is the case that the drawdown for A is open and A has a verified borrowing base and the covenant statement for A is verified and A has a verified compliance certificate and the use of proceeds for A has been verified and F is a document for case A and F is borrowing the base certificate and F is verified and G is a document for case A and G is a covenant compliance statement and G is verified and H is a document for case A and the document H is a compliance certificate and H is verified and I is a document for case A and I is a use of proceeds statement and I is verified and J is a document for case A and J is a fee calculation sheet and J is verified and B is the required person for A and C is the required person for A and D is the required person for A and E is the required person for A and B has full clearance and C has full clearance and D has full clearance and E has full clearance and basic drawdown checks are complete for A",
+                "I can only compile drawdown package a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E a drawdown document F a drawdown document G a drawdown document H a drawdown document I a drawdown document J if it is not the case that A is drawdown locked and it is not the case that the drawdown package for A is compiled and it is not the case that B is equal to C and it is not the case that D is equal to E"
+            ],
+            "effects": [
+                "Once I compile drawdown package a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E a drawdown document F a drawdown document G a drawdown document H a drawdown document I a drawdown document J, it is the case that the drawdown package for A is compiled"
+            ]
+        },
+        "approve_drawdown_package_four_eyes": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?borrower_signer_1": "borrower_signatory",
+                "?borrower_signer_2": "borrower_signatory",
+                "?bank_officer_1": "bank_drawdown_officer",
+                "?bank_officer_2": "bank_drawdown_officer"
+            },
+            "pddl": "(approve_drawdown_package_four_eyes ?case ?borrower_signer_1 ?borrower_signer_2 ?bank_officer_1 ?bank_officer_2)",
+            "description": "approve drawdown package for drawdown_case a drawdown case A by borrower_signatory a borrower signatory B and borrower_signatory a borrower signatory C with approvals from bank_drawdown_officer a bank drawdown officer D and bank_drawdown_officer a bank drawdown officer E",
+            "preconditions": [
+                "I can only approve drawdown package for drawdown_case a drawdown case A by borrower_signatory a borrower signatory B and borrower_signatory a borrower signatory C with approvals from bank_drawdown_officer a bank drawdown officer D and bank_drawdown_officer a bank drawdown officer E if it is the case that the drawdown for A is open and the drawdown package for A is compiled and a two-officer signoff is recorded for A and B is the required person for A and C is the required person for A and D is the required person for A and E is the required person for A and B has full clearance and C has full clearance and D has full clearance and E has full clearance",
+                "I can only approve drawdown package for drawdown_case a drawdown case A by borrower_signatory a borrower signatory B and borrower_signatory a borrower signatory C with approvals from bank_drawdown_officer a bank drawdown officer D and bank_drawdown_officer a bank drawdown officer E if it is not the case that A is drawdown locked and it is not the case that A is approved by credit operations and it is not the case that B is equal to C and it is not the case that D is equal to E"
+            ],
+            "effects": [
+                "Once I approve drawdown package for drawdown_case a drawdown case A by borrower_signatory a borrower signatory B and borrower_signatory a borrower signatory C with approvals from bank_drawdown_officer a bank drawdown officer D and bank_drawdown_officer a bank drawdown officer E, it is the case that A is approved by credit operations and A is approved for risk"
+            ]
+        },
+        "approve_drawdown_package_fast_track": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(approve_drawdown_package_fast_track ?case)",
+            "description": "approve fast-track drawdown package for case a drawdown case A",
+            "preconditions": [
+                "I can only approve fast-track drawdown package for case a drawdown case A if it is the case that the drawdown for A is open and A has fast track enabled and A has a verified borrowing base and the covenant statement for A is verified",
+                "I can only approve fast-track drawdown package for case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that A is approved by credit operations"
+            ],
+            "effects": [
+                "Once I approve fast-track drawdown package for case a drawdown case A, it is the case that A is approved by credit operations and A is auto approved"
+            ]
+        },
+        "authorize_packet_creation": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(authorize_packet_creation ?case)",
+            "description": "authorize packet creation for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only authorize packet creation for drawdown_case a drawdown case A if it is the case that the drawdown for A is open and A is approved by credit operations",
+                "I can only authorize packet creation for drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that A has a compliance hold flag and it is not the case that A has a suspicious payment flag and it is not the case that A has a frozen drawdown and it is not the case that A is authorized for packet creation"
+            ],
+            "effects": [
+                "Once I authorize packet creation for drawdown_case a drawdown case A, it is the case that A is authorized for packet creation"
+            ]
+        },
+        "raise_compliance_hold": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(raise_compliance_hold ?case)",
+            "description": "raise compliance hold on drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only raise compliance hold on drawdown_case a drawdown case A if it is the case that the drawdown for A is open",
+                "I can only raise compliance hold on drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that A has a compliance hold flag"
+            ],
+            "effects": [
+                "Once I raise compliance hold on drawdown_case a drawdown case A, it is the case that A has a compliance hold flag"
+            ]
+        },
+        "validate_facility_document": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?facility_doc": "facility_document"
+            },
+            "pddl": "(validate_facility_document ?case ?facility_doc)",
+            "description": "validate facility_document a facility document B for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only validate facility_document a facility document B for drawdown_case a drawdown case A if it is the case that the drawdown for A is open and the facility B is eligible for the case A and A is authorized for packet creation",
+                "I can only validate facility_document a facility document B for drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B is a validated facility document"
+            ],
+            "effects": [
+                "Once I validate facility_document a facility document B for drawdown_case a drawdown case A, it is the case that B is a validated facility document"
+            ]
+        },
+        "create_drawdown_packet": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?packet": "drawdown_packet",
+                "?signature_slot_1": "signature_slot",
+                "?signature_slot_2": "signature_slot"
+            },
+            "pddl": "(create_drawdown_packet ?case ?packet ?signature_slot_1 ?signature_slot_2)",
+            "description": "create drawdown packet drawdown_packet a drawdown packet B for drawdown_case a drawdown case A with signature slots signature_slot a signature slot C and signature_slot a signature slot D",
+            "preconditions": [
+                "I can only create drawdown packet drawdown_packet a drawdown packet B for drawdown_case a drawdown case A with signature slots signature_slot a signature slot C and signature_slot a signature slot D if it is the case that the drawdown for A is open and A is authorized for packet creation",
+                "I can only create drawdown packet drawdown_packet a drawdown packet B for drawdown_case a drawdown case A with signature slots signature_slot a signature slot C and signature_slot a signature slot D if it is not the case that A is drawdown locked and it is not the case that B has been created and it is not the case that C is equal to D"
+            ],
+            "effects": [
+                "Once I create drawdown packet drawdown_packet a drawdown packet B for drawdown_case a drawdown case A with signature slots signature_slot a signature slot C and signature_slot a signature slot D, it is the case that B has been created and B is a packet for case A and B has signature slot C and B has signature slot D"
+            ]
+        },
+        "attach_facility_document_to_packet": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?packet": "drawdown_packet",
+                "?facility_doc": "facility_document"
+            },
+            "pddl": "(attach_facility_document_to_packet ?case ?packet ?facility_doc)",
+            "description": "attach facility_document a facility document C to drawdown_packet a drawdown packet B for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only attach facility_document a facility document C to drawdown_packet a drawdown packet B for drawdown_case a drawdown case A if it is the case that the drawdown for A is open and B is a packet for case A and B has been created and C is a validated facility document",
+                "I can only attach facility_document a facility document C to drawdown_packet a drawdown packet B for drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B is finalized and it is not the case that B is attached to the facility document C"
+            ],
+            "effects": [
+                "Once I attach facility_document a facility document C to drawdown_packet a drawdown packet B for drawdown_case a drawdown case A, it is the case that B is attached to the facility document C"
+            ]
+        },
+        "assign_signer_to_packet_slot": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?packet": "drawdown_packet",
+                "?borrower_signer": "borrower_signatory",
+                "?signature_slot": "signature_slot"
+            },
+            "pddl": "(assign_signer_to_packet_slot ?case ?packet ?borrower_signer ?signature_slot)",
+            "description": "assign borrower_signatory a borrower signatory C to slot signature_slot a signature slot D on drawdown_packet a drawdown packet B for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only assign borrower_signatory a borrower signatory C to slot signature_slot a signature slot D on drawdown_packet a drawdown packet B for drawdown_case a drawdown case A if it is the case that the drawdown for A is open and B is a packet for case A and B has been created and C is the required person for A and C has their authorization documents verified and C's contact is verified and B has signature slot D",
+                "I can only assign borrower_signatory a borrower signatory C to slot signature_slot a signature slot D on drawdown_packet a drawdown packet B for drawdown_case a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B is assigned to signer C"
+            ],
+            "effects": [
+                "Once I assign borrower_signatory a borrower signatory C to slot signature_slot a signature slot D on drawdown_packet a drawdown packet B for drawdown_case a drawdown case A, it is the case that B is assigned to signer C",
+                "Once I assign borrower_signatory a borrower signatory C to slot signature_slot a signature slot D on drawdown_packet a drawdown packet B for drawdown_case a drawdown case A, it is not the case anymore that B has signature slot D"
+            ]
+        },
+        "start_signature_collection": {
+            "annotation": "",
+            "parameter_types": {
+                "?packet": "drawdown_packet"
+            },
+            "pddl": "(start_signature_collection ?packet)",
+            "description": "start signature collection for drawdown_packet a drawdown packet A",
+            "preconditions": [
+                "I can only start signature collection for drawdown_packet a drawdown packet A if it is the case that A has been created",
+                "I can only start signature collection for drawdown_packet a drawdown packet A if it is not the case that A is finalized and it is not the case that signature collection has started for A"
+            ],
+            "effects": [
+                "Once I start signature collection for drawdown_packet a drawdown packet A, it is the case that signature collection has started for A"
+            ]
+        },
+        "capture_signer_signature": {
+            "annotation": "",
+            "parameter_types": {
+                "?packet": "drawdown_packet",
+                "?borrower_signer": "borrower_signatory"
+            },
+            "pddl": "(capture_signer_signature ?packet ?borrower_signer)",
+            "description": "capture signature for drawdown_packet a drawdown packet A from borrower_signatory a borrower signatory B",
+            "preconditions": [
+                "I can only capture signature for drawdown_packet a drawdown packet A from borrower_signatory a borrower signatory B if it is the case that signature collection has started for A and A is assigned to signer B",
+                "I can only capture signature for drawdown_packet a drawdown packet A from borrower_signatory a borrower signatory B if it is not the case that B's signature is captured on A"
+            ],
+            "effects": [
+                "Once I capture signature for drawdown_packet a drawdown packet A from borrower_signatory a borrower signatory B, it is the case that B's signature is captured on A"
+            ]
+        },
+        "verify_two_distinct_signatures": {
+            "annotation": "",
+            "parameter_types": {
+                "?packet": "drawdown_packet",
+                "?borrower_signer_1": "borrower_signatory",
+                "?borrower_signer_2": "borrower_signatory"
+            },
+            "pddl": "(verify_two_distinct_signatures ?packet ?borrower_signer_1 ?borrower_signer_2)",
+            "description": "verify two distinct signatures on drawdown_packet a drawdown packet A from borrower_signatory a borrower signatory B and borrower_signatory a borrower signatory C",
+            "preconditions": [
+                "I can only verify two distinct signatures on drawdown_packet a drawdown packet A from borrower_signatory a borrower signatory B and borrower_signatory a borrower signatory C if it is the case that A is assigned to signer B and A is assigned to signer C and B's signature is captured on A and C's signature is captured on A",
+                "I can only verify two distinct signatures on drawdown_packet a drawdown packet A from borrower_signatory a borrower signatory B and borrower_signatory a borrower signatory C if it is not the case that the two signatures on A are verified and it is not the case that B is equal to C"
+            ],
+            "effects": [
+                "Once I verify two distinct signatures on drawdown_packet a drawdown packet A from borrower_signatory a borrower signatory B and borrower_signatory a borrower signatory C, it is the case that the two signatures on A are verified"
+            ]
+        },
+        "perform_packet_compliance_check": {
+            "annotation": "",
+            "parameter_types": {
+                "?packet": "drawdown_packet"
+            },
+            "pddl": "(perform_packet_compliance_check ?packet)",
+            "description": "check packet compliance for drawdown_packet a drawdown packet A",
+            "preconditions": [
+                "I can only check packet compliance for drawdown_packet a drawdown packet A if it is the case that the two signatures on A are verified",
+                "I can only check packet compliance for drawdown_packet a drawdown packet A if it is not the case that A has been checked for packet compliance"
+            ],
+            "effects": [
+                "Once I check packet compliance for drawdown_packet a drawdown packet A, it is the case that A has been checked for packet compliance"
+            ]
+        },
+        "finalize_drawdown_packet": {
+            "annotation": "",
+            "parameter_types": {
+                "?packet": "drawdown_packet"
+            },
+            "pddl": "(finalize_drawdown_packet ?packet)",
+            "description": "finalize drawdown_packet a drawdown packet A that has been checked for packet compliance and stop signature collection for drawdown_packet a drawdown packet A",
+            "preconditions": [
+                "I can only finalize drawdown_packet a drawdown packet A that has been checked for packet compliance and stop signature collection for drawdown_packet a drawdown packet A if it is the case that A has been checked for packet compliance",
+                "I can only finalize drawdown_packet a drawdown packet A that has been checked for packet compliance and stop signature collection for drawdown_packet a drawdown packet A if it is not the case that A is finalized"
+            ],
+            "effects": [
+                "Once I finalize drawdown_packet a drawdown packet A that has been checked for packet compliance and stop signature collection for drawdown_packet a drawdown packet A, it is the case that A is finalized",
+                "Once I finalize drawdown_packet a drawdown packet A that has been checked for packet compliance and stop signature collection for drawdown_packet a drawdown packet A, it is not the case anymore that signature collection has started for A"
+            ]
+        },
+        "confirm_packet_has_three_facility_docs": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?packet": "drawdown_packet",
+                "?facility_doc_1": "facility_document",
+                "?facility_doc_2": "facility_document",
+                "?facility_doc_3": "facility_document"
+            },
+            "pddl": "(confirm_packet_has_three_facility_docs ?case ?packet ?facility_doc_1 ?facility_doc_2 ?facility_doc_3)",
+            "description": "confirm drawdown packet drawdown_packet a drawdown packet B for drawdown_case a drawdown case A attached to facility documents facility_document a facility document C, facility_document a facility document D and facility_document a facility document E is complete",
+            "preconditions": [
+                "I can only confirm drawdown packet drawdown_packet a drawdown packet B for drawdown_case a drawdown case A attached to facility documents facility_document a facility document C, facility_document a facility document D and facility_document a facility document E is complete if it is the case that the drawdown for A is open and B is a packet for case A and B is finalized and B is attached to the facility document C and B is attached to the facility document D and B is attached to the facility document E",
+                "I can only confirm drawdown packet drawdown_packet a drawdown packet B for drawdown_case a drawdown case A attached to facility documents facility_document a facility document C, facility_document a facility document D and facility_document a facility document E is complete if it is not the case that A is drawdown locked and it is not the case that the drawdown packet for A is complete and it is not the case that C is equal to D and it is not the case that C is equal to E and it is not the case that D is equal to E"
+            ],
+            "effects": [
+                "Once I confirm drawdown packet drawdown_packet a drawdown packet B for drawdown_case a drawdown case A attached to facility documents facility_document a facility document C, facility_document a facility document D and facility_document a facility document E is complete, it is the case that the drawdown packet for A is complete"
+            ]
+        },
+        "reopen_packet_and_reset_signatures": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?packet": "drawdown_packet",
+                "?reopen_token": "reopen_key_token",
+                "?signature_slot_1": "signature_slot",
+                "?signature_slot_2": "signature_slot"
+            },
+            "pddl": "(reopen_packet_and_reset_signatures ?case ?packet ?reopen_token ?signature_slot_1 ?signature_slot_2)",
+            "description": "reopen drawdown_packet a drawdown packet B for drawdown_case a drawdown case A using reopen_key_token a reopen key token C and reset signature slots signature_slot a signature slot D and signature_slot a signature slot E",
+            "preconditions": [
+                "I can only reopen drawdown_packet a drawdown packet B for drawdown_case a drawdown case A using reopen_key_token a reopen key token C and reset signature slots signature_slot a signature slot D and signature_slot a signature slot E if it is the case that the drawdown for A is open and B is a packet for case A and B has been created and C is available",
+                "I can only reopen drawdown_packet a drawdown packet B for drawdown_case a drawdown case A using reopen_key_token a reopen key token C and reset signature slots signature_slot a signature slot D and signature_slot a signature slot E if it is not the case that A is drawdown locked and it is not the case that B has been reopened"
+            ],
+            "effects": [
+                "Once I reopen drawdown_packet a drawdown packet B for drawdown_case a drawdown case A using reopen_key_token a reopen key token C and reset signature slots signature_slot a signature slot D and signature_slot a signature slot E, it is the case that B has been reopened and C is consumed and B has signature slot D and B has signature slot E",
+                "Once I reopen drawdown_packet a drawdown packet B for drawdown_case a drawdown case A using reopen_key_token a reopen key token C and reset signature slots signature_slot a signature slot D and signature_slot a signature slot E, it is not the case anymore that C is available and it is not the case anymore that B is finalized and it is not the case anymore that B has been checked for packet compliance and it is not the case anymore that the two signatures on B are verified and it is not the case anymore that signature collection has started for B"
+            ]
+        },
+        "lock_case_for_execution": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?packet": "drawdown_packet"
+            },
+            "pddl": "(lock_case_for_execution ?case ?packet)",
+            "description": "lock drawdown_case a drawdown case A for execution with drawdown_packet a drawdown packet B",
+            "preconditions": [
+                "I can only lock drawdown_case a drawdown case A for execution with drawdown_packet a drawdown packet B if it is the case that the drawdown for A is open and the drawdown packet for A is complete and B is a packet for case A and B is finalized and A is authorized for packet creation",
+                "I can only lock drawdown_case a drawdown case A for execution with drawdown_packet a drawdown packet B if it is not the case that A is drawdown locked and it is not the case that A has a frozen drawdown"
+            ],
+            "effects": [
+                "Once I lock drawdown_case a drawdown case A for execution with drawdown_packet a drawdown packet B, it is the case that A is drawdown locked",
+                "Once I lock drawdown_case a drawdown case A for execution with drawdown_packet a drawdown packet B, it is not the case anymore that the drawdown for A is open"
+            ]
+        },
+        "reopen_locked_case": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?reopen_token": "reopen_key_token"
+            },
+            "pddl": "(reopen_locked_case ?case ?reopen_token)",
+            "description": "reopen drawdown for drawdown_case a drawdown case A with reopen_key_token a reopen key token B",
+            "preconditions": [
+                "I can only reopen drawdown for drawdown_case a drawdown case A with reopen_key_token a reopen key token B if it is the case that A is drawdown locked and B is available",
+                "I can only reopen drawdown for drawdown_case a drawdown case A with reopen_key_token a reopen key token B if it is not the case that A has a frozen drawdown"
+            ],
+            "effects": [
+                "Once I reopen drawdown for drawdown_case a drawdown case A with reopen_key_token a reopen key token B, it is the case that the drawdown for A is open and A has a compliance hold flag and B is consumed",
+                "Once I reopen drawdown for drawdown_case a drawdown case A with reopen_key_token a reopen key token B, it is not the case anymore that A is drawdown locked and it is not the case anymore that B is available"
+            ]
+        },
+        "freeze_case_due_to_suspicious_payment": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(freeze_case_due_to_suspicious_payment ?case ?payment_instruction)",
+            "description": "freeze drawdown case drawdown_case a drawdown case A due to suspicious payment instruction payment_instruction a payment instruction B",
+            "preconditions": [
+                "I can only freeze drawdown case drawdown_case a drawdown case A due to suspicious payment instruction payment_instruction a payment instruction B if it is the case that the drawdown for A is open",
+                "I can only freeze drawdown case drawdown_case a drawdown case A due to suspicious payment instruction payment_instruction a payment instruction B if it is not the case that A is drawdown locked and it is not the case that A is authorized for packet creation and it is not the case that A has a frozen drawdown"
+            ],
+            "effects": [
+                "Once I freeze drawdown case drawdown_case a drawdown case A due to suspicious payment instruction payment_instruction a payment instruction B, it is the case that A has the payment instruction B and A has a suspicious payment flag and A has a frozen drawdown"
+            ]
+        },
+        "draft_payment_instruction": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(draft_payment_instruction ?case ?payment_instruction)",
+            "description": "draft payment instruction payment_instruction a payment instruction B for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only draft payment instruction payment_instruction a payment instruction B for drawdown_case a drawdown case A if it is the case that A is drawdown locked and A is authorized for packet creation and the drawdown packet for A is complete",
+                "I can only draft payment instruction payment_instruction a payment instruction B for drawdown_case a drawdown case A if it is not the case that a payment instruction has been drafted for A and it is not the case that A has the payment instruction B"
+            ],
+            "effects": [
+                "Once I draft payment instruction payment_instruction a payment instruction B for drawdown_case a drawdown case A, it is the case that a payment instruction has been drafted for A and A has the payment instruction B and B payment instruction was created and A payment instruction has been validated"
+            ]
+        },
+        "validate_payment_instruction": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(validate_payment_instruction ?case)",
+            "description": "validate payment instruction for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only validate payment instruction for drawdown_case a drawdown case A if it is the case that A is drawdown locked and A payment instruction has been validated",
+                "I can only validate payment instruction for drawdown_case a drawdown case A if it is not the case that the payment instruction for A is approved"
+            ],
+            "effects": [
+                "Once I validate payment instruction for drawdown_case a drawdown case A, it is the case that the payment instruction for A is approved"
+            ]
+        },
+        "approve_payment_instruction": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(approve_payment_instruction ?case)",
+            "description": "approve payment instruction for drawdown_case a drawdown case A",
+            "preconditions": [
+                "I can only approve payment instruction for drawdown_case a drawdown case A if it is the case that A is drawdown locked and the payment instruction for A is approved",
+                "I can only approve payment instruction for drawdown_case a drawdown case A if it is not the case that the payment instruction for A is ready to be signed"
+            ],
+            "effects": [
+                "Once I approve payment instruction for drawdown_case a drawdown case A, it is the case that the payment instruction for A is ready to be signed"
+            ]
+        },
+        "sign_payment_instruction": {
+            "annotation": "",
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction",
+                "?case": "drawdown_case"
+            },
+            "pddl": "(sign_payment_instruction ?payment_instruction ?case)",
+            "description": "sign payment_instruction a payment instruction A for drawdown_case a drawdown case B",
+            "preconditions": [
+                "I can only sign payment_instruction a payment instruction A for drawdown_case a drawdown case B if it is the case that B is drawdown locked and A payment instruction was created and the payment instruction for B is ready to be signed",
+                "I can only sign payment_instruction a payment instruction A for drawdown_case a drawdown case B if it is not the case that A is a signed payment instruction"
+            ],
+            "effects": [
+                "Once I sign payment_instruction a payment instruction A for drawdown_case a drawdown case B, it is the case that A is a signed payment instruction"
+            ]
+        },
+        "send_instruction_to_treasury": {
+            "annotation": "",
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(send_instruction_to_treasury ?payment_instruction)",
+            "description": "send signed payment instruction a payment instruction A to the treasury",
+            "preconditions": [
+                "I can only send signed payment instruction a payment instruction A to the treasury if it is the case that A is a signed payment instruction",
+                "I can only send signed payment instruction a payment instruction A to the treasury if it is not the case that A is sent to the treasury"
+            ],
+            "effects": [
+                "Once I send signed payment instruction a payment instruction A to the treasury, it is the case that A is sent to the treasury"
+            ]
+        },
+        "execute_treasury_release": {
+            "annotation": "",
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction",
+                "?case": "drawdown_case",
+                "?packet": "drawdown_packet",
+                "?facility_doc": "facility_document"
+            },
+            "pddl": "(execute_treasury_release ?payment_instruction ?case ?packet ?facility_doc)",
+            "description": "execute treasury release payment_instruction a payment instruction A for drawdown_case a drawdown case B using drawdown_packet a drawdown packet C attached to facility_document a facility document D",
+            "preconditions": [
+                "I can only execute treasury release payment_instruction a payment instruction A for drawdown_case a drawdown case B using drawdown_packet a drawdown packet C attached to facility_document a facility document D if it is the case that B is drawdown locked and B is authorized for packet creation and B is approved for risk and A is sent to the treasury and C is a packet for case B and C is finalized and C is attached to the facility document D and the facility D is eligible for the case B and D requires fx review and the covenant statement for B is verified and the use of proceeds for B has been verified",
+                "I can only execute treasury release payment_instruction a payment instruction A for drawdown_case a drawdown case B using drawdown_packet a drawdown packet C attached to facility_document a facility document D if it is not the case that A payment instruction has been executed"
+            ],
+            "effects": [
+                "Once I execute treasury release payment_instruction a payment instruction A for drawdown_case a drawdown case B using drawdown_packet a drawdown packet C attached to facility_document a facility document D, it is the case that A payment instruction has been executed"
+            ]
+        },
+        "reserve_wire_cutoff_window": {
+            "annotation": "",
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction",
+                "?cutoff_window_token": "wire_cutoff_window_token"
+            },
+            "pddl": "(reserve_wire_cutoff_window ?payment_instruction ?cutoff_window_token)",
+            "description": "reserve wire cutoff window for payment_instruction a payment instruction A using wire_cutoff_window_token a wire cutoff window token B",
+            "preconditions": [
+                "I can only reserve wire cutoff window for payment_instruction a payment instruction A using wire_cutoff_window_token a wire cutoff window token B if it is the case that A payment instruction has been executed and B is available",
+                "I can only reserve wire cutoff window for payment_instruction a payment instruction A using wire_cutoff_window_token a wire cutoff window token B if it is not the case that wire cutoff is reserved for A"
+            ],
+            "effects": [
+                "Once I reserve wire cutoff window for payment_instruction a payment instruction A using wire_cutoff_window_token a wire cutoff window token B, it is the case that wire cutoff is reserved for A and B is consumed",
+                "Once I reserve wire cutoff window for payment_instruction a payment instruction A using wire_cutoff_window_token a wire cutoff window token B, it is not the case anymore that B is available"
+            ]
+        },
+        "consume_cutoff_window_without_reservation": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?cutoff_window_token": "wire_cutoff_window_token"
+            },
+            "pddl": "(consume_cutoff_window_without_reservation ?case ?cutoff_window_token)",
+            "description": "consume cutoff window without reservation for drawdown_case a drawdown case A using wire_cutoff_window_token a wire cutoff window token B",
+            "preconditions": [
+                "I can only consume cutoff window without reservation for drawdown_case a drawdown case A using wire_cutoff_window_token a wire cutoff window token B if it is the case that A is drawdown locked and B is available",
+                "I can only consume cutoff window without reservation for drawdown_case a drawdown case A using wire_cutoff_window_token a wire cutoff window token B if it is not the case that A has a frozen drawdown"
+            ],
+            "effects": [
+                "Once I consume cutoff window without reservation for drawdown_case a drawdown case A using wire_cutoff_window_token a wire cutoff window token B, it is the case that B is consumed",
+                "Once I consume cutoff window without reservation for drawdown_case a drawdown case A using wire_cutoff_window_token a wire cutoff window token B, it is not the case anymore that B is available"
+            ]
+        },
+        "release_wire_payment": {
+            "annotation": "",
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(release_wire_payment ?payment_instruction)",
+            "description": "release payment_instruction a payment instruction A by wire",
+            "preconditions": [
+                "I can only release payment_instruction a payment instruction A by wire if it is the case that wire cutoff is reserved for A",
+                "I can only release payment_instruction a payment instruction A by wire if it is not the case that the beneficiary of A is credited and it is not the case that A has been released by wire"
+            ],
+            "effects": [
+                "Once I release payment_instruction a payment instruction A by wire, it is the case that A has been released by wire"
+            ]
+        },
+        "confirm_beneficiary_credit": {
+            "annotation": "",
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(confirm_beneficiary_credit ?payment_instruction)",
+            "description": "confirm beneficiary credit for payment_instruction a payment instruction A",
+            "preconditions": [
+                "I can only confirm beneficiary credit for payment_instruction a payment instruction A if it is the case that A has been released by wire",
+                "I can only confirm beneficiary credit for payment_instruction a payment instruction A if it is not the case that the beneficiary of A is credited"
+            ],
+            "effects": [
+                "Once I confirm beneficiary credit for payment_instruction a payment instruction A, it is the case that the beneficiary of A is credited"
+            ]
+        },
+        "mark_funds_settled": {
+            "annotation": "",
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(mark_funds_settled ?payment_instruction)",
+            "description": "mark funds settled for payment_instruction a payment instruction A",
+            "preconditions": [
+                "I can only mark funds settled for payment_instruction a payment instruction A if it is the case that the beneficiary of A is credited",
+                "I can only mark funds settled for payment_instruction a payment instruction A if it is not the case that funds for A are settled"
+            ],
+            "effects": [
+                "Once I mark funds settled for payment_instruction a payment instruction A, it is the case that funds for A are settled"
+            ]
+        },
+        "create_disbursement_notice": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?notice": "disbursement_notice",
+                "?borrower_signer": "borrower_signatory",
+                "?dispatch_window_token": "notice_dispatch_window_token",
+                "?packet": "drawdown_packet",
+                "?facility_doc": "facility_document"
+            },
+            "pddl": "(create_disbursement_notice ?case ?notice ?borrower_signer ?dispatch_window_token ?packet ?facility_doc)",
+            "description": "create disbursement notice disbursement_notice a disbursement notice B for drawdown_case a drawdown case A addressed to borrower_signatory a borrower signatory C using drawdown_packet a drawdown packet E attached to facility_document a facility document F consuming notice_dispatch_window_token a notice dispatch window token D",
+            "preconditions": [
+                "I can only create disbursement notice disbursement_notice a disbursement notice B for drawdown_case a drawdown case A addressed to borrower_signatory a borrower signatory C using drawdown_packet a drawdown packet E attached to facility_document a facility document F consuming notice_dispatch_window_token a notice dispatch window token D if it is the case that A is drawdown locked and D is available and E is a packet for case A and E is finalized and E is attached to the facility document F and the facility F is eligible for the case A and the facility requires agent notice for F and C is the required person for A and C has full clearance",
+                "I can only create disbursement notice disbursement_notice a disbursement notice B for drawdown_case a drawdown case A addressed to borrower_signatory a borrower signatory C using drawdown_packet a drawdown packet E attached to facility_document a facility document F consuming notice_dispatch_window_token a notice dispatch window token D if it is not the case that B is addressed to the signer C in case A"
+            ],
+            "effects": [
+                "Once I create disbursement notice disbursement_notice a disbursement notice B for drawdown_case a drawdown case A addressed to borrower_signatory a borrower signatory C using drawdown_packet a drawdown packet E attached to facility_document a facility document F consuming notice_dispatch_window_token a notice dispatch window token D, it is the case that B is addressed to the signer C in case A and B has been created and D is consumed",
+                "Once I create disbursement notice disbursement_notice a disbursement notice B for drawdown_case a drawdown case A addressed to borrower_signatory a borrower signatory C using drawdown_packet a drawdown packet E attached to facility_document a facility document F consuming notice_dispatch_window_token a notice dispatch window token D, it is not the case anymore that D is available"
+            ]
+        },
+        "approve_disbursement_notice": {
+            "annotation": "",
+            "parameter_types": {
+                "?notice": "disbursement_notice"
+            },
+            "pddl": "(approve_disbursement_notice ?notice)",
+            "description": "approve disbursement_notice a disbursement notice A",
+            "preconditions": [
+                "I can only approve disbursement_notice a disbursement notice A if it is the case that A has been created",
+                "I can only approve disbursement_notice a disbursement notice A if it is not the case that A is approved"
+            ],
+            "effects": [
+                "Once I approve disbursement_notice a disbursement notice A, it is the case that A is approved"
+            ]
+        },
+        "create_notice_delivery_package": {
+            "annotation": "",
+            "parameter_types": {
+                "?delivery_package": "delivery_package",
+                "?notice": "disbursement_notice"
+            },
+            "pddl": "(create_notice_delivery_package ?delivery_package ?notice)",
+            "description": "create delivery_package a delivery package A for disbursement_notice a disbursement notice B",
+            "preconditions": [
+                "I can only create delivery_package a delivery package A for disbursement_notice a disbursement notice B if it is the case that B has been created and B is approved",
+                "I can only create delivery_package a delivery package A for disbursement_notice a disbursement notice B if it is not the case that the delivery package A has been created"
+            ],
+            "effects": [
+                "Once I create delivery_package a delivery package A for disbursement_notice a disbursement notice B, it is the case that the delivery package A has been created and the package A is for the notice B"
+            ]
+        },
+        "apply_delivery_label": {
+            "annotation": "",
+            "parameter_types": {
+                "?delivery_package": "delivery_package",
+                "?delivery_slot_token": "delivery_slot_token"
+            },
+            "pddl": "(apply_delivery_label ?delivery_package ?delivery_slot_token)",
+            "description": "apply delivery label to delivery_package a delivery package A using delivery_slot_token a delivery slot token B",
+            "preconditions": [
+                "I can only apply delivery label to delivery_package a delivery package A using delivery_slot_token a delivery slot token B if it is the case that the delivery package A has been created and B is available",
+                "I can only apply delivery label to delivery_package a delivery package A using delivery_slot_token a delivery slot token B if it is not the case that A is a labeled package"
+            ],
+            "effects": [
+                "Once I apply delivery label to delivery_package a delivery package A using delivery_slot_token a delivery slot token B, it is the case that A is a labeled package and B is consumed",
+                "Once I apply delivery label to delivery_package a delivery package A using delivery_slot_token a delivery slot token B, it is not the case anymore that B is available"
+            ]
+        },
+        "assign_senior_override_review": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?delivery_slot_token": "delivery_slot_token"
+            },
+            "pddl": "(assign_senior_override_review ?case ?delivery_slot_token)",
+            "description": "assign senior override review to drawdown_case a drawdown case A using delivery_slot_token a delivery slot token B",
+            "preconditions": [
+                "I can only assign senior override review to drawdown_case a drawdown case A using delivery_slot_token a delivery slot token B if it is the case that A is drawdown locked and B is available",
+                "I can only assign senior override review to drawdown_case a drawdown case A using delivery_slot_token a delivery slot token B if it is not the case that A is assigned a senior override"
+            ],
+            "effects": [
+                "Once I assign senior override review to drawdown_case a drawdown case A using delivery_slot_token a delivery slot token B, it is the case that A is assigned a senior override and B is consumed",
+                "Once I assign senior override review to drawdown_case a drawdown case A using delivery_slot_token a delivery slot token B, it is not the case anymore that B is available"
+            ]
+        },
+        "print_delivery_label": {
+            "annotation": "",
+            "parameter_types": {
+                "?delivery_package": "delivery_package"
+            },
+            "pddl": "(print_delivery_label ?delivery_package)",
+            "description": "print delivery label for delivery_package a delivery package A",
+            "preconditions": [
+                "I can only print delivery label for delivery_package a delivery package A if it is the case that A is a labeled package",
+                "I can only print delivery label for delivery_package a delivery package A if it is not the case that A has a printed label"
+            ],
+            "effects": [
+                "Once I print delivery label for delivery_package a delivery package A, it is the case that A has a printed label"
+            ]
+        },
+        "scan_delivery_label": {
+            "annotation": "",
+            "parameter_types": {
+                "?delivery_package": "delivery_package"
+            },
+            "pddl": "(scan_delivery_label ?delivery_package)",
+            "description": "scan label of delivery_package a delivery package A",
+            "preconditions": [
+                "I can only scan label of delivery_package a delivery package A if it is the case that A has a printed label",
+                "I can only scan label of delivery_package a delivery package A if it is not the case that the label of A has been scanned"
+            ],
+            "effects": [
+                "Once I scan label of delivery_package a delivery package A, it is the case that the label of A has been scanned"
+            ]
+        },
+        "mark_notice_ready": {
+            "annotation": "",
+            "parameter_types": {
+                "?notice": "disbursement_notice"
+            },
+            "pddl": "(mark_notice_ready ?notice)",
+            "description": "mark disbursement_notice a disbursement notice A ready to be sent",
+            "preconditions": [
+                "I can only mark disbursement_notice a disbursement notice A ready to be sent if it is the case that A is ready to be sent"
+            ],
+            "effects": [
+                "Once I mark disbursement_notice a disbursement notice A ready to be sent, it is the case that A is ready to be sent"
+            ]
+        },
+        "send_notice_via_secure_delivery": {
+            "annotation": "",
+            "parameter_types": {
+                "?notice": "disbursement_notice",
+                "?payment_instruction": "payment_instruction",
+                "?case": "drawdown_case",
+                "?delivery_package": "delivery_package",
+                "?borrower_signer": "borrower_signatory"
+            },
+            "pddl": "(send_notice_via_secure_delivery ?notice ?payment_instruction ?case ?delivery_package ?borrower_signer)",
+            "description": "send disbursement_notice a disbursement notice A for drawdown_case a drawdown case C via secure delivery package delivery_package a delivery package D to borrower_signatory a borrower signatory E with payment instruction payment_instruction a payment instruction B",
+            "preconditions": [
+                "I can only send disbursement_notice a disbursement notice A for drawdown_case a drawdown case C via secure delivery package delivery_package a delivery package D to borrower_signatory a borrower signatory E with payment instruction payment_instruction a payment instruction B if it is the case that C is drawdown locked and A is addressed to the signer E in case C and A has been created and C has the payment instruction B and B payment instruction was created and the package D is for the notice A and the label of D has been scanned and A is ready to be sent",
+                "I can only send disbursement_notice a disbursement notice A for drawdown_case a drawdown case C via secure delivery package delivery_package a delivery package D to borrower_signatory a borrower signatory E with payment instruction payment_instruction a payment instruction B if it is not the case that C has a frozen drawdown and it is not the case that A has been sent"
+            ],
+            "effects": [
+                "Once I send disbursement_notice a disbursement notice A for drawdown_case a drawdown case C via secure delivery package delivery_package a delivery package D to borrower_signatory a borrower signatory E with payment instruction payment_instruction a payment instruction B, it is the case that A has been sent"
+            ]
+        },
+        "complete_final_controls": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?borrower_signer_1": "borrower_signatory",
+                "?borrower_signer_2": "borrower_signatory",
+                "?bank_officer_1": "bank_drawdown_officer",
+                "?bank_officer_2": "bank_drawdown_officer",
+                "?payment_instruction": "payment_instruction",
+                "?notice": "disbursement_notice"
+            },
+            "pddl": "(complete_final_controls ?case ?borrower_signer_1 ?borrower_signer_2 ?bank_officer_1 ?bank_officer_2 ?payment_instruction ?notice)",
+            "description": "complete final controls for drawdown_case a drawdown case A with borrower signatories borrower_signatory a borrower signatory B and borrower_signatory a borrower signatory C, bank drawdown officers bank_drawdown_officer a bank drawdown officer D and bank_drawdown_officer a bank drawdown officer E, payment instruction payment_instruction a payment instruction F and disbursement notice disbursement_notice a disbursement notice G",
+            "preconditions": [
+                "I can only complete final controls for drawdown_case a drawdown case A with borrower signatories borrower_signatory a borrower signatory B and borrower_signatory a borrower signatory C, bank drawdown officers bank_drawdown_officer a bank drawdown officer D and bank_drawdown_officer a bank drawdown officer E, payment instruction payment_instruction a payment instruction F and disbursement notice disbursement_notice a disbursement notice G if it is the case that A is drawdown locked and A is authorized for packet creation and A is approved for risk and the drawdown package for A is compiled and a two-officer signoff is recorded for A and B is the required person for A and C is the required person for A and D is the required person for A and E is the required person for A and B has full clearance and C has full clearance and D has full clearance and E has full clearance and funds for F are settled and G has been sent",
+                "I can only complete final controls for drawdown_case a drawdown case A with borrower signatories borrower_signatory a borrower signatory B and borrower_signatory a borrower signatory C, bank drawdown officers bank_drawdown_officer a bank drawdown officer D and bank_drawdown_officer a bank drawdown officer E, payment instruction payment_instruction a payment instruction F and disbursement notice disbursement_notice a disbursement notice G if it is not the case that B is equal to C and it is not the case that D is equal to E and it is not the case that A has a compliance hold flag and it is not the case that A has a suspicious payment flag and it is not the case that A has a frozen drawdown and it is not the case that final controls are complete for A"
+            ],
+            "effects": [
+                "Once I complete final controls for drawdown_case a drawdown case A with borrower signatories borrower_signatory a borrower signatory B and borrower_signatory a borrower signatory C, bank drawdown officers bank_drawdown_officer a bank drawdown officer D and bank_drawdown_officer a bank drawdown officer E, payment instruction payment_instruction a payment instruction F and disbursement notice disbursement_notice a disbursement notice G, it is the case that final controls are complete for A"
+            ]
+        },
+        "close_drawdown_case": {
+            "annotation": "",
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?payment_instruction": "payment_instruction",
+                "?notice": "disbursement_notice"
+            },
+            "pddl": "(close_drawdown_case ?case ?payment_instruction ?notice)",
+            "description": "close drawdown case drawdown_case a drawdown case A with payment_instruction a payment instruction B and disbursement_notice a disbursement notice C",
+            "preconditions": [
+                "I can only close drawdown case drawdown_case a drawdown case A with payment_instruction a payment instruction B and disbursement_notice a disbursement notice C if it is the case that A is drawdown locked and final controls are complete for A and B payment instruction was created and B payment instruction has been executed and the beneficiary of B is credited and C has been sent",
+                "I can only close drawdown case drawdown_case a drawdown case A with payment_instruction a payment instruction B and disbursement_notice a disbursement notice C if it is not the case that the drawdown for A is completed"
+            ],
+            "effects": [
+                "Once I close drawdown case drawdown_case a drawdown case A with payment_instruction a payment instruction B and disbursement_notice a disbursement notice C, it is the case that the drawdown for A is completed",
+                "Once I close drawdown case drawdown_case a drawdown case A with payment_instruction a payment instruction B and disbursement_notice a disbursement notice C, it is not the case anymore that A is drawdown locked"
+            ]
+        }
+    },
+    "predicates": {
+        "drawdown_open": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(drawdown_open ?case)"
+        },
+        "drawdown_locked": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(drawdown_locked ?case)"
+        },
+        "drawdown_completed": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(drawdown_completed ?case)"
+        },
+        "drawdown_frozen": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(drawdown_frozen ?case)"
+        },
+        "compliance_hold_flag": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(compliance_hold_flag ?case)"
+        },
+        "suspicious_payment_flag": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(suspicious_payment_flag ?case)"
+        },
+        "wire_released": {
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(wire_released ?payment_instruction)"
+        },
+        "notice_created": {
+            "parameter_types": {
+                "?notice": "disbursement_notice"
+            },
+            "pddl": "(notice_created ?notice)"
+        },
+        "facility_requires_fx_review": {
+            "parameter_types": {
+                "?facility_doc": "facility_document"
+            },
+            "pddl": "(facility_requires_fx_review ?facility_doc)"
+        },
+        "facility_requires_agent_notice": {
+            "parameter_types": {
+                "?facility_doc": "facility_document"
+            },
+            "pddl": "(facility_requires_agent_notice ?facility_doc)"
+        },
+        "channel_selected": {
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?channel": "request_channel"
+            },
+            "pddl": "(channel_selected ?case ?channel)"
+        },
+        "facility_selected": {
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?facility_doc": "facility_document"
+            },
+            "pddl": "(facility_selected ?case ?facility_doc)"
+        },
+        "required_person": {
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?person": "participant_person"
+            },
+            "pddl": "(required_person ?case ?person)"
+        },
+        "person_linked_to_case": {
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?person": "participant_person"
+            },
+            "pddl": "(person_linked_to_case ?case ?person)"
+        },
+        "required_document": {
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?doc": "drawdown_document"
+            },
+            "pddl": "(required_document ?case ?doc)"
+        },
+        "document_for_case": {
+            "parameter_types": {
+                "?doc": "drawdown_document",
+                "?case": "drawdown_case"
+            },
+            "pddl": "(document_for_case ?doc ?case)"
+        },
+        "document_for_person": {
+            "parameter_types": {
+                "?doc": "drawdown_document",
+                "?person": "participant_person"
+            },
+            "pddl": "(document_for_person ?doc ?person)"
+        },
+        "document_received": {
+            "parameter_types": {
+                "?doc": "drawdown_document"
+            },
+            "pddl": "(document_received ?doc)"
+        },
+        "document_verified": {
+            "parameter_types": {
+                "?doc": "drawdown_document"
+            },
+            "pddl": "(document_verified ?doc)"
+        },
+        "doc_is_borrowing_base_certificate": {
+            "parameter_types": {
+                "?doc": "drawdown_document"
+            },
+            "pddl": "(doc_is_borrowing_base_certificate ?doc)"
+        },
+        "doc_is_compliance_certificate": {
+            "parameter_types": {
+                "?doc": "drawdown_document"
+            },
+            "pddl": "(doc_is_compliance_certificate ?doc)"
+        },
+        "doc_is_covenant_compliance_statement": {
+            "parameter_types": {
+                "?doc": "drawdown_document"
+            },
+            "pddl": "(doc_is_covenant_compliance_statement ?doc)"
+        },
+        "doc_is_fee_calculation_sheet": {
+            "parameter_types": {
+                "?doc": "drawdown_document"
+            },
+            "pddl": "(doc_is_fee_calculation_sheet ?doc)"
+        },
+        "doc_is_use_of_proceeds_statement": {
+            "parameter_types": {
+                "?doc": "drawdown_document"
+            },
+            "pddl": "(doc_is_use_of_proceeds_statement ?doc)"
+        },
+        "doc_is_authorization_kyc_record": {
+            "parameter_types": {
+                "?doc": "drawdown_document"
+            },
+            "pddl": "(doc_is_authorization_kyc_record ?doc)"
+        },
+        "borrowing_base_verified": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(borrowing_base_verified ?case)"
+        },
+        "compliance_certificate_verified": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(compliance_certificate_verified ?case)"
+        },
+        "covenant_statement_verified": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(covenant_statement_verified ?case)"
+        },
+        "use_of_proceeds_verified": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(use_of_proceeds_verified ?case)"
+        },
+        "two_officer_signoff_recorded": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(two_officer_signoff_recorded ?case)"
+        },
+        "person_auth_doc_verified": {
+            "parameter_types": {
+                "?person": "participant_person"
+            },
+            "pddl": "(person_auth_doc_verified ?person)"
+        },
+        "person_contact_verified": {
+            "parameter_types": {
+                "?person": "participant_person"
+            },
+            "pddl": "(person_contact_verified ?person)"
+        },
+        "person_in_required_set": {
+            "parameter_types": {
+                "?person": "participant_person"
+            },
+            "pddl": "(person_in_required_set ?person)"
+        },
+        "person_sanctions_checked": {
+            "parameter_types": {
+                "?person": "participant_person"
+            },
+            "pddl": "(person_sanctions_checked ?person)"
+        },
+        "person_pep_checked": {
+            "parameter_types": {
+                "?person": "participant_person"
+            },
+            "pddl": "(person_pep_checked ?person)"
+        },
+        "person_full_clearance": {
+            "parameter_types": {
+                "?person": "participant_person"
+            },
+            "pddl": "(person_full_clearance ?person)"
+        },
+        "availability_calculated": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(availability_calculated ?case)"
+        },
+        "limit_headroom_confirmed": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(limit_headroom_confirmed ?case)"
+        },
+        "basic_drawdown_checks_complete": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(basic_drawdown_checks_complete ?case)"
+        },
+        "fast_track_enabled": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(fast_track_enabled ?case)"
+        },
+        "drawdown_package_compiled": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(drawdown_package_compiled ?case)"
+        },
+        "credit_ops_approved": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(credit_ops_approved ?case)"
+        },
+        "risk_approved": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(risk_approved ?case)"
+        },
+        "auto_approved": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(auto_approved ?case)"
+        },
+        "packet_creation_authorized": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(packet_creation_authorized ?case)"
+        },
+        "facility_eligible_for_case": {
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?facility_doc": "facility_document"
+            },
+            "pddl": "(facility_eligible_for_case ?case ?facility_doc)"
+        },
+        "facility_document_validated": {
+            "parameter_types": {
+                "?facility_doc": "facility_document"
+            },
+            "pddl": "(facility_document_validated ?facility_doc)"
+        },
+        "packet_for_case": {
+            "parameter_types": {
+                "?packet": "drawdown_packet",
+                "?case": "drawdown_case"
+            },
+            "pddl": "(packet_for_case ?packet ?case)"
+        },
+        "packet_created": {
+            "parameter_types": {
+                "?packet": "drawdown_packet"
+            },
+            "pddl": "(packet_created ?packet)"
+        },
+        "packet_attached_facility_document": {
+            "parameter_types": {
+                "?packet": "drawdown_packet",
+                "?facility_doc": "facility_document"
+            },
+            "pddl": "(packet_attached_facility_document ?packet ?facility_doc)"
+        },
+        "packet_assigned_signer": {
+            "parameter_types": {
+                "?packet": "drawdown_packet",
+                "?borrower_signer": "borrower_signatory"
+            },
+            "pddl": "(packet_assigned_signer ?packet ?borrower_signer)"
+        },
+        "packet_has_signature_slot": {
+            "parameter_types": {
+                "?packet": "drawdown_packet",
+                "?signature_slot": "signature_slot"
+            },
+            "pddl": "(packet_has_signature_slot ?packet ?signature_slot)"
+        },
+        "signature_collection_started": {
+            "parameter_types": {
+                "?packet": "drawdown_packet"
+            },
+            "pddl": "(signature_collection_started ?packet)"
+        },
+        "signature_captured": {
+            "parameter_types": {
+                "?packet": "drawdown_packet",
+                "?borrower_signer": "borrower_signatory"
+            },
+            "pddl": "(signature_captured ?packet ?borrower_signer)"
+        },
+        "two_signatures_verified": {
+            "parameter_types": {
+                "?packet": "drawdown_packet"
+            },
+            "pddl": "(two_signatures_verified ?packet)"
+        },
+        "packet_compliance_checked": {
+            "parameter_types": {
+                "?packet": "drawdown_packet"
+            },
+            "pddl": "(packet_compliance_checked ?packet)"
+        },
+        "packet_finalized": {
+            "parameter_types": {
+                "?packet": "drawdown_packet"
+            },
+            "pddl": "(packet_finalized ?packet)"
+        },
+        "drawdown_packet_complete": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(drawdown_packet_complete ?case)"
+        },
+        "packet_reopened": {
+            "parameter_types": {
+                "?packet": "drawdown_packet"
+            },
+            "pddl": "(packet_reopened ?packet)"
+        },
+        "payment_instruction_drafted": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(payment_instruction_drafted ?case)"
+        },
+        "case_has_payment_instruction": {
+            "parameter_types": {
+                "?case": "drawdown_case",
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(case_has_payment_instruction ?case ?payment_instruction)"
+        },
+        "payment_instruction_created": {
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(payment_instruction_created ?payment_instruction)"
+        },
+        "payment_instruction_validated": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(payment_instruction_validated ?case)"
+        },
+        "payment_instruction_approved": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(payment_instruction_approved ?case)"
+        },
+        "payment_instruction_ready_to_sign": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(payment_instruction_ready_to_sign ?case)"
+        },
+        "payment_instruction_signed": {
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(payment_instruction_signed ?payment_instruction)"
+        },
+        "payment_instruction_sent_to_treasury": {
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(payment_instruction_sent_to_treasury ?payment_instruction)"
+        },
+        "payment_instruction_executed": {
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(payment_instruction_executed ?payment_instruction)"
+        },
+        "beneficiary_credited": {
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(beneficiary_credited ?payment_instruction)"
+        },
+        "funds_settled": {
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(funds_settled ?payment_instruction)"
+        },
+        "token_available": {
+            "parameter_types": {
+                "?token": "resource_token"
+            },
+            "pddl": "(token_available ?token)"
+        },
+        "token_consumed": {
+            "parameter_types": {
+                "?token": "resource_token"
+            },
+            "pddl": "(token_consumed ?token)"
+        },
+        "wire_cutoff_reserved": {
+            "parameter_types": {
+                "?payment_instruction": "payment_instruction"
+            },
+            "pddl": "(wire_cutoff_reserved ?payment_instruction)"
+        },
+        "notice_addressed_to_signer": {
+            "parameter_types": {
+                "?notice": "disbursement_notice",
+                "?case": "drawdown_case",
+                "?borrower_signer": "borrower_signatory"
+            },
+            "pddl": "(notice_addressed_to_signer ?notice ?case ?borrower_signer)"
+        },
+        "notice_approved": {
+            "parameter_types": {
+                "?notice": "disbursement_notice"
+            },
+            "pddl": "(notice_approved ?notice)"
+        },
+        "delivery_package_created": {
+            "parameter_types": {
+                "?delivery_package": "delivery_package"
+            },
+            "pddl": "(delivery_package_created ?delivery_package)"
+        },
+        "package_for_notice": {
+            "parameter_types": {
+                "?delivery_package": "delivery_package",
+                "?notice": "disbursement_notice"
+            },
+            "pddl": "(package_for_notice ?delivery_package ?notice)"
+        },
+        "package_labeled": {
+            "parameter_types": {
+                "?delivery_package": "delivery_package"
+            },
+            "pddl": "(package_labeled ?delivery_package)"
+        },
+        "label_printed": {
+            "parameter_types": {
+                "?delivery_package": "delivery_package"
+            },
+            "pddl": "(label_printed ?delivery_package)"
+        },
+        "label_scanned": {
+            "parameter_types": {
+                "?delivery_package": "delivery_package"
+            },
+            "pddl": "(label_scanned ?delivery_package)"
+        },
+        "notice_ready_to_send": {
+            "parameter_types": {
+                "?notice": "disbursement_notice"
+            },
+            "pddl": "(notice_ready_to_send ?notice)"
+        },
+        "notice_sent": {
+            "parameter_types": {
+                "?notice": "disbursement_notice"
+            },
+            "pddl": "(notice_sent ?notice)"
+        },
+        "senior_override_assigned": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(senior_override_assigned ?case)"
+        },
+        "final_controls_complete": {
+            "parameter_types": {
+                "?case": "drawdown_case"
+            },
+            "pddl": "(final_controls_complete ?case)"
+        },
+        "=": {
+            "parameter_types": {
+                "?x1": "object",
+                "?x2": "object"
+            },
+            "pddl": "(= ?x1 ?x2)"
+        },
+        "!=": {
+            "parameter_types": {
+                "?x1": "object",
+                "?x2": "object"
+            },
+            "pddl": "(!= ?x1 ?x2)"
+        }
+    },
+    "action_nl_templates": {
+        "open_drawdown_case": "open drawdown for drawdown_case {?case}",
+        "select_request_channel": "select request_channel {?channel} for drawdown_case {?case}",
+        "select_facility_document": "select facility_document {?facility_doc} for drawdown_case {?case}",
+        "verify_borrowing_base_certificate": "verify borrowing base certificate for drawdown_case {?case} using drawdown_document {?borrowing_base_doc}",
+        "verify_compliance_certificate": "verify compliance certificate drawdown_document {?compliance_cert_doc} for drawdown_case {?case}",
+        "verify_covenant_compliance_statement": "verify covenant compliance statement drawdown_document {?covenant_statement_doc} for drawdown_case {?case}",
+        "verify_use_of_proceeds_statement": "verify use_of_proceeds_statement {?use_of_proceeds_doc} for drawdown_case {?case}",
+        "verify_fee_calculation_sheet": "verify drawdown_document {?fee_calc_doc} for drawdown_case {?case}",
+        "record_two_officer_signoff": "record two-officer signoff for drawdown_case {?case} on fee_calculation_sheet {?fee_calc_doc} by bank_drawdown_officer {?officer_1} and bank_drawdown_officer {?officer_2}",
+        "verify_person_authorization_record": "verify authorization kyc record {?auth_kyc_doc} for participant_person {?person} in drawdown_case {?case}",
+        "verify_person_contact_details": "verify participant_person {?person}'s contact details for drawdown_case {?case}",
+        "run_full_person_screening": "run full person screening for participant_person {?person} on drawdown_case {?case}",
+        "run_sanctions_screening_only": "run sanctions screening for drawdown_case {?case} on participant_person {?person}",
+        "run_pep_screening_only": "run pep screening only for participant_person {?person} on drawdown_case {?case}",
+        "complete_basic_drawdown_checks": "complete basic drawdown checks for drawdown_case {?case}",
+        "enable_fast_track": "enable fast track for drawdown_case {?case}",
+        "compile_drawdown_package": "compile drawdown package {?case} {?borrower_signer_1} {?borrower_signer_2} {?bank_officer_1} {?bank_officer_2} {?borrowing_base_doc} {?covenant_statement_doc} {?compliance_cert_doc} {?use_of_proceeds_doc} {?fee_calc_doc}",
+        "approve_drawdown_package_four_eyes": "approve drawdown package for drawdown_case {?case} by borrower_signatory {?borrower_signer_1} and borrower_signatory {?borrower_signer_2} with approvals from bank_drawdown_officer {?bank_officer_1} and bank_drawdown_officer {?bank_officer_2}",
+        "approve_drawdown_package_fast_track": "approve fast-track drawdown package for case {?case}",
+        "authorize_packet_creation": "authorize packet creation for drawdown_case {?case}",
+        "raise_compliance_hold": "raise compliance hold on drawdown_case {?case}",
+        "validate_facility_document": "validate facility_document {?facility_doc} for drawdown_case {?case}",
+        "create_drawdown_packet": "create drawdown packet drawdown_packet {?packet} for drawdown_case {?case} with signature slots signature_slot {?signature_slot_1} and signature_slot {?signature_slot_2}",
+        "attach_facility_document_to_packet": "attach facility_document {?facility_doc} to drawdown_packet {?packet} for drawdown_case {?case}",
+        "assign_signer_to_packet_slot": "assign borrower_signatory {?borrower_signer} to slot signature_slot {?signature_slot} on drawdown_packet {?packet} for drawdown_case {?case}",
+        "start_signature_collection": "start signature collection for drawdown_packet {?packet}",
+        "capture_signer_signature": "capture signature for drawdown_packet {?packet} from borrower_signatory {?borrower_signer}",
+        "verify_two_distinct_signatures": "verify two distinct signatures on drawdown_packet {?packet} from borrower_signatory {?borrower_signer_1} and borrower_signatory {?borrower_signer_2}",
+        "perform_packet_compliance_check": "check packet compliance for drawdown_packet {?packet}",
+        "finalize_drawdown_packet": "finalize drawdown_packet {?packet} that has been checked for packet compliance and stop signature collection for drawdown_packet {?packet}",
+        "confirm_packet_has_three_facility_docs": "confirm drawdown packet drawdown_packet {?packet} for drawdown_case {?case} attached to facility documents facility_document {?facility_doc_1}, facility_document {?facility_doc_2} and facility_document {?facility_doc_3} is complete",
+        "reopen_packet_and_reset_signatures": "reopen drawdown_packet {?packet} for drawdown_case {?case} using reopen_key_token {?reopen_token} and reset signature slots signature_slot {?signature_slot_1} and signature_slot {?signature_slot_2}",
+        "lock_case_for_execution": "lock drawdown_case {?case} for execution with drawdown_packet {?packet}",
+        "reopen_locked_case": "reopen drawdown for drawdown_case {?case} with reopen_key_token {?reopen_token}",
+        "freeze_case_due_to_suspicious_payment": "freeze drawdown case drawdown_case {?case} due to suspicious payment instruction payment_instruction {?payment_instruction}",
+        "draft_payment_instruction": "draft payment instruction payment_instruction {?payment_instruction} for drawdown_case {?case}",
+        "validate_payment_instruction": "validate payment instruction for drawdown_case {?case}",
+        "approve_payment_instruction": "approve payment instruction for drawdown_case {?case}",
+        "sign_payment_instruction": "sign payment_instruction {?payment_instruction} for drawdown_case {?case}",
+        "send_instruction_to_treasury": "send signed payment instruction {?payment_instruction} to the treasury",
+        "execute_treasury_release": "execute treasury release payment_instruction {?payment_instruction} for drawdown_case {?case} using drawdown_packet {?packet} attached to facility_document {?facility_doc}",
+        "reserve_wire_cutoff_window": "reserve wire cutoff window for payment_instruction {?payment_instruction} using wire_cutoff_window_token {?cutoff_window_token}",
+        "consume_cutoff_window_without_reservation": "consume cutoff window without reservation for drawdown_case {?case} using wire_cutoff_window_token {?cutoff_window_token}",
+        "release_wire_payment": "release payment_instruction {?payment_instruction} by wire",
+        "confirm_beneficiary_credit": "confirm beneficiary credit for payment_instruction {?payment_instruction}",
+        "mark_funds_settled": "mark funds settled for payment_instruction {?payment_instruction}",
+        "create_disbursement_notice": "create disbursement notice disbursement_notice {?notice} for drawdown_case {?case} addressed to borrower_signatory {?borrower_signer} using drawdown_packet {?packet} attached to facility_document {?facility_doc} consuming notice_dispatch_window_token {?dispatch_window_token}",
+        "approve_disbursement_notice": "approve disbursement_notice {?notice}",
+        "create_notice_delivery_package": "create delivery_package {?delivery_package} for disbursement_notice {?notice}",
+        "apply_delivery_label": "apply delivery label to delivery_package {?delivery_package} using delivery_slot_token {?delivery_slot_token}",
+        "assign_senior_override_review": "assign senior override review to drawdown_case {?case} using delivery_slot_token {?delivery_slot_token}",
+        "print_delivery_label": "print delivery label for delivery_package {?delivery_package}",
+        "scan_delivery_label": "scan label of delivery_package {?delivery_package}",
+        "mark_notice_ready": "mark disbursement_notice {?notice} ready to be sent",
+        "send_notice_via_secure_delivery": "send disbursement_notice {?notice} for drawdown_case {?case} via secure delivery package delivery_package {?delivery_package} to borrower_signatory {?borrower_signer} with payment instruction payment_instruction {?payment_instruction}",
+        "complete_final_controls": "complete final controls for drawdown_case {?case} with borrower signatories borrower_signatory {?borrower_signer_1} and borrower_signatory {?borrower_signer_2}, bank drawdown officers bank_drawdown_officer {?bank_officer_1} and bank_drawdown_officer {?bank_officer_2}, payment instruction payment_instruction {?payment_instruction} and disbursement notice disbursement_notice {?notice}",
+        "close_drawdown_case": "close drawdown case drawdown_case {?case} with payment_instruction {?payment_instruction} and disbursement_notice {?notice}"
+    },
+    "predicate_nl_templates": {
+        "drawdown_open": "the drawdown for {?case} is open",
+        "drawdown_locked": "{?case} is drawdown locked",
+        "drawdown_completed": "the drawdown for {?case} is completed",
+        "drawdown_frozen": "{?case} has a frozen drawdown",
+        "compliance_hold_flag": "{?case} has a compliance hold flag",
+        "suspicious_payment_flag": "{?case} has a suspicious payment flag",
+        "wire_released": "{?payment_instruction} has been released by wire",
+        "notice_created": "{?notice} has been created",
+        "facility_requires_fx_review": "{?facility_doc} requires fx review",
+        "facility_requires_agent_notice": "the facility requires agent notice for {?facility_doc}",
+        "channel_selected": "{?channel} is selected for case {?case}",
+        "facility_selected": "the facility {?facility_doc} is selected for case {?case}",
+        "required_person": "{?person} is the required person for {?case}",
+        "person_linked_to_case": "{?person} is linked to the case {?case}",
+        "required_document": "{?doc} is a required document for {?case}",
+        "document_for_case": "{?doc} is a document for case {?case}",
+        "document_for_person": "{?doc} is a document for {?person}",
+        "document_received": "{?doc} has been received",
+        "document_verified": "{?doc} is verified",
+        "doc_is_borrowing_base_certificate": "{?doc} is borrowing the base certificate",
+        "doc_is_compliance_certificate": "the document {?doc} is a compliance certificate",
+        "doc_is_covenant_compliance_statement": "{?doc} is a covenant compliance statement",
+        "doc_is_fee_calculation_sheet": "{?doc} is a fee calculation sheet",
+        "doc_is_use_of_proceeds_statement": "{?doc} is a use of proceeds statement",
+        "doc_is_authorization_kyc_record": "{?doc} is an authorization kyc record",
+        "borrowing_base_verified": "{?case} has a verified borrowing base",
+        "compliance_certificate_verified": "{?case} has a verified compliance certificate",
+        "covenant_statement_verified": "the covenant statement for {?case} is verified",
+        "use_of_proceeds_verified": "the use of proceeds for {?case} has been verified",
+        "two_officer_signoff_recorded": "a two-officer signoff is recorded for {?case}",
+        "person_auth_doc_verified": "{?person} has their authorization documents verified",
+        "person_contact_verified": "{?person}'s contact is verified",
+        "person_in_required_set": "{?person} is in the required set",
+        "person_sanctions_checked": "sanctions have been checked for {?person}",
+        "person_pep_checked": "{?person} has been pep checked",
+        "person_full_clearance": "{?person} has full clearance",
+        "availability_calculated": "availability for {?case} has been calculated",
+        "limit_headroom_confirmed": "limit headroom is confirmed for {?case}",
+        "basic_drawdown_checks_complete": "basic drawdown checks are complete for {?case}",
+        "fast_track_enabled": "{?case} has fast track enabled",
+        "drawdown_package_compiled": "the drawdown package for {?case} is compiled",
+        "credit_ops_approved": "{?case} is approved by credit operations",
+        "risk_approved": "{?case} is approved for risk",
+        "auto_approved": "{?case} is auto approved",
+        "packet_creation_authorized": "{?case} is authorized for packet creation",
+        "facility_eligible_for_case": "the facility {?facility_doc} is eligible for the case {?case}",
+        "facility_document_validated": "{?facility_doc} is a validated facility document",
+        "packet_for_case": "{?packet} is a packet for case {?case}",
+        "packet_created": "{?packet} has been created",
+        "packet_attached_facility_document": "{?packet} is attached to the facility document {?facility_doc}",
+        "packet_assigned_signer": "{?packet} is assigned to signer {?borrower_signer}",
+        "packet_has_signature_slot": "{?packet} has signature slot {?signature_slot}",
+        "signature_collection_started": "signature collection has started for {?packet}",
+        "signature_captured": "{?borrower_signer}'s signature is captured on {?packet}",
+        "two_signatures_verified": "the two signatures on {?packet} are verified",
+        "packet_compliance_checked": "{?packet} has been checked for packet compliance",
+        "packet_finalized": "{?packet} is finalized",
+        "drawdown_packet_complete": "the drawdown packet for {?case} is complete",
+        "packet_reopened": "{?packet} has been reopened",
+        "payment_instruction_drafted": "a payment instruction has been drafted for {?case}",
+        "case_has_payment_instruction": "{?case} has the payment instruction {?payment_instruction}",
+        "payment_instruction_created": "{?payment_instruction} payment instruction was created",
+        "payment_instruction_validated": "{?case} payment instruction has been validated",
+        "payment_instruction_approved": "the payment instruction for {?case} is approved",
+        "payment_instruction_ready_to_sign": "the payment instruction for {?case} is ready to be signed",
+        "payment_instruction_signed": "{?payment_instruction} is a signed payment instruction",
+        "payment_instruction_sent_to_treasury": "{?payment_instruction} is sent to the treasury",
+        "payment_instruction_executed": "{?payment_instruction} payment instruction has been executed",
+        "beneficiary_credited": "the beneficiary of {?payment_instruction} is credited",
+        "funds_settled": "funds for {?payment_instruction} are settled",
+        "token_available": "{?token} is available",
+        "token_consumed": "{?token} is consumed",
+        "wire_cutoff_reserved": "wire cutoff is reserved for {?payment_instruction}",
+        "notice_addressed_to_signer": "{?notice} is addressed to the signer {?borrower_signer} in case {?case}",
+        "notice_approved": "{?notice} is approved",
+        "delivery_package_created": "the delivery package {?delivery_package} has been created",
+        "package_for_notice": "the package {?delivery_package} is for the notice {?notice}",
+        "package_labeled": "{?delivery_package} is a labeled package",
+        "label_printed": "{?delivery_package} has a printed label",
+        "label_scanned": "the label of {?delivery_package} has been scanned",
+        "notice_ready_to_send": "{?notice} is ready to be sent",
+        "notice_sent": "{?notice} has been sent",
+        "senior_override_assigned": "{?case} is assigned a senior override",
+        "final_controls_complete": "final controls are complete for {?case}",
+        "=": "{?x1} is equal to {?x2}",
+        "!=": "{?x1} is not equal to {?x2}"
+    },
+    "action_nl_templates_indef": {
+        "open_drawdown_case": "open drawdown for drawdown_case a drawdown case {?case}",
+        "select_request_channel": "select request_channel a request channel {?channel} for drawdown_case a drawdown case {?case}",
+        "select_facility_document": "select facility_document a facility document {?facility_doc} for drawdown_case a drawdown case {?case}",
+        "verify_borrowing_base_certificate": "verify borrowing base certificate for drawdown_case a drawdown case {?case} using drawdown_document a drawdown document {?borrowing_base_doc}",
+        "verify_compliance_certificate": "verify compliance certificate drawdown_document a drawdown document {?compliance_cert_doc} for drawdown_case a drawdown case {?case}",
+        "verify_covenant_compliance_statement": "verify covenant compliance statement drawdown_document a drawdown document {?covenant_statement_doc} for drawdown_case a drawdown case {?case}",
+        "verify_use_of_proceeds_statement": "verify use_of_proceeds_statement a drawdown document {?use_of_proceeds_doc} for drawdown_case a drawdown case {?case}",
+        "verify_fee_calculation_sheet": "verify drawdown_document a drawdown document {?fee_calc_doc} for drawdown_case a drawdown case {?case}",
+        "record_two_officer_signoff": "record two-officer signoff for drawdown_case a drawdown case {?case} on fee_calculation_sheet a drawdown document {?fee_calc_doc} by bank_drawdown_officer a bank drawdown officer {?officer_1} and bank_drawdown_officer a bank drawdown officer {?officer_2}",
+        "verify_person_authorization_record": "verify authorization kyc record a drawdown document {?auth_kyc_doc} for participant_person a participant person {?person} in drawdown_case a drawdown case {?case}",
+        "verify_person_contact_details": "verify participant_person a participant person {?person}'s contact details for drawdown_case a drawdown case {?case}",
+        "run_full_person_screening": "run full person screening for participant_person a participant person {?person} on drawdown_case a drawdown case {?case}",
+        "run_sanctions_screening_only": "run sanctions screening for drawdown_case a drawdown case {?case} on participant_person a participant person {?person}",
+        "run_pep_screening_only": "run pep screening only for participant_person a participant person {?person} on drawdown_case a drawdown case {?case}",
+        "complete_basic_drawdown_checks": "complete basic drawdown checks for drawdown_case a drawdown case {?case}",
+        "enable_fast_track": "enable fast track for drawdown_case a drawdown case {?case}",
+        "compile_drawdown_package": "compile drawdown package a drawdown case {?case} a borrower signatory {?borrower_signer_1} a borrower signatory {?borrower_signer_2} a bank drawdown officer {?bank_officer_1} a bank drawdown officer {?bank_officer_2} a drawdown document {?borrowing_base_doc} a drawdown document {?covenant_statement_doc} a drawdown document {?compliance_cert_doc} a drawdown document {?use_of_proceeds_doc} a drawdown document {?fee_calc_doc}",
+        "approve_drawdown_package_four_eyes": "approve drawdown package for drawdown_case a drawdown case {?case} by borrower_signatory a borrower signatory {?borrower_signer_1} and borrower_signatory a borrower signatory {?borrower_signer_2} with approvals from bank_drawdown_officer a bank drawdown officer {?bank_officer_1} and bank_drawdown_officer a bank drawdown officer {?bank_officer_2}",
+        "approve_drawdown_package_fast_track": "approve fast-track drawdown package for case a drawdown case {?case}",
+        "authorize_packet_creation": "authorize packet creation for drawdown_case a drawdown case {?case}",
+        "raise_compliance_hold": "raise compliance hold on drawdown_case a drawdown case {?case}",
+        "validate_facility_document": "validate facility_document a facility document {?facility_doc} for drawdown_case a drawdown case {?case}",
+        "create_drawdown_packet": "create drawdown packet drawdown_packet a drawdown packet {?packet} for drawdown_case a drawdown case {?case} with signature slots signature_slot a signature slot {?signature_slot_1} and signature_slot a signature slot {?signature_slot_2}",
+        "attach_facility_document_to_packet": "attach facility_document a facility document {?facility_doc} to drawdown_packet a drawdown packet {?packet} for drawdown_case a drawdown case {?case}",
+        "assign_signer_to_packet_slot": "assign borrower_signatory a borrower signatory {?borrower_signer} to slot signature_slot a signature slot {?signature_slot} on drawdown_packet a drawdown packet {?packet} for drawdown_case a drawdown case {?case}",
+        "start_signature_collection": "start signature collection for drawdown_packet a drawdown packet {?packet}",
+        "capture_signer_signature": "capture signature for drawdown_packet a drawdown packet {?packet} from borrower_signatory a borrower signatory {?borrower_signer}",
+        "verify_two_distinct_signatures": "verify two distinct signatures on drawdown_packet a drawdown packet {?packet} from borrower_signatory a borrower signatory {?borrower_signer_1} and borrower_signatory a borrower signatory {?borrower_signer_2}",
+        "perform_packet_compliance_check": "check packet compliance for drawdown_packet a drawdown packet {?packet}",
+        "finalize_drawdown_packet": "finalize drawdown_packet a drawdown packet {?packet} that has been checked for packet compliance and stop signature collection for drawdown_packet a drawdown packet {?packet}",
+        "confirm_packet_has_three_facility_docs": "confirm drawdown packet drawdown_packet a drawdown packet {?packet} for drawdown_case a drawdown case {?case} attached to facility documents facility_document a facility document {?facility_doc_1}, facility_document a facility document {?facility_doc_2} and facility_document a facility document {?facility_doc_3} is complete",
+        "reopen_packet_and_reset_signatures": "reopen drawdown_packet a drawdown packet {?packet} for drawdown_case a drawdown case {?case} using reopen_key_token a reopen key token {?reopen_token} and reset signature slots signature_slot a signature slot {?signature_slot_1} and signature_slot a signature slot {?signature_slot_2}",
+        "lock_case_for_execution": "lock drawdown_case a drawdown case {?case} for execution with drawdown_packet a drawdown packet {?packet}",
+        "reopen_locked_case": "reopen drawdown for drawdown_case a drawdown case {?case} with reopen_key_token a reopen key token {?reopen_token}",
+        "freeze_case_due_to_suspicious_payment": "freeze drawdown case drawdown_case a drawdown case {?case} due to suspicious payment instruction payment_instruction a payment instruction {?payment_instruction}",
+        "draft_payment_instruction": "draft payment instruction payment_instruction a payment instruction {?payment_instruction} for drawdown_case a drawdown case {?case}",
+        "validate_payment_instruction": "validate payment instruction for drawdown_case a drawdown case {?case}",
+        "approve_payment_instruction": "approve payment instruction for drawdown_case a drawdown case {?case}",
+        "sign_payment_instruction": "sign payment_instruction a payment instruction {?payment_instruction} for drawdown_case a drawdown case {?case}",
+        "send_instruction_to_treasury": "send signed payment instruction a payment instruction {?payment_instruction} to the treasury",
+        "execute_treasury_release": "execute treasury release payment_instruction a payment instruction {?payment_instruction} for drawdown_case a drawdown case {?case} using drawdown_packet a drawdown packet {?packet} attached to facility_document a facility document {?facility_doc}",
+        "reserve_wire_cutoff_window": "reserve wire cutoff window for payment_instruction a payment instruction {?payment_instruction} using wire_cutoff_window_token a wire cutoff window token {?cutoff_window_token}",
+        "consume_cutoff_window_without_reservation": "consume cutoff window without reservation for drawdown_case a drawdown case {?case} using wire_cutoff_window_token a wire cutoff window token {?cutoff_window_token}",
+        "release_wire_payment": "release payment_instruction a payment instruction {?payment_instruction} by wire",
+        "confirm_beneficiary_credit": "confirm beneficiary credit for payment_instruction a payment instruction {?payment_instruction}",
+        "mark_funds_settled": "mark funds settled for payment_instruction a payment instruction {?payment_instruction}",
+        "create_disbursement_notice": "create disbursement notice disbursement_notice a disbursement notice {?notice} for drawdown_case a drawdown case {?case} addressed to borrower_signatory a borrower signatory {?borrower_signer} using drawdown_packet a drawdown packet {?packet} attached to facility_document a facility document {?facility_doc} consuming notice_dispatch_window_token a notice dispatch window token {?dispatch_window_token}",
+        "approve_disbursement_notice": "approve disbursement_notice a disbursement notice {?notice}",
+        "create_notice_delivery_package": "create delivery_package a delivery package {?delivery_package} for disbursement_notice a disbursement notice {?notice}",
+        "apply_delivery_label": "apply delivery label to delivery_package a delivery package {?delivery_package} using delivery_slot_token a delivery slot token {?delivery_slot_token}",
+        "assign_senior_override_review": "assign senior override review to drawdown_case a drawdown case {?case} using delivery_slot_token a delivery slot token {?delivery_slot_token}",
+        "print_delivery_label": "print delivery label for delivery_package a delivery package {?delivery_package}",
+        "scan_delivery_label": "scan label of delivery_package a delivery package {?delivery_package}",
+        "mark_notice_ready": "mark disbursement_notice a disbursement notice {?notice} ready to be sent",
+        "send_notice_via_secure_delivery": "send disbursement_notice a disbursement notice {?notice} for drawdown_case a drawdown case {?case} via secure delivery package delivery_package a delivery package {?delivery_package} to borrower_signatory a borrower signatory {?borrower_signer} with payment instruction payment_instruction a payment instruction {?payment_instruction}",
+        "complete_final_controls": "complete final controls for drawdown_case a drawdown case {?case} with borrower signatories borrower_signatory a borrower signatory {?borrower_signer_1} and borrower_signatory a borrower signatory {?borrower_signer_2}, bank drawdown officers bank_drawdown_officer a bank drawdown officer {?bank_officer_1} and bank_drawdown_officer a bank drawdown officer {?bank_officer_2}, payment instruction payment_instruction a payment instruction {?payment_instruction} and disbursement notice disbursement_notice a disbursement notice {?notice}",
+        "close_drawdown_case": "close drawdown case drawdown_case a drawdown case {?case} with payment_instruction a payment instruction {?payment_instruction} and disbursement_notice a disbursement notice {?notice}"
+    },
+    "type_hierarchy": [
+        "Everything that is a entity is also a object",
+        "Everything that is a drawdown_case or a participant_person or a drawdown_document or a facility_document or a drawdown_packet or a payment_instruction or a disbursement_notice or a delivery_package or a request_channel or a signature_slot or a resource_token is also a entity",
+        "Everything that is a corporate_drawdown_case is also a drawdown_case",
+        "Everything that is a borrower_signatory or a bank_drawdown_officer is also a participant_person",
+        "Everything that is a delivery_slot_token or a reopen_key_token or a wire_cutoff_window_token or a notice_dispatch_window_token is also a resource_token"
+    ]
+}

@@ -159,14 +159,14 @@
         "c4": "object_7"
     },
     "instance-37.pddl": {
-        "l0": "object_5",
-        "l1": "object_0",
-        "l2": "object_3",
-        "c0": "object_7",
-        "c1": "object_6",
-        "c2": "object_4",
-        "c3": "object_1",
-        "c4": "object_2"
+        "l0": "object_7",
+        "l1": "object_2",
+        "l2": "object_4",
+        "c0": "object_6",
+        "c1": "object_1",
+        "c2": "object_5",
+        "c3": "object_3",
+        "c4": "object_0"
     },
     "instance-40.pddl": {
         "l0": "object_5",

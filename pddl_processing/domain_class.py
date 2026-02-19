@@ -1,3 +1,4 @@
+import utils.python313_compat  # noqa: F401 - must run before tarski/antlr4
 import os
 import re
 import atexit

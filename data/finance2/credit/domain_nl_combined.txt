@@ -1,0 +1,398 @@
+============================================================
+DOMAIN IN NATURAL LANGUAGE
+============================================================
+
+--- TYPE HIERARCHY ---
+
+  Everything that is a entity is also a object
+  Everything that is a drawdown case or a participant person or a drawdown document or a facility document or a drawdown packet or a payment instruction or a disbursement notice or a delivery package or a request channel or a signature slot or a resource token is also a entity
+  Everything that is a corporate drawdown case is also a drawdown case
+  Everything that is a borrower signatory or a bank drawdown officer is also a participant person
+  Everything that is a delivery slot token or a reopen key token or a wire cutoff window token or a notice dispatch window token is also a resource token
+
+
+--- PREDICATES ---
+
+  the drawdown for {?case} is open
+  {?case} is drawdown locked
+  the drawdown for {?case} is completed
+  {?case} has a frozen drawdown
+  {?case} has a compliance hold flag
+  {?case} has a suspicious payment flag
+  {?payment_instruction} has been released by wire
+  {?notice} has been created
+  {?facility_doc} requires fx review
+  the facility requires agent notice for {?facility_doc}
+  {?channel} is selected for case {?case}
+  the facility {?facility_doc} is selected for case {?case}
+  {?person} is the required person for {?case}
+  {?person} is linked to the case {?case}
+  {?doc} is a required document for {?case}
+  {?doc} is a document for case {?case}
+  {?doc} is a document for {?person}
+  {?doc} has been received
+  {?doc} is verified
+  {?doc} is borrowing the base certificate
+  the document {?doc} is a compliance certificate
+  {?doc} is a covenant compliance statement
+  {?doc} is a fee calculation sheet
+  {?doc} is a use of proceeds statement
+  {?doc} is an authorization kyc record
+  {?case} has a verified borrowing base
+  {?case} has a verified compliance certificate
+  the covenant statement for {?case} is verified
+  the use of proceeds for {?case} has been verified
+  a two-officer signoff is recorded for {?case}
+  {?person} has their authorization documents verified
+  {?person}'s contact is verified
+  {?person} is in the required set
+  sanctions have been checked for {?person}
+  {?person} has been pep checked
+  {?person} has full clearance
+  availability for {?case} has been calculated
+  limit headroom is confirmed for {?case}
+  basic drawdown checks are complete for {?case}
+  {?case} has fast track enabled
+  the drawdown package for {?case} is compiled
+  {?case} is approved by credit operations
+  {?case} is approved for risk
+  {?case} is auto approved
+  {?case} is authorized for packet creation
+  the facility {?facility_doc} is eligible for the case {?case}
+  {?facility_doc} is a validated facility document
+  {?packet} is a packet for case {?case}
+  {?packet} has been created
+  {?packet} is attached to the facility document {?facility_doc}
+  {?packet} is assigned to signer {?borrower_signer}
+  {?packet} has signature slot {?signature_slot}
+  signature collection has started for {?packet}
+  {?borrower_signer}'s signature is captured on {?packet}
+  the two signatures on {?packet} are verified
+  {?packet} has been checked for packet compliance
+  {?packet} is finalized
+  the drawdown packet for {?case} is complete
+  {?packet} has been reopened
+  a payment instruction has been drafted for {?case}
+  {?case} has the payment instruction {?payment_instruction}
+  {?payment_instruction} payment instruction was created
+  {?case} payment instruction has been validated
+  the payment instruction for {?case} is approved
+  the payment instruction for {?case} is ready to be signed
+  {?payment_instruction} is a signed payment instruction
+  {?payment_instruction} is sent to the treasury
+  {?payment_instruction} payment instruction has been executed
+  the beneficiary of {?payment_instruction} is credited
+  funds for {?payment_instruction} are settled
+  {?token} is available
+  {?token} is consumed
+  wire cutoff is reserved for {?payment_instruction}
+  {?notice} is addressed to the signer {?borrower_signer} in case {?case}
+  {?notice} is approved
+  the delivery package {?delivery_package} has been created
+  the package {?delivery_package} is for the notice {?notice}
+  {?delivery_package} is a labeled package
+  {?delivery_package} has a printed label
+  the label of {?delivery_package} has been scanned
+  {?notice} is ready to be sent
+  {?notice} has been sent
+  {?case} is assigned a senior override
+  final controls are complete for {?case}
+  {?x1} is equal to {?x2}
+  {?x1} is not equal to {?x2}
+
+
+--- ACTIONS ---
+
+  open drawdown case a drawdown case A
+    I can only open drawdown case a drawdown case A if it is not the case that the drawdown for A is open and it is not the case that the drawdown for A is completed and it is not the case that A has a frozen drawdown
+    Once I open drawdown case a drawdown case A, it is the case that the drawdown for A is open
+
+  select a request channel B for a drawdown case A
+    I can only select a request channel B for a drawdown case A if it is the case that the drawdown for A is open
+    I can only select a request channel B for a drawdown case A if it is not the case that A is drawdown locked and it is not the case that A has a frozen drawdown
+    Once I select a request channel B for a drawdown case A, it is the case that B is selected for case A
+
+  select a facility document B for a drawdown case A
+    I can only select a facility document B for a drawdown case A if it is the case that the drawdown for A is open
+    I can only select a facility document B for a drawdown case A if it is not the case that A is drawdown locked and it is not the case that A has a frozen drawdown
+    Once I select a facility document B for a drawdown case A, it is the case that the facility B is selected for case A
+
+  verify borrowing base certificate for a drawdown-case A using a document B
+    I can only verify borrowing base certificate for a drawdown-case A using a document B if it is the case that the drawdown for A is open and B is a required document for A and B is a document for case A and B has been received and B is borrowing the base certificate
+    I can only verify borrowing base certificate for a drawdown-case A using a document B if it is not the case that A is drawdown locked and it is not the case that B is verified
+    Once I verify borrowing base certificate for a drawdown-case A using a document B, it is the case that B is verified and A has a verified borrowing base
+
+  verify compliance certificate a compliance certificate B for a drawdown case A
+    I can only verify compliance certificate a compliance certificate B for a drawdown case A if it is the case that the drawdown for A is open and B is a required document for A and B is a document for case A and B has been received and the document B is a compliance certificate
+    I can only verify compliance certificate a compliance certificate B for a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B is verified
+    Once I verify compliance certificate a compliance certificate B for a drawdown case A, it is the case that B is verified and A has a verified compliance certificate
+
+  verify covenant compliance statement a covenant_compliance_statement B for a drawdown_case A
+    I can only verify covenant compliance statement a covenant_compliance_statement B for a drawdown_case A if it is the case that the drawdown for A is open and B is a required document for A and B is a document for case A and B has been received and B is a covenant compliance statement
+    I can only verify covenant compliance statement a covenant_compliance_statement B for a drawdown_case A if it is not the case that A is drawdown locked and it is not the case that B is verified
+    Once I verify covenant compliance statement a covenant_compliance_statement B for a drawdown_case A, it is the case that B is verified and the covenant statement for A is verified
+
+  verify use of proceeds statement a document B for a drawdown_case A
+    I can only verify use of proceeds statement a document B for a drawdown_case A if it is the case that the drawdown for A is open and B is a required document for A and B is a document for case A and B has been received and B is a use of proceeds statement
+    I can only verify use of proceeds statement a document B for a drawdown_case A if it is not the case that A is drawdown locked and it is not the case that B is verified
+    Once I verify use of proceeds statement a document B for a drawdown_case A, it is the case that B is verified and the use of proceeds for A has been verified
+
+  verify fee calculation sheet a drawdown case A a drawdown document B
+    I can only verify fee calculation sheet a drawdown case A a drawdown document B if it is the case that the drawdown for A is open and B is a required document for A and B is a document for case A and B has been received and B is a fee calculation sheet
+    I can only verify fee calculation sheet a drawdown case A a drawdown document B if it is not the case that A is drawdown locked and it is not the case that B is verified
+    Once I verify fee calculation sheet a drawdown case A a drawdown document B, it is the case that B is verified
+
+  record two officer signoff a drawdown case A a drawdown document B a bank drawdown officer C a bank drawdown officer D
+    I can only record two officer signoff a drawdown case A a drawdown document B a bank drawdown officer C a bank drawdown officer D if it is the case that the drawdown for A is open and B is a document for case A and B is a fee calculation sheet and B is verified and C is the required person for A and D is the required person for A and C has full clearance and D has full clearance
+    I can only record two officer signoff a drawdown case A a drawdown document B a bank drawdown officer C a bank drawdown officer D if it is not the case that A is drawdown locked and it is not the case that C is equal to D
+    Once I record two officer signoff a drawdown case A a drawdown document B a bank drawdown officer C a bank drawdown officer D, it is the case that a two-officer signoff is recorded for A
+
+  verify an authorization_kyc_record C for a participant_person B in a drawdown_case A
+    I can only verify an authorization_kyc_record C for a participant_person B in a drawdown_case A if it is the case that the drawdown for A is open and C is a required document for A and C is a document for B and C has been received and C is an authorization kyc record
+    I can only verify an authorization_kyc_record C for a participant_person B in a drawdown_case A if it is not the case that A is drawdown locked and it is not the case that C is verified
+    Once I verify an authorization_kyc_record C for a participant_person B in a drawdown_case A, it is the case that C is verified and B has their authorization documents verified
+
+  verify person contact details for a participant person B in a drawdown case A
+    I can only verify person contact details for a participant person B in a drawdown case A if it is the case that the drawdown for A is open and B has their authorization documents verified and B is in the required set
+    I can only verify person contact details for a participant person B in a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B's contact is verified
+    Once I verify person contact details for a participant person B in a drawdown case A, it is the case that B's contact is verified
+
+  run full person screening for a participant person B on a drawdown case A
+    I can only run full person screening for a participant person B on a drawdown case A if it is the case that the drawdown for A is open and B is linked to the case A and B has their authorization documents verified and B's contact is verified
+    I can only run full person screening for a participant person B on a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B has full clearance
+    Once I run full person screening for a participant person B on a drawdown case A, it is the case that sanctions have been checked for B and B has been pep checked and B has full clearance
+
+  run sanctions screening only a drawdown case A a participant person B
+    I can only run sanctions screening only a drawdown case A a participant person B if it is the case that the drawdown for A is open and B is linked to the case A and B has their authorization documents verified
+    I can only run sanctions screening only a drawdown case A a participant person B if it is not the case that A is drawdown locked and it is not the case that sanctions have been checked for B
+    Once I run sanctions screening only a drawdown case A a participant person B, it is the case that sanctions have been checked for B
+
+  run pep screening only for a participant person B on a drawdown case A
+    I can only run pep screening only for a participant person B on a drawdown case A if it is the case that the drawdown for A is open and B is linked to the case A and B has their authorization documents verified
+    I can only run pep screening only for a participant person B on a drawdown case A if it is not the case that A is drawdown locked and it is not the case that B has been pep checked
+    Once I run pep screening only for a participant person B on a drawdown case A, it is the case that B has been pep checked
+
+  complete basic drawdown checks for a case A
+    I can only complete basic drawdown checks for a case A if it is the case that the drawdown for A is open and A has a verified borrowing base
+    I can only complete basic drawdown checks for a case A if it is not the case that A is drawdown locked and it is not the case that basic drawdown checks are complete for A
+    Once I complete basic drawdown checks for a case A, it is the case that availability for A has been calculated and limit headroom is confirmed for A and basic drawdown checks are complete for A
+
+  enable fast track for a drawdown-case A
+    I can only enable fast track for a drawdown-case A if it is the case that the drawdown for A is open and A has a verified borrowing base
+    I can only enable fast track for a drawdown-case A if it is not the case that A is drawdown locked and it is not the case that A has fast track enabled
+    Once I enable fast track for a drawdown-case A, it is the case that A has fast track enabled
+
+  compile drawdown package a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E a drawdown document F a drawdown document G a drawdown document H a drawdown document I a drawdown document J
+    I can only compile drawdown package a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E a drawdown document F a drawdown document G a drawdown document H a drawdown document I a drawdown document J if it is the case that the drawdown for A is open and A has a verified borrowing base and the covenant statement for A is verified and A has a verified compliance certificate and the use of proceeds for A has been verified and F is a document for case A and F is borrowing the base certificate and F is verified and G is a document for case A and G is a covenant compliance statement and G is verified and H is a document for case A and the document H is a compliance certificate and H is verified and I is a document for case A and I is a use of proceeds statement and I is verified and J is a document for case A and J is a fee calculation sheet and J is verified and B is the required person for A and C is the required person for A and D is the required person for A and E is the required person for A and B has full clearance and C has full clearance and D has full clearance and E has full clearance and basic drawdown checks are complete for A
+    I can only compile drawdown package a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E a drawdown document F a drawdown document G a drawdown document H a drawdown document I a drawdown document J if it is not the case that A is drawdown locked and it is not the case that the drawdown package for A is compiled and it is not the case that B is equal to C and it is not the case that D is equal to E
+    Once I compile drawdown package a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E a drawdown document F a drawdown document G a drawdown document H a drawdown document I a drawdown document J, it is the case that the drawdown package for A is compiled
+
+  approve drawdown package four eyes a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E
+    I can only approve drawdown package four eyes a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E if it is the case that the drawdown for A is open and the drawdown package for A is compiled and a two-officer signoff is recorded for A and B is the required person for A and C is the required person for A and D is the required person for A and E is the required person for A and B has full clearance and C has full clearance and D has full clearance and E has full clearance
+    I can only approve drawdown package four eyes a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E if it is not the case that A is drawdown locked and it is not the case that A is approved by credit operations and it is not the case that B is equal to C and it is not the case that D is equal to E
+    Once I approve drawdown package four eyes a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E, it is the case that A is approved by credit operations and A is approved for risk
+
+  approve fast-track drawdown package for a drawdown case A
+    I can only approve fast-track drawdown package for a drawdown case A if it is the case that the drawdown for A is open and A has fast track enabled and A has a verified borrowing base and the covenant statement for A is verified
+    I can only approve fast-track drawdown package for a drawdown case A if it is not the case that A is drawdown locked and it is not the case that A is approved by credit operations
+    Once I approve fast-track drawdown package for a drawdown case A, it is the case that A is approved by credit operations and A is auto approved
+
+  authorize packet creation for a drawdown-case A
+    I can only authorize packet creation for a drawdown-case A if it is the case that the drawdown for A is open and A is approved by credit operations
+    I can only authorize packet creation for a drawdown-case A if it is not the case that A is drawdown locked and it is not the case that A has a compliance hold flag and it is not the case that A has a suspicious payment flag and it is not the case that A has a frozen drawdown and it is not the case that A is authorized for packet creation
+    Once I authorize packet creation for a drawdown-case A, it is the case that A is authorized for packet creation
+
+  raise compliance hold on a drawdown case A
+    I can only raise compliance hold on a drawdown case A if it is the case that the drawdown for A is open
+    I can only raise compliance hold on a drawdown case A if it is not the case that A is drawdown locked and it is not the case that A has a compliance hold flag
+    Once I raise compliance hold on a drawdown case A, it is the case that A has a compliance hold flag
+
+  validate a facility document B for a case A
+    I can only validate a facility document B for a case A if it is the case that the drawdown for A is open and the facility B is eligible for the case A and A is authorized for packet creation
+    I can only validate a facility document B for a case A if it is not the case that A is drawdown locked and it is not the case that B is a validated facility document
+    Once I validate a facility document B for a case A, it is the case that B is a validated facility document
+
+  create drawdown packet a drawdown_packet B for a drawdown_case A with signature slots a signature_slot C and a signature_slot D
+    I can only create drawdown packet a drawdown_packet B for a drawdown_case A with signature slots a signature_slot C and a signature_slot D if it is the case that the drawdown for A is open and A is authorized for packet creation
+    I can only create drawdown packet a drawdown_packet B for a drawdown_case A with signature slots a signature_slot C and a signature_slot D if it is not the case that A is drawdown locked and it is not the case that B has been created and it is not the case that C is equal to D
+    Once I create drawdown packet a drawdown_packet B for a drawdown_case A with signature slots a signature_slot C and a signature_slot D, it is the case that B has been created and B is a packet for case A and B has signature slot C and B has signature slot D
+
+  attach facility document a facility_document C to packet a drawdown_packet B for case a drawdown_case A
+    I can only attach facility document a facility_document C to packet a drawdown_packet B for case a drawdown_case A if it is the case that the drawdown for A is open and B is a packet for case A and B has been created and C is a validated facility document
+    I can only attach facility document a facility_document C to packet a drawdown_packet B for case a drawdown_case A if it is not the case that A is drawdown locked and it is not the case that B is finalized and it is not the case that B is attached to the facility document C
+    Once I attach facility document a facility_document C to packet a drawdown_packet B for case a drawdown_case A, it is the case that B is attached to the facility document C
+
+  assign signer to packet slot a drawdown case A a drawdown packet B a borrower signatory C a signature slot D
+    I can only assign signer to packet slot a drawdown case A a drawdown packet B a borrower signatory C a signature slot D if it is the case that the drawdown for A is open and B is a packet for case A and B has been created and C is the required person for A and C has their authorization documents verified and C's contact is verified and B has signature slot D
+    I can only assign signer to packet slot a drawdown case A a drawdown packet B a borrower signatory C a signature slot D if it is not the case that A is drawdown locked and it is not the case that B is assigned to signer C
+    Once I assign signer to packet slot a drawdown case A a drawdown packet B a borrower signatory C a signature slot D, it is the case that B is assigned to signer C
+    Once I assign signer to packet slot a drawdown case A a drawdown packet B a borrower signatory C a signature slot D, it is not the case anymore that B has signature slot D
+
+  start signature collection for a drawdown-packet A
+    I can only start signature collection for a drawdown-packet A if it is the case that A has been created
+    I can only start signature collection for a drawdown-packet A if it is not the case that A is finalized and it is not the case that signature collection has started for A
+    Once I start signature collection for a drawdown-packet A, it is the case that signature collection has started for A
+
+  capture signer signature a drawdown packet A a borrower signatory B
+    I can only capture signer signature a drawdown packet A a borrower signatory B if it is the case that signature collection has started for A and A is assigned to signer B
+    I can only capture signer signature a drawdown packet A a borrower signatory B if it is not the case that B's signature is captured on A
+    Once I capture signer signature a drawdown packet A a borrower signatory B, it is the case that B's signature is captured on A
+
+  verify two distinct signatures a drawdown packet A a borrower signatory B a borrower signatory C
+    I can only verify two distinct signatures a drawdown packet A a borrower signatory B a borrower signatory C if it is the case that A is assigned to signer B and A is assigned to signer C and B's signature is captured on A and C's signature is captured on A
+    I can only verify two distinct signatures a drawdown packet A a borrower signatory B a borrower signatory C if it is not the case that the two signatures on A are verified and it is not the case that B is equal to C
+    Once I verify two distinct signatures a drawdown packet A a borrower signatory B a borrower signatory C, it is the case that the two signatures on A are verified
+
+  perform packet compliance check on a drawdown-packet A whose two signatures are verified and which has not yet been checked for packet compliance
+    I can only perform packet compliance check on a drawdown-packet A whose two signatures are verified and which has not yet been checked for packet compliance if it is the case that the two signatures on A are verified
+    I can only perform packet compliance check on a drawdown-packet A whose two signatures are verified and which has not yet been checked for packet compliance if it is not the case that A has been checked for packet compliance
+    Once I perform packet compliance check on a drawdown-packet A whose two signatures are verified and which has not yet been checked for packet compliance, it is the case that A has been checked for packet compliance
+
+  finalize a drawdown-packet A after compliance check and stop signature collection for a drawdown-packet A
+    I can only finalize a drawdown-packet A after compliance check and stop signature collection for a drawdown-packet A if it is the case that A has been checked for packet compliance
+    I can only finalize a drawdown-packet A after compliance check and stop signature collection for a drawdown-packet A if it is not the case that A is finalized
+    Once I finalize a drawdown-packet A after compliance check and stop signature collection for a drawdown-packet A, it is the case that A is finalized
+    Once I finalize a drawdown-packet A after compliance check and stop signature collection for a drawdown-packet A, it is not the case anymore that signature collection has started for A
+
+  confirm a drawdown packet B for a drawdown case A attached to a facility document C, a facility document D and a facility document E is complete
+    I can only confirm a drawdown packet B for a drawdown case A attached to a facility document C, a facility document D and a facility document E is complete if it is the case that the drawdown for A is open and B is a packet for case A and B is finalized and B is attached to the facility document C and B is attached to the facility document D and B is attached to the facility document E
+    I can only confirm a drawdown packet B for a drawdown case A attached to a facility document C, a facility document D and a facility document E is complete if it is not the case that A is drawdown locked and it is not the case that the drawdown packet for A is complete and it is not the case that C is equal to D and it is not the case that C is equal to E and it is not the case that D is equal to E
+    Once I confirm a drawdown packet B for a drawdown case A attached to a facility document C, a facility document D and a facility document E is complete, it is the case that the drawdown packet for A is complete
+
+  reopen packet and reset signatures a drawdown case A a drawdown packet B a reopen key token C a signature slot D a signature slot E
+    I can only reopen packet and reset signatures a drawdown case A a drawdown packet B a reopen key token C a signature slot D a signature slot E if it is the case that the drawdown for A is open and B is a packet for case A and B has been created and C is available
+    I can only reopen packet and reset signatures a drawdown case A a drawdown packet B a reopen key token C a signature slot D a signature slot E if it is not the case that A is drawdown locked and it is not the case that B has been reopened
+    Once I reopen packet and reset signatures a drawdown case A a drawdown packet B a reopen key token C a signature slot D a signature slot E, it is the case that B has been reopened and C is consumed and B has signature slot D and B has signature slot E
+    Once I reopen packet and reset signatures a drawdown case A a drawdown packet B a reopen key token C a signature slot D a signature slot E, it is not the case anymore that C is available and it is not the case anymore that B is finalized and it is not the case anymore that B has been checked for packet compliance and it is not the case anymore that the two signatures on B are verified and it is not the case anymore that signature collection has started for B
+
+  lock a case A for execution with a packet B
+    I can only lock a case A for execution with a packet B if it is the case that the drawdown for A is open and the drawdown packet for A is complete and B is a packet for case A and B is finalized and A is authorized for packet creation
+    I can only lock a case A for execution with a packet B if it is not the case that A is drawdown locked and it is not the case that A has a frozen drawdown
+    Once I lock a case A for execution with a packet B, it is the case that A is drawdown locked
+    Once I lock a case A for execution with a packet B, it is not the case anymore that the drawdown for A is open
+
+  reopen a drawdown case A with a reopen key token B
+    I can only reopen a drawdown case A with a reopen key token B if it is the case that A is drawdown locked and B is available
+    I can only reopen a drawdown case A with a reopen key token B if it is not the case that A has a frozen drawdown
+    Once I reopen a drawdown case A with a reopen key token B, it is the case that the drawdown for A is open and A has a compliance hold flag and B is consumed
+    Once I reopen a drawdown case A with a reopen key token B, it is not the case anymore that A is drawdown locked and it is not the case anymore that B is available
+
+  freeze drawdown for a drawdown case A due to suspicious a payment instruction B
+    I can only freeze drawdown for a drawdown case A due to suspicious a payment instruction B if it is the case that the drawdown for A is open
+    I can only freeze drawdown for a drawdown case A due to suspicious a payment instruction B if it is not the case that A is drawdown locked and it is not the case that A is authorized for packet creation and it is not the case that A has a frozen drawdown
+    Once I freeze drawdown for a drawdown case A due to suspicious a payment instruction B, it is the case that A has the payment instruction B and A has a suspicious payment flag and A has a frozen drawdown
+
+  draft a payment instruction B for a case A
+    I can only draft a payment instruction B for a case A if it is the case that A is drawdown locked and A is authorized for packet creation and the drawdown packet for A is complete
+    I can only draft a payment instruction B for a case A if it is not the case that a payment instruction has been drafted for A and it is not the case that A has the payment instruction B
+    Once I draft a payment instruction B for a case A, it is the case that a payment instruction has been drafted for A and A has the payment instruction B and B payment instruction was created and A payment instruction has been validated
+
+  validate payment instruction for a case A
+    I can only validate payment instruction for a case A if it is the case that A is drawdown locked and A payment instruction has been validated
+    I can only validate payment instruction for a case A if it is not the case that the payment instruction for A is approved
+    Once I validate payment instruction for a case A, it is the case that the payment instruction for A is approved
+
+  approve payment instruction for a case A
+    I can only approve payment instruction for a case A if it is the case that A is drawdown locked and the payment instruction for A is approved
+    I can only approve payment instruction for a case A if it is not the case that the payment instruction for A is ready to be signed
+    Once I approve payment instruction for a case A, it is the case that the payment instruction for A is ready to be signed
+
+  sign a payment instruction A for a drawdown case B
+    I can only sign a payment instruction A for a drawdown case B if it is the case that B is drawdown locked and A payment instruction was created and the payment instruction for B is ready to be signed
+    I can only sign a payment instruction A for a drawdown case B if it is not the case that A is a signed payment instruction
+    Once I sign a payment instruction A for a drawdown case B, it is the case that A is a signed payment instruction
+
+  send a signed payment instruction A to the treasury
+    I can only send a signed payment instruction A to the treasury if it is the case that A is a signed payment instruction
+    I can only send a signed payment instruction A to the treasury if it is not the case that A is sent to the treasury
+    Once I send a signed payment instruction A to the treasury, it is the case that A is sent to the treasury
+
+  execute treasury release for a payment instruction A on a drawdown case B using a drawdown packet C attached to a facility document D
+    I can only execute treasury release for a payment instruction A on a drawdown case B using a drawdown packet C attached to a facility document D if it is the case that B is drawdown locked and B is authorized for packet creation and B is approved for risk and A is sent to the treasury and C is a packet for case B and C is finalized and C is attached to the facility document D and the facility D is eligible for the case B and D requires fx review and the covenant statement for B is verified and the use of proceeds for B has been verified
+    I can only execute treasury release for a payment instruction A on a drawdown case B using a drawdown packet C attached to a facility document D if it is not the case that A payment instruction has been executed
+    Once I execute treasury release for a payment instruction A on a drawdown case B using a drawdown packet C attached to a facility document D, it is the case that A payment instruction has been executed
+
+  reserve a wire cutoff window token B for a payment instruction A
+    I can only reserve a wire cutoff window token B for a payment instruction A if it is the case that A payment instruction has been executed and B is available
+    I can only reserve a wire cutoff window token B for a payment instruction A if it is not the case that wire cutoff is reserved for A
+    Once I reserve a wire cutoff window token B for a payment instruction A, it is the case that wire cutoff is reserved for A and B is consumed
+    Once I reserve a wire cutoff window token B for a payment instruction A, it is not the case anymore that B is available
+
+  consume a wire cutoff window token B for a drawdown case A without reservation
+    I can only consume a wire cutoff window token B for a drawdown case A without reservation if it is the case that A is drawdown locked and B is available
+    I can only consume a wire cutoff window token B for a drawdown case A without reservation if it is not the case that A has a frozen drawdown
+    Once I consume a wire cutoff window token B for a drawdown case A without reservation, it is the case that B is consumed
+    Once I consume a wire cutoff window token B for a drawdown case A without reservation, it is not the case anymore that B is available
+
+  release a payment instruction A by wire
+    I can only release a payment instruction A by wire if it is the case that wire cutoff is reserved for A
+    I can only release a payment instruction A by wire if it is not the case that the beneficiary of A is credited and it is not the case that A has been released by wire
+    Once I release a payment instruction A by wire, it is the case that A has been released by wire
+
+  confirm that beneficiary of a payment_instruction A is credited
+    I can only confirm that beneficiary of a payment_instruction A is credited if it is the case that A has been released by wire
+    I can only confirm that beneficiary of a payment_instruction A is credited if it is not the case that the beneficiary of A is credited
+    Once I confirm that beneficiary of a payment_instruction A is credited, it is the case that the beneficiary of A is credited
+
+  mark funds for a payment instruction A as settled
+    I can only mark funds for a payment instruction A as settled if it is the case that the beneficiary of A is credited
+    I can only mark funds for a payment instruction A as settled if it is not the case that funds for A are settled
+    Once I mark funds for a payment instruction A as settled, it is the case that funds for A are settled
+
+  create disbursement notice a drawdown case A a disbursement notice B a borrower signatory C a notice dispatch window token D a drawdown packet E a facility document F
+    I can only create disbursement notice a drawdown case A a disbursement notice B a borrower signatory C a notice dispatch window token D a drawdown packet E a facility document F if it is the case that A is drawdown locked and D is available and E is a packet for case A and E is finalized and E is attached to the facility document F and the facility F is eligible for the case A and the facility requires agent notice for F and C is the required person for A and C has full clearance
+    I can only create disbursement notice a drawdown case A a disbursement notice B a borrower signatory C a notice dispatch window token D a drawdown packet E a facility document F if it is not the case that B is addressed to the signer C in case A
+    Once I create disbursement notice a drawdown case A a disbursement notice B a borrower signatory C a notice dispatch window token D a drawdown packet E a facility document F, it is the case that B is addressed to the signer C in case A and B has been created and D is consumed
+    Once I create disbursement notice a drawdown case A a disbursement notice B a borrower signatory C a notice dispatch window token D a drawdown packet E a facility document F, it is not the case anymore that D is available
+
+  approve a disbursement notice A
+    I can only approve a disbursement notice A if it is the case that A has been created
+    I can only approve a disbursement notice A if it is not the case that A is approved
+    Once I approve a disbursement notice A, it is the case that A is approved
+
+  create a delivery_package A for a disbursement_notice B
+    I can only create a delivery_package A for a disbursement_notice B if it is the case that B has been created and B is approved
+    I can only create a delivery_package A for a disbursement_notice B if it is not the case that the delivery package A has been created
+    Once I create a delivery_package A for a disbursement_notice B, it is the case that the delivery package A has been created and the package A is for the notice B
+
+  apply delivery label to a delivery_package A using a delivery_slot_token B
+    I can only apply delivery label to a delivery_package A using a delivery_slot_token B if it is the case that the delivery package A has been created and B is available
+    I can only apply delivery label to a delivery_package A using a delivery_slot_token B if it is not the case that A is a labeled package
+    Once I apply delivery label to a delivery_package A using a delivery_slot_token B, it is the case that A is a labeled package and B is consumed
+    Once I apply delivery label to a delivery_package A using a delivery_slot_token B, it is not the case anymore that B is available
+
+  assign senior override review to a drawdown case A using a delivery slot token B
+    I can only assign senior override review to a drawdown case A using a delivery slot token B if it is the case that A is drawdown locked and B is available
+    I can only assign senior override review to a drawdown case A using a delivery slot token B if it is not the case that A is assigned a senior override
+    Once I assign senior override review to a drawdown case A using a delivery slot token B, it is the case that A is assigned a senior override and B is consumed
+    Once I assign senior override review to a drawdown case A using a delivery slot token B, it is not the case anymore that B is available
+
+  print delivery label for a delivery package A
+    I can only print delivery label for a delivery package A if it is the case that A is a labeled package
+    I can only print delivery label for a delivery package A if it is not the case that A has a printed label
+    Once I print delivery label for a delivery package A, it is the case that A has a printed label
+
+  scan printed label of a delivery package A
+    I can only scan printed label of a delivery package A if it is the case that A has a printed label
+    I can only scan printed label of a delivery package A if it is not the case that the label of A has been scanned
+    Once I scan printed label of a delivery package A, it is the case that the label of A has been scanned
+
+  mark a disbursement-notice A as ready to be sent
+    I can only mark a disbursement-notice A as ready to be sent if it is the case that A is ready to be sent
+    Once I mark a disbursement-notice A as ready to be sent, it is the case that A is ready to be sent
+
+  send a disbursement notice A using a payment instruction B for a drawdown case C in a delivery package D to a borrower signatory E via secure delivery
+    I can only send a disbursement notice A using a payment instruction B for a drawdown case C in a delivery package D to a borrower signatory E via secure delivery if it is the case that C is drawdown locked and A is addressed to the signer E in case C and A has been created and C has the payment instruction B and B payment instruction was created and the package D is for the notice A and the label of D has been scanned and A is ready to be sent
+    I can only send a disbursement notice A using a payment instruction B for a drawdown case C in a delivery package D to a borrower signatory E via secure delivery if it is not the case that C has a frozen drawdown and it is not the case that A has been sent
+    Once I send a disbursement notice A using a payment instruction B for a drawdown case C in a delivery package D to a borrower signatory E via secure delivery, it is the case that A has been sent
+
+  complete final controls a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E a payment instruction F a disbursement notice G
+    I can only complete final controls a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E a payment instruction F a disbursement notice G if it is the case that A is drawdown locked and A is authorized for packet creation and A is approved for risk and the drawdown package for A is compiled and a two-officer signoff is recorded for A and B is the required person for A and C is the required person for A and D is the required person for A and E is the required person for A and B has full clearance and C has full clearance and D has full clearance and E has full clearance and funds for F are settled and G has been sent
+    I can only complete final controls a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E a payment instruction F a disbursement notice G if it is not the case that B is equal to C and it is not the case that D is equal to E and it is not the case that A has a compliance hold flag and it is not the case that A has a suspicious payment flag and it is not the case that A has a frozen drawdown and it is not the case that final controls are complete for A
+    Once I complete final controls a drawdown case A a borrower signatory B a borrower signatory C a bank drawdown officer D a bank drawdown officer E a payment instruction F a disbursement notice G, it is the case that final controls are complete for A
+
+  close drawdown case a drawdown-case A using a payment-instruction B and a disbursement-notice C
+    I can only close drawdown case a drawdown-case A using a payment-instruction B and a disbursement-notice C if it is the case that A is drawdown locked and final controls are complete for A and B payment instruction was created and B payment instruction has been executed and the beneficiary of B is credited and C has been sent
+    I can only close drawdown case a drawdown-case A using a payment-instruction B and a disbursement-notice C if it is not the case that the drawdown for A is completed
+    Once I close drawdown case a drawdown-case A using a payment-instruction B and a disbursement-notice C, it is the case that the drawdown for A is completed
+    Once I close drawdown case a drawdown-case A using a payment-instruction B and a disbursement-notice C, it is not the case anymore that A is drawdown locked

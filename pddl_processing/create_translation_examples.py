@@ -22,7 +22,11 @@ def create_translation_examples(pddl_describer: PDDLDescriber):
     #object_type_mapping = create_type_mappings(pddl_describer.action_mappings_indef, list(object_maps.keys()))
     objects_used = []
 
-    object_type_mapping = create_type_mappings(pddl_describer, list(object_maps.keys()))
+    objects_list = list(object_maps.keys())
+    object_type_mapping, objects_list = create_type_mappings(pddl_describer, objects_list)
+    for obj in objects_list:
+        if obj not in object_maps:
+            object_maps[obj] = f'x{len(object_maps)}'
     unused_object_type_mappings = deepcopy(object_type_mapping)
 
 
@@ -158,16 +162,14 @@ def order_args(pddl_describer: PDDLDescriber, pred_name: str, obj_names_nl_order
 
 
 def create_type_mappings(pddl_describer: PDDLDescriber, objects: list):
-
     all_types = set()
-
     for action, action_data in pddl_describer.action_data.items():
-
-        # find type name
         for variable_name, variable_type in action_data['parameter_types'].items():
             all_types.add(variable_type)
 
-    assert len(all_types) <= len(objects)
+    objects = list(objects)
+    while len(objects) < len(all_types):
+        objects.append(f'obj_{len(objects)}')
 
     all_types = list(all_types)
     type_mapping = defaultdict(list)
@@ -176,7 +178,7 @@ def create_type_mappings(pddl_describer: PDDLDescriber, objects: list):
         type_name = all_types[type_ind]
         type_mapping[type_name].append(obj)
 
-    return type_mapping
+    return type_mapping, objects
 
 
 def create_type_mappings_old(action_mappings: dict, objects: list):

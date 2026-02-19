@@ -1,0 +1,726 @@
+(drawdown_open ?case) -> the drawdown for {?case} is open
+(drawdown_locked ?case) -> {?case} is drawdown locked
+(drawdown_completed ?case) -> the drawdown for {?case} is completed
+(drawdown_frozen ?case) -> {?case} has a frozen drawdown
+(compliance_hold_flag ?case) -> {?case} has a compliance hold flag
+(suspicious_payment_flag ?case) -> {?case} has a suspicious payment flag
+(wire_released ?payment_instruction) -> {?payment_instruction} has been released by wire
+(notice_created ?notice) -> {?notice} has been created
+(facility_requires_fx_review ?facility_doc) -> {?facility_doc} requires fx review
+(facility_requires_agent_notice ?facility_doc) -> the facility requires agent notice for {?facility_doc}
+(channel_selected ?case ?channel) -> {?channel} is selected for case {?case}
+(facility_selected ?case ?facility_doc) -> the facility {?facility_doc} is selected for case {?case}
+(required_person ?case ?person) -> {?person} is the required person for {?case}
+(person_linked_to_case ?case ?person) -> {?person} is linked to the case {?case}
+(required_document ?case ?doc) -> {?doc} is a required document for {?case}
+(document_for_case ?doc ?case) -> {?doc} is a document for case {?case}
+(document_for_person ?doc ?person) -> {?doc} is a document for {?person}
+(document_received ?doc) -> {?doc} has been received
+(document_verified ?doc) -> {?doc} is verified
+(doc_is_borrowing_base_certificate ?doc) -> {?doc} is borrowing the base certificate
+(doc_is_compliance_certificate ?doc) -> the document {?doc} is a compliance certificate
+(doc_is_covenant_compliance_statement ?doc) -> {?doc} is a covenant compliance statement
+(doc_is_fee_calculation_sheet ?doc) -> {?doc} is a fee calculation sheet
+(doc_is_use_of_proceeds_statement ?doc) -> {?doc} is a use of proceeds statement
+(doc_is_authorization_kyc_record ?doc) -> {?doc} is an authorization kyc record
+(borrowing_base_verified ?case) -> {?case} has a verified borrowing base
+(compliance_certificate_verified ?case) -> {?case} has a verified compliance certificate
+(covenant_statement_verified ?case) -> the covenant statement for {?case} is verified
+(use_of_proceeds_verified ?case) -> the use of proceeds for {?case} has been verified
+(two_officer_signoff_recorded ?case) -> a two-officer signoff is recorded for {?case}
+(person_auth_doc_verified ?person) -> {?person} has their authorization documents verified
+(person_contact_verified ?person) -> {?person}'s contact is verified
+(person_in_required_set ?person) -> {?person} is in the required set
+(person_sanctions_checked ?person) -> sanctions have been checked for {?person}
+(person_pep_checked ?person) -> {?person} has been pep checked
+(person_full_clearance ?person) -> {?person} has full clearance
+(availability_calculated ?case) -> availability for {?case} has been calculated
+(limit_headroom_confirmed ?case) -> limit headroom is confirmed for {?case}
+(basic_drawdown_checks_complete ?case) -> basic drawdown checks are complete for {?case}
+(fast_track_enabled ?case) -> {?case} has fast track enabled
+(drawdown_package_compiled ?case) -> the drawdown package for {?case} is compiled
+(credit_ops_approved ?case) -> {?case} is approved by credit operations
+(risk_approved ?case) -> {?case} is approved for risk
+(auto_approved ?case) -> {?case} is auto approved
+(packet_creation_authorized ?case) -> {?case} is authorized for packet creation
+(facility_eligible_for_case ?case ?facility_doc) -> the facility {?facility_doc} is eligible for the case {?case}
+(facility_document_validated ?facility_doc) -> {?facility_doc} is a validated facility document
+(packet_for_case ?packet ?case) -> {?packet} is a packet for case {?case}
+(packet_created ?packet) -> {?packet} has been created
+(packet_attached_facility_document ?packet ?facility_doc) -> {?packet} is attached to the facility document {?facility_doc}
+(packet_assigned_signer ?packet ?borrower_signer) -> {?packet} is assigned to signer {?borrower_signer}
+(packet_has_signature_slot ?packet ?signature_slot) -> {?packet} has signature slot {?signature_slot}
+(signature_collection_started ?packet) -> signature collection has started for {?packet}
+(signature_captured ?packet ?borrower_signer) -> {?borrower_signer}'s signature is captured on {?packet}
+(two_signatures_verified ?packet) -> the two signatures on {?packet} are verified
+(packet_compliance_checked ?packet) -> {?packet} has been checked for packet compliance
+(packet_finalized ?packet) -> {?packet} is finalized
+(drawdown_packet_complete ?case) -> the drawdown packet for {?case} is complete
+(packet_reopened ?packet) -> {?packet} has been reopened
+(payment_instruction_drafted ?case) -> a payment instruction has been drafted for {?case}
+(case_has_payment_instruction ?case ?payment_instruction) -> {?case} has the payment instruction {?payment_instruction}
+(payment_instruction_created ?payment_instruction) -> {?payment_instruction} payment instruction was created
+(payment_instruction_validated ?case) -> {?case} payment instruction has been validated
+(payment_instruction_approved ?case) -> the payment instruction for {?case} is approved
+(payment_instruction_ready_to_sign ?case) -> the payment instruction for {?case} is ready to be signed
+(payment_instruction_signed ?payment_instruction) -> {?payment_instruction} is a signed payment instruction
+(payment_instruction_sent_to_treasury ?payment_instruction) -> {?payment_instruction} is sent to the treasury
+(payment_instruction_executed ?payment_instruction) -> {?payment_instruction} payment instruction has been executed
+(beneficiary_credited ?payment_instruction) -> the beneficiary of {?payment_instruction} is credited
+(funds_settled ?payment_instruction) -> funds for {?payment_instruction} are settled
+(token_available ?token) -> {?token} is available
+(token_consumed ?token) -> {?token} is consumed
+(wire_cutoff_reserved ?payment_instruction) -> wire cutoff is reserved for {?payment_instruction}
+(notice_addressed_to_signer ?notice ?case ?borrower_signer) -> {?notice} is addressed to the signer {?borrower_signer} in case {?case}
+(notice_approved ?notice) -> {?notice} is approved
+(delivery_package_created ?delivery_package) -> the delivery package {?delivery_package} has been created
+(package_for_notice ?delivery_package ?notice) -> the package {?delivery_package} is for the notice {?notice}
+(package_labeled ?delivery_package) -> {?delivery_package} is a labeled package
+(label_printed ?delivery_package) -> {?delivery_package} has a printed label
+(label_scanned ?delivery_package) -> the label of {?delivery_package} has been scanned
+(notice_ready_to_send ?notice) -> {?notice} is ready to be sent
+(notice_sent ?notice) -> {?notice} has been sent
+(senior_override_assigned ?case) -> {?case} is assigned a senior override
+(final_controls_complete ?case) -> final controls are complete for {?case}
+(= ?x1 ?x2) -> {?x1} is equal to {?x2}
+(!= ?x1 ?x2) -> {?x1} is not equal to {?x2}
+action: open_drawdown_case
+parameters: [?case]
+preconditions of open_drawdown_case: ?case is a drawdown case and it is not the case that the drawdown for ?case is open and the drawdown for ?case is completed and ?case has a frozen drawdown
+effects of open_drawdown_case: it becomes true that the drawdown for ?case is open -> open drawdown case {drawdown case ?case}
+action: select_request_channel
+parameters: [?case, ?channel]
+preconditions of select_request_channel: the drawdown for ?case is open and ?case is a drawdown case and ?channel is a request channel and it is not the case that ?case is drawdown locked and ?case has a frozen drawdown
+effects of select_request_channel: it becomes true that ?channel is selected for case ?case -> select {request channel ?channel} for {drawdown case ?case}
+action: select_facility_document
+parameters: [?case, ?facility_doc]
+preconditions of select_facility_document: the drawdown for ?case is open and ?case is a drawdown case and ?facility_doc is a facility document and it is not the case that ?case is drawdown locked and ?case has a frozen drawdown
+effects of select_facility_document: it becomes true that the facility ?facility_doc is selected for case ?case -> select {facility document ?facility_doc} for {drawdown case ?case}
+action: verify_borrowing_base_certificate
+parameters: [?case, ?borrowing_base_doc]
+preconditions of verify_borrowing_base_certificate: the drawdown for ?case is open and ?borrowing_base_doc is a required document for ?case and ?borrowing_base_doc is a document for case ?case and ?borrowing_base_doc has been received and ?borrowing_base_doc is borrowing the base certificate and ?case is a drawdown case and ?borrowing_base_doc is a drawdown document and it is not the case that ?case is drawdown locked and ?borrowing_base_doc is verified
+effects of verify_borrowing_base_certificate: it becomes true that ?borrowing_base_doc is verified and ?case has a verified borrowing base -> verify borrowing base certificate for {drawdown-case ?case} using {document ?borrowing_base_doc}
+action: verify_compliance_certificate
+parameters: [?case, ?compliance_cert_doc]
+preconditions of verify_compliance_certificate: the drawdown for ?case is open and ?compliance_cert_doc is a required document for ?case and ?compliance_cert_doc is a document for case ?case and ?compliance_cert_doc has been received and the document ?compliance_cert_doc is a compliance certificate and ?case is a drawdown case and ?compliance_cert_doc is a drawdown document and it is not the case that ?case is drawdown locked and ?compliance_cert_doc is verified
+effects of verify_compliance_certificate: it becomes true that ?compliance_cert_doc is verified and ?case has a verified compliance certificate -> verify compliance certificate {compliance certificate ?compliance_cert_doc} for {drawdown case ?case}
+action: verify_covenant_compliance_statement
+parameters: [?case, ?covenant_statement_doc]
+preconditions of verify_covenant_compliance_statement: the drawdown for ?case is open and ?covenant_statement_doc is a required document for ?case and ?covenant_statement_doc is a document for case ?case and ?covenant_statement_doc has been received and ?covenant_statement_doc is a covenant compliance statement and ?case is a drawdown case and ?covenant_statement_doc is a drawdown document and it is not the case that ?case is drawdown locked and ?covenant_statement_doc is verified
+effects of verify_covenant_compliance_statement: it becomes true that ?covenant_statement_doc is verified and the covenant statement for ?case is verified -> verify covenant compliance statement {covenant_compliance_statement ?covenant_statement_doc} for {drawdown_case ?case}
+action: verify_use_of_proceeds_statement
+parameters: [?case, ?use_of_proceeds_doc]
+preconditions of verify_use_of_proceeds_statement: the drawdown for ?case is open and ?use_of_proceeds_doc is a required document for ?case and ?use_of_proceeds_doc is a document for case ?case and ?use_of_proceeds_doc has been received and ?use_of_proceeds_doc is a use of proceeds statement and ?case is a drawdown case and ?use_of_proceeds_doc is a drawdown document and it is not the case that ?case is drawdown locked and ?use_of_proceeds_doc is verified
+effects of verify_use_of_proceeds_statement: it becomes true that ?use_of_proceeds_doc is verified and the use of proceeds for ?case has been verified -> verify use of proceeds statement {document ?use_of_proceeds_doc} for {drawdown_case ?case}
+action: verify_fee_calculation_sheet
+parameters: [?case, ?fee_calc_doc]
+preconditions of verify_fee_calculation_sheet: the drawdown for ?case is open and ?fee_calc_doc is a required document for ?case and ?fee_calc_doc is a document for case ?case and ?fee_calc_doc has been received and ?fee_calc_doc is a fee calculation sheet and ?case is a drawdown case and ?fee_calc_doc is a drawdown document and it is not the case that ?case is drawdown locked and ?fee_calc_doc is verified
+effects of verify_fee_calculation_sheet: it becomes true that ?fee_calc_doc is verified -> verify {fee calculation sheet ?fee_calc_doc} for {drawdown case ?case}
+action: record_two_officer_signoff
+parameters: [?case, ?fee_calc_doc, ?officer_1, ?officer_2]
+preconditions of record_two_officer_signoff: the drawdown for ?case is open and ?fee_calc_doc is a document for case ?case and ?fee_calc_doc is a fee calculation sheet and ?fee_calc_doc is verified and ?officer_1 is the required person for ?case and ?officer_2 is the required person for ?case and ?officer_1 has full clearance and ?officer_2 has full clearance and ?case is a drawdown case and ?fee_calc_doc is a drawdown document and ?officer_1 is a bank drawdown officer and ?officer_2 is a bank drawdown officer and it is not the case that ?case is drawdown locked and ?officer_1 is equal to ?officer_2
+effects of record_two_officer_signoff: it becomes true that a two-officer signoff is recorded for ?case -> record two-officer signoff for {drawdown case ?case} using {fee calculation document ?fee_calc_doc} approved by {bank drawdown officer ?officer_1} and {bank drawdown officer ?officer_2}
+action: verify_person_authorization_record
+parameters: [?case, ?person, ?auth_kyc_doc]
+preconditions of verify_person_authorization_record: the drawdown for ?case is open and ?auth_kyc_doc is a required document for ?case and ?auth_kyc_doc is a document for ?person and ?auth_kyc_doc has been received and ?auth_kyc_doc is an authorization kyc record and ?case is a drawdown case and ?person is a participant person and ?auth_kyc_doc is a drawdown document and it is not the case that ?case is drawdown locked and ?auth_kyc_doc is verified
+effects of verify_person_authorization_record: it becomes true that ?auth_kyc_doc is verified and ?person has their authorization documents verified -> verify {authorization_kyc_record ?auth_kyc_doc} for {participant_person ?person} in {drawdown_case ?case}
+action: verify_person_contact_details
+parameters: [?case, ?person]
+preconditions of verify_person_contact_details: the drawdown for ?case is open and ?person has their authorization documents verified and ?person is in the required set and ?case is a drawdown case and ?person is a participant person and it is not the case that ?case is drawdown locked and ?person's contact is verified
+effects of verify_person_contact_details: it becomes true that ?person's contact is verified -> verify person contact details for {participant person ?person} in {drawdown case ?case}
+action: run_full_person_screening
+parameters: [?case, ?person]
+preconditions of run_full_person_screening: the drawdown for ?case is open and ?person is linked to the case ?case and ?person has their authorization documents verified and ?person's contact is verified and ?case is a drawdown case and ?person is a participant person and it is not the case that ?case is drawdown locked and ?person has full clearance
+effects of run_full_person_screening: it becomes true that sanctions have been checked for ?person and ?person has been pep checked and ?person has full clearance -> run full person screening for {participant person ?person} on {drawdown case ?case}
+action: run_sanctions_screening_only
+parameters: [?case, ?person]
+preconditions of run_sanctions_screening_only: the drawdown for ?case is open and ?person is linked to the case ?case and ?person has their authorization documents verified and ?case is a drawdown case and ?person is a participant person and it is not the case that ?case is drawdown locked and sanctions have been checked for ?person
+effects of run_sanctions_screening_only: it becomes true that sanctions have been checked for ?person -> 
+action: run_pep_screening_only
+parameters: [?case, ?person]
+preconditions of run_pep_screening_only: the drawdown for ?case is open and ?person is linked to the case ?case and ?person has their authorization documents verified and ?case is a drawdown case and ?person is a participant person and it is not the case that ?case is drawdown locked and ?person has been pep checked
+effects of run_pep_screening_only: it becomes true that ?person has been pep checked -> run pep screening only for {participant person ?person} on {drawdown case ?case}
+action: complete_basic_drawdown_checks
+parameters: [?case]
+preconditions of complete_basic_drawdown_checks: the drawdown for ?case is open and ?case has a verified borrowing base and ?case is a drawdown case and it is not the case that ?case is drawdown locked and basic drawdown checks are complete for ?case
+effects of complete_basic_drawdown_checks: it becomes true that availability for ?case has been calculated and limit headroom is confirmed for ?case and basic drawdown checks are complete for ?case -> complete basic drawdown checks for {case ?case}
+action: enable_fast_track
+parameters: [?case]
+preconditions of enable_fast_track: the drawdown for ?case is open and ?case has a verified borrowing base and ?case is a drawdown case and it is not the case that ?case is drawdown locked and ?case has fast track enabled
+effects of enable_fast_track: it becomes true that ?case has fast track enabled -> enable fast track for {drawdown-case ?case}
+action: compile_drawdown_package
+parameters: [?case, ?borrower_signer_1, ?borrower_signer_2, ?bank_officer_1, ?bank_officer_2, ?borrowing_base_doc, ?covenant_statement_doc, ?compliance_cert_doc, ?use_of_proceeds_doc, ?fee_calc_doc]
+preconditions of compile_drawdown_package: the drawdown for ?case is open and ?case has a verified borrowing base and the covenant statement for ?case is verified and ?case has a verified compliance certificate and the use of proceeds for ?case has been verified and ?borrowing_base_doc is a document for case ?case and ?borrowing_base_doc is borrowing the base certificate and ?borrowing_base_doc is verified and ?covenant_statement_doc is a document for case ?case and ?covenant_statement_doc is a covenant compliance statement and ?covenant_statement_doc is verified and ?compliance_cert_doc is a document for case ?case and the document ?compliance_cert_doc is a compliance certificate and ?compliance_cert_doc is verified and ?use_of_proceeds_doc is a document for case ?case and ?use_of_proceeds_doc is a use of proceeds statement and ?use_of_proceeds_doc is verified and ?fee_calc_doc is a document for case ?case and ?fee_calc_doc is a fee calculation sheet and ?fee_calc_doc is verified and ?borrower_signer_1 is the required person for ?case and ?borrower_signer_2 is the required person for ?case and ?bank_officer_1 is the required person for ?case and ?bank_officer_2 is the required person for ?case and ?borrower_signer_1 has full clearance and ?borrower_signer_2 has full clearance and ?bank_officer_1 has full clearance and ?bank_officer_2 has full clearance and basic drawdown checks are complete for ?case and ?case is a drawdown case and ?borrower_signer_1 is a borrower signatory and ?borrower_signer_2 is a borrower signatory and ?bank_officer_1 is a bank drawdown officer and ?bank_officer_2 is a bank drawdown officer and ?borrowing_base_doc is a drawdown document and ?covenant_statement_doc is a drawdown document and ?compliance_cert_doc is a drawdown document and ?use_of_proceeds_doc is a drawdown document and ?fee_calc_doc is a drawdown document and it is not the case that ?case is drawdown locked and the drawdown package for ?case is compiled and ?borrower_signer_1 is equal to ?borrower_signer_2 and ?bank_officer_1 is equal to ?bank_officer_2
+effects of compile_drawdown_package: it becomes true that the drawdown package for ?case is compiled -> 
+action: approve_drawdown_package_four_eyes
+parameters: [?case, ?borrower_signer_1, ?borrower_signer_2, ?bank_officer_1, ?bank_officer_2]
+preconditions of approve_drawdown_package_four_eyes: the drawdown for ?case is open and the drawdown package for ?case is compiled and a two-officer signoff is recorded for ?case and ?borrower_signer_1 is the required person for ?case and ?borrower_signer_2 is the required person for ?case and ?bank_officer_1 is the required person for ?case and ?bank_officer_2 is the required person for ?case and ?borrower_signer_1 has full clearance and ?borrower_signer_2 has full clearance and ?bank_officer_1 has full clearance and ?bank_officer_2 has full clearance and ?case is a drawdown case and ?borrower_signer_1 is a borrower signatory and ?borrower_signer_2 is a borrower signatory and ?bank_officer_1 is a bank drawdown officer and ?bank_officer_2 is a bank drawdown officer and it is not the case that ?case is drawdown locked and ?case is approved by credit operations and ?borrower_signer_1 is equal to ?borrower_signer_2 and ?bank_officer_1 is equal to ?bank_officer_2
+effects of approve_drawdown_package_four_eyes: it becomes true that ?case is approved by credit operations and ?case is approved for risk -> approve drawdown package for {drawdown case ?case} with borrower signers {borrower signatory ?borrower_signer_1} and {borrower signatory ?borrower_signer_2} and bank officers {bank drawdown officer ?bank_officer_1} and {bank drawdown officer ?bank_officer_2}
+action: approve_drawdown_package_fast_track
+parameters: [?case]
+preconditions of approve_drawdown_package_fast_track: the drawdown for ?case is open and ?case has fast track enabled and ?case has a verified borrowing base and the covenant statement for ?case is verified and ?case is a drawdown case and it is not the case that ?case is drawdown locked and ?case is approved by credit operations
+effects of approve_drawdown_package_fast_track: it becomes true that ?case is approved by credit operations and ?case is auto approved -> approve fast-track drawdown package for {drawdown case ?case}
+action: authorize_packet_creation
+parameters: [?case]
+preconditions of authorize_packet_creation: the drawdown for ?case is open and ?case is approved by credit operations and ?case is a drawdown case and it is not the case that ?case is drawdown locked and ?case has a compliance hold flag and ?case has a suspicious payment flag and ?case has a frozen drawdown and ?case is authorized for packet creation
+effects of authorize_packet_creation: it becomes true that ?case is authorized for packet creation -> authorize packet creation for {drawdown-case ?case}
+action: raise_compliance_hold
+parameters: [?case]
+preconditions of raise_compliance_hold: the drawdown for ?case is open and ?case is a drawdown case and it is not the case that ?case is drawdown locked and ?case has a compliance hold flag
+effects of raise_compliance_hold: it becomes true that ?case has a compliance hold flag -> raise compliance hold on {drawdown case ?case}
+action: validate_facility_document
+parameters: [?case, ?facility_doc]
+preconditions of validate_facility_document: the drawdown for ?case is open and the facility ?facility_doc is eligible for the case ?case and ?case is authorized for packet creation and ?case is a drawdown case and ?facility_doc is a facility document and it is not the case that ?case is drawdown locked and ?facility_doc is a validated facility document
+effects of validate_facility_document: it becomes true that ?facility_doc is a validated facility document -> validate {facility document ?facility_doc} for {case ?case}
+action: create_drawdown_packet
+parameters: [?case, ?packet, ?signature_slot_1, ?signature_slot_2]
+preconditions of create_drawdown_packet: the drawdown for ?case is open and ?case is authorized for packet creation and ?case is a drawdown case and ?packet is a drawdown packet and ?signature_slot_1 is a signature slot and ?signature_slot_2 is a signature slot and it is not the case that ?case is drawdown locked and ?packet has been created and ?signature_slot_1 is equal to ?signature_slot_2
+effects of create_drawdown_packet: it becomes true that ?packet has been created and ?packet is a packet for case ?case and ?packet has signature slot ?signature_slot_1 and ?packet has signature slot ?signature_slot_2 -> create drawdown packet {drawdown_packet ?packet} for {drawdown_case ?case} with signature slots {signature_slot ?signature_slot_1} and {signature_slot ?signature_slot_2}
+action: attach_facility_document_to_packet
+parameters: [?case, ?packet, ?facility_doc]
+preconditions of attach_facility_document_to_packet: the drawdown for ?case is open and ?packet is a packet for case ?case and ?packet has been created and ?facility_doc is a validated facility document and ?case is a drawdown case and ?packet is a drawdown packet and ?facility_doc is a facility document and it is not the case that ?case is drawdown locked and ?packet is finalized and ?packet is attached to the facility document ?facility_doc
+effects of attach_facility_document_to_packet: it becomes true that ?packet is attached to the facility document ?facility_doc -> attach facility document {facility_document ?facility_doc} to packet {drawdown_packet ?packet} for case {drawdown_case ?case}
+action: assign_signer_to_packet_slot
+parameters: [?case, ?packet, ?borrower_signer, ?signature_slot]
+preconditions of assign_signer_to_packet_slot: the drawdown for ?case is open and ?packet is a packet for case ?case and ?packet has been created and ?borrower_signer is the required person for ?case and ?borrower_signer has their authorization documents verified and ?borrower_signer's contact is verified and ?packet has signature slot ?signature_slot and ?case is a drawdown case and ?packet is a drawdown packet and ?borrower_signer is a borrower signatory and ?signature_slot is a signature slot and it is not the case that ?case is drawdown locked and ?packet is assigned to signer ?borrower_signer
+effects of assign_signer_to_packet_slot: it becomes true that ?packet is assigned to signer ?borrower_signer and it is not the case anymore that ?packet has signature slot ?signature_slot -> assign {borrower_signatory ?borrower_signer} to {drawdown_packet ?packet} for {drawdown_case ?case} in {signature_slot ?signature_slot}
+action: start_signature_collection
+parameters: [?packet]
+preconditions of start_signature_collection: ?packet has been created and ?packet is a drawdown packet and it is not the case that ?packet is finalized and signature collection has started for ?packet
+effects of start_signature_collection: it becomes true that signature collection has started for ?packet -> start signature collection for {drawdown-packet ?packet}
+action: capture_signer_signature
+parameters: [?packet, ?borrower_signer]
+preconditions of capture_signer_signature: signature collection has started for ?packet and ?packet is assigned to signer ?borrower_signer and ?packet is a drawdown packet and ?borrower_signer is a borrower signatory and it is not the case that ?borrower_signer's signature is captured on ?packet
+effects of capture_signer_signature: it becomes true that ?borrower_signer's signature is captured on ?packet -> capture signature of {borrower signatory ?borrower_signer} on {drawdown packet ?packet}
+action: verify_two_distinct_signatures
+parameters: [?packet, ?borrower_signer_1, ?borrower_signer_2]
+preconditions of verify_two_distinct_signatures: ?packet is assigned to signer ?borrower_signer_1 and ?packet is assigned to signer ?borrower_signer_2 and ?borrower_signer_1's signature is captured on ?packet and ?borrower_signer_2's signature is captured on ?packet and ?packet is a drawdown packet and ?borrower_signer_1 is a borrower signatory and ?borrower_signer_2 is a borrower signatory and it is not the case that the two signatures on ?packet are verified and ?borrower_signer_1 is equal to ?borrower_signer_2
+effects of verify_two_distinct_signatures: it becomes true that the two signatures on ?packet are verified -> verify two distinct
+Revised: action: verify_two_distinct_signatures
+parameters: [?packet, ?borrower_signer_1, ?borrower_signer_2]
+preconditions of verify_two_distinct_signatures: ?packet is assigned to signer ?borrower_signer_1 and ?packet is assigned to signer ?borrower_signer_2 and ?borrower_signer_1's signature is captured on ?packet and ?borrower_signer_2's signature is captured on ?packet and ?packet is a drawdown packet and ?borrower_signer_1 is a borrower signatory and ?borrower_signer_2 is a borrower signatory and it is not the case that the two signatures on ?packet are verified and ?borrower_signer_1 is equal to ?borrower_signer_2
+effects of verify_two_distinct_signatures: it becomes true that the two signatures on ?packet are verified -> 
+action: perform_packet_compliance_check
+parameters: [?packet]
+preconditions of perform_packet_compliance_check: the two signatures on ?packet are verified and ?packet is a drawdown packet and it is not the case that ?packet has been checked for packet compliance
+effects of perform_packet_compliance_check: it becomes true that ?packet has been checked for packet compliance -> perform packet compliance check on {drawdown-packet ?packet} whose two signatures are verified and which has not yet been checked for packet compliance
+action: finalize_drawdown_packet
+parameters: [?packet]
+preconditions of finalize_drawdown_packet: ?packet has been checked for packet compliance and ?packet is a drawdown packet and it is not the case that ?packet is finalized
+effects of finalize_drawdown_packet: it becomes true that ?packet is finalized and it is not the case anymore that signature collection has started for ?packet -> finalize {drawdown-packet ?packet} after compliance check and stop signature collection for {drawdown-packet ?packet}
+action: confirm_packet_has_three_facility_docs
+parameters: [?case, ?packet, ?facility_doc_1, ?facility_doc_2, ?facility_doc_3]
+preconditions of confirm_packet_has_three_facility_docs: the drawdown for ?case is open and ?packet is a packet for case ?case and ?packet is finalized and ?packet is attached to the facility document ?facility_doc_1 and ?packet is attached to the facility document ?facility_doc_2 and ?packet is attached to the facility document ?facility_doc_3 and ?case is a drawdown case and ?packet is a drawdown packet and ?facility_doc_1 is a facility document and ?facility_doc_2 is a facility document and ?facility_doc_3 is a facility document and it is not the case that ?case is drawdown locked and the drawdown packet for ?case is complete and ?facility_doc_1 is equal to ?facility_doc_2 and ?facility_doc_1 is equal to ?facility_doc_3 and ?facility_doc_2 is equal to ?facility_doc_3
+effects of confirm_packet_has_three_facility_docs: it becomes true that the drawdown packet for ?case is complete -> confirm {drawdown packet ?packet} for {drawdown case ?case} attached to {facility document ?facility_doc_1}, {facility document ?facility_doc_2} and {facility document ?facility_doc_3} is complete
+action: reopen_packet_and_reset_signatures
+parameters: [?case, ?packet, ?reopen_token, ?signature_slot_1, ?signature_slot_2]
+preconditions of reopen_packet_and_reset_signatures: the drawdown for ?case is open and ?packet is a packet for case ?case and ?packet has been created and ?reopen_token is available and ?case is a drawdown case and ?packet is a drawdown packet and ?reopen_token is a reopen key token and ?signature_slot_1 is a signature slot and ?signature_slot_2 is a signature slot and it is not the case that ?case is drawdown locked and ?packet has been reopened
+effects of reopen_packet_and_reset_signatures: it becomes true that ?packet has been reopened and ?reopen_token is consumed and ?packet has signature slot ?signature_slot_1 and ?packet has signature slot ?signature_slot_2 and it is not the case anymore that ?reopen_token is available and ?packet is finalized and ?packet has been checked for packet compliance and the two signatures on ?packet are verified and signature collection has started for ?packet -> reopen {drawdown-packet ?packet} for {drawdown-case ?case} using {reopen-key-token ?reopen_token} and reset signature slots {signature-slot ?signature_slot_1
+Revised: action: reopen_packet_and_reset_signatures
+parameters: [?case, ?packet, ?reopen_token, ?signature_slot_1, ?signature_slot_2]
+preconditions of reopen_packet_and_reset_signatures: the drawdown for ?case is open and ?packet is a packet for case ?case and ?packet has been created and ?reopen_token is available and ?case is a drawdown case and ?packet is a drawdown packet and ?reopen_token is a reopen key token and ?signature_slot_1 is a signature slot and ?signature_slot_2 is a signature slot and it is not the case that ?case is drawdown locked and ?packet has been reopened
+effects of reopen_packet_and_reset_signatures: it becomes true that ?packet has been reopened and ?reopen_token is consumed and ?packet has signature slot ?signature_slot_1 and ?packet has signature slot ?signature_slot_2 and it is not the case anymore that ?reopen_token is available and ?packet is finalized and ?packet has been checked for packet compliance and the two signatures on ?packet are verified and signature collection has started for ?packet -> what are the parameters and their types for reopen_packet_and_reset_signatures
+action: lock_case_for_execution
+parameters: [?case, ?packet]
+preconditions of lock_case_for_execution: the drawdown for ?case is open and the drawdown packet for ?case is complete and ?packet is a packet for case ?case and ?packet is finalized and ?case is authorized for packet creation and ?case is a drawdown case and ?packet is a drawdown packet and it is not the case that ?case is drawdown locked and ?case has a frozen drawdown
+effects of lock_case_for_execution: it becomes true that ?case is drawdown locked and it is not the case anymore that the drawdown for ?case is open -> lock {case ?case} for execution with {packet ?packet}
+action: reopen_locked_case
+parameters: [?case, ?reopen_token]
+preconditions of reopen_locked_case: ?case is drawdown locked and ?reopen_token is available and ?case is a drawdown case and ?reopen_token is a reopen key token and it is not the case that ?case has a frozen drawdown
+effects of reopen_locked_case: it becomes true that the drawdown for ?case is open and ?case has a compliance hold flag and ?reopen_token is consumed and it is not the case anymore that ?case is drawdown locked and ?reopen_token is available -> reopen {drawdown case ?case} with {reopen key token ?reopen_token}
+action: freeze_case_due_to_suspicious_payment
+parameters: [?case, ?payment_instruction]
+preconditions of freeze_case_due_to_suspicious_payment: the drawdown for ?case is open and ?case is a drawdown case and ?payment_instruction is a payment instruction and it is not the case that ?case is drawdown locked and ?case is authorized for packet creation and ?case has a frozen drawdown
+effects of freeze_case_due_to_suspicious_payment: it becomes true that ?case has the payment instruction ?payment_instruction and ?case has a suspicious payment flag and ?case has a frozen drawdown -> freeze drawdown for {drawdown case ?case} due to suspicious {payment instruction ?payment_instruction}
+action: draft_payment_instruction
+parameters: [?case, ?payment_instruction]
+preconditions of draft_payment_instruction: ?case is drawdown locked and ?case is authorized for packet creation and the drawdown packet for ?case is complete and ?case is a drawdown case and ?payment_instruction is a payment instruction and it is not the case that a payment instruction has been drafted for ?case and ?case has the payment instruction ?payment_instruction
+effects of draft_payment_instruction: it becomes true that a payment instruction has been drafted for ?case and ?case has the payment instruction ?payment_instruction and ?payment_instruction payment instruction was created and ?case payment instruction has been validated -> draft {payment instruction ?payment_instruction} for {case ?case}
+action: validate_payment_instruction
+parameters: [?case]
+preconditions of validate_payment_instruction: ?case is drawdown locked and ?case payment instruction has been validated and ?case is a drawdown case and it is not the case that the payment instruction for ?case is approved
+effects of validate_payment_instruction: it becomes true that the payment instruction for ?case is approved -> validate payment instruction for {case ?case}
+action: approve_payment_instruction
+parameters: [?case]
+preconditions of approve_payment_instruction: ?case is drawdown locked and the payment instruction for ?case is approved and ?case is a drawdown case and it is not the case that the payment instruction for ?case is ready to be signed
+effects of approve_payment_instruction: it becomes true that the payment instruction for ?case is ready to be signed -> approve payment instruction for {case ?case}
+action: sign_payment_instruction
+parameters: [?payment_instruction, ?case]
+preconditions of sign_payment_instruction: ?case is drawdown locked and ?payment_instruction payment instruction was created and the payment instruction for ?case is ready to be signed and ?payment_instruction is a payment instruction and ?case is a drawdown case and it is not the case that ?payment_instruction is a signed payment instruction
+effects of sign_payment_instruction: it becomes true that ?payment_instruction is a signed payment instruction -> sign {payment instruction ?payment_instruction} for {drawdown case ?case}
+action: send_instruction_to_treasury
+parameters: [?payment_instruction]
+preconditions of send_instruction_to_treasury: ?payment_instruction is a signed payment instruction and ?payment_instruction is a payment instruction and it is not the case that ?payment_instruction is sent to the treasury
+effects of send_instruction_to_treasury: it becomes true that ?payment_instruction is sent to the treasury -> send {signed payment instruction ?payment_instruction} to the treasury
+action: execute_treasury_release
+parameters: [?payment_instruction, ?case, ?packet, ?facility_doc]
+preconditions of execute_treasury_release: ?case is drawdown locked and ?case is authorized for packet creation and ?case is approved for risk and ?payment_instruction is sent to the treasury and ?packet is a packet for case ?case and ?packet is finalized and ?packet is attached to the facility document ?facility_doc and the facility ?facility_doc is eligible for the case ?case and ?facility_doc requires fx review and the covenant statement for ?case is verified and the use of proceeds for ?case has been verified and ?payment_instruction is a payment instruction and ?case is a drawdown case and ?packet is a drawdown packet and ?facility_doc is a facility document and it is not the case that ?payment_instruction payment instruction has been executed
+effects of execute_treasury_release: it becomes true that ?payment_instruction payment instruction has been executed -> execute treasury release for {payment instruction ?payment_instruction} on {drawdown case ?case} using {drawdown packet ?packet} attached to {facility document ?facility_doc}
+action: reserve_wire_cutoff_window
+parameters: [?payment_instruction, ?cutoff_window_token]
+preconditions of reserve_wire_cutoff_window: ?payment_instruction payment instruction has been executed and ?cutoff_window_token is available and ?payment_instruction is a payment instruction and ?cutoff_window_token is a wire cutoff window token and it is not the case that wire cutoff is reserved for ?payment_instruction
+effects of reserve_wire_cutoff_window: it becomes true that wire cutoff is reserved for ?payment_instruction and ?cutoff_window_token is consumed and it is not the case anymore that ?cutoff_window_token is available -> reserve {wire cutoff window token ?cutoff_window_token} for {payment instruction ?payment_instruction}
+action: consume_cutoff_window_without_reservation
+parameters: [?case, ?cutoff_window_token]
+preconditions of consume_cutoff_window_without_reservation: ?case is drawdown locked and ?cutoff_window_token is available and ?case is a drawdown case and ?cutoff_window_token is a wire cutoff window token and it is not the case that ?case has a frozen drawdown
+effects of consume_cutoff_window_without_reservation: it becomes true that ?cutoff_window_token is consumed and it is not the case anymore that ?cutoff_window_token is available -> consume {wire cutoff window token ?cutoff_window_token} for {drawdown case ?case} without reservation
+action: release_wire_payment
+parameters: [?payment_instruction]
+preconditions of release_wire_payment: wire cutoff is reserved for ?payment_instruction and ?payment_instruction is a payment instruction and it is not the case that the beneficiary of ?payment_instruction is credited and ?payment_instruction has been released by wire
+effects of release_wire_payment: it becomes true that ?payment_instruction has been released by wire -> release {payment instruction ?payment_instruction} by wire
+action: confirm_beneficiary_credit
+parameters: [?payment_instruction]
+preconditions of confirm_beneficiary_credit: ?payment_instruction has been released by wire and ?payment_instruction is a payment instruction and it is not the case that the beneficiary of ?payment_instruction is credited
+effects of confirm_beneficiary_credit: it becomes true that the beneficiary of ?payment_instruction is credited -> confirm that beneficiary of {payment_instruction ?payment_instruction} is credited
+action: mark_funds_settled
+parameters: [?payment_instruction]
+preconditions of mark_funds_settled: the beneficiary of ?payment_instruction is credited and ?payment_instruction is a payment instruction and it is not the case that funds for ?payment_instruction are settled
+effects of mark_funds_settled: it becomes true that funds for ?payment_instruction are settled -> mark funds for {payment instruction ?payment_instruction} as settled
+action: create_disbursement_notice
+parameters: [?case, ?notice, ?borrower_signer, ?dispatch_window_token, ?packet, ?facility_doc]
+preconditions of create_disbursement_notice: ?case is drawdown locked and ?dispatch_window_token is available and ?packet is a packet for case ?case and ?packet is finalized and ?packet is attached to the facility document ?facility_doc and the facility ?facility_doc is eligible for the case ?case and the facility requires agent notice for ?facility_doc and ?borrower_signer is the required person for ?case and ?borrower_signer has full clearance and ?case is a drawdown case and ?notice is a disbursement notice and ?borrower_signer is a borrower signatory and ?dispatch_window_token is a notice dispatch window token and ?packet is a drawdown packet and ?facility_doc is a facility document and it is not the case that ?notice is addressed to the signer ?borrower_signer in case ?case
+effects of create_disbursement_notice: it becomes true that ?notice is addressed to the signer ?borrower_signer in case ?case and ?notice has been created and ?dispatch_window_token is consumed and it is not the case anymore that ?dispatch_window_token is available -> create disbursement notice {disbursement notice ?notice} for {case ?case} addressed to {borrower signatory ?borrower_signer} using {packet ?packet} attached to {facility document ?facility_doc} consuming {dispatch window token ?dispatch_window_token}
+action: approve_disbursement_notice
+parameters: [?notice]
+preconditions of approve_disbursement_notice: ?notice has been created and ?notice is a disbursement notice and it is not the case that ?notice is approved
+effects of approve_disbursement_notice: it becomes true that ?notice is approved -> approve {disbursement notice ?notice}
+action: create_notice_delivery_package
+parameters: [?delivery_package, ?notice]
+preconditions of create_notice_delivery_package: ?notice has been created and ?notice is approved and ?delivery_package is a delivery package and ?notice is a disbursement notice and it is not the case that the delivery package ?delivery_package has been created
+effects of create_notice_delivery_package: it becomes true that the delivery package ?delivery_package has been created and the package ?delivery_package is for the notice ?notice -> create {delivery_package ?delivery_package} for {disbursement_notice ?notice}
+action: apply_delivery_label
+parameters: [?delivery_package, ?delivery_slot_token]
+preconditions of apply_delivery_label: the delivery package ?delivery_package has been created and ?delivery_slot_token is available and ?delivery_package is a delivery package and ?delivery_slot_token is a delivery slot token and it is not the case that ?delivery_package is a labeled package
+effects of apply_delivery_label: it becomes true that ?delivery_package is a labeled package and ?delivery_slot_token is consumed and it is not the case anymore that ?delivery_slot_token is available -> apply delivery label to {delivery_package ?delivery_package} using {delivery_slot_token ?delivery_slot_token}
+action: assign_senior_override_review
+parameters: [?case, ?delivery_slot_token]
+preconditions of assign_senior_override_review: ?case is drawdown locked and ?delivery_slot_token is available and ?case is a drawdown case and ?delivery_slot_token is a delivery slot token and it is not the case that ?case is assigned a senior override
+effects of assign_senior_override_review: it becomes true that ?case is assigned a senior override and ?delivery_slot_token is consumed and it is not the case anymore that ?delivery_slot_token is available -> assign senior override review to {drawdown case ?case} using {delivery slot token ?delivery_slot_token}
+action: print_delivery_label
+parameters: [?delivery_package]
+preconditions of print_delivery_label: ?delivery_package is a labeled package and ?delivery_package is a delivery package and it is not the case that ?delivery_package has a printed label
+effects of print_delivery_label: it becomes true that ?delivery_package has a printed label -> print delivery label for {delivery package ?delivery_package}
+action: scan_delivery_label
+parameters: [?delivery_package]
+preconditions of scan_delivery_label: ?delivery_package has a printed label and ?delivery_package is a delivery package and it is not the case that the label of ?delivery_package has been scanned
+effects of scan_delivery_label: it becomes true that the label of ?delivery_package has been scanned -> scan printed label of {delivery package ?delivery_package}
+action: mark_notice_ready
+parameters: [?notice]
+preconditions of mark_notice_ready: ?notice is ready to be sent and ?notice is a disbursement notice
+effects of mark_notice_ready: it becomes true that ?notice is ready to be sent -> mark {disbursement-notice ?notice} as ready to be sent
+action: send_notice_via_secure_delivery
+parameters: [?notice, ?payment_instruction, ?case, ?delivery_package, ?borrower_signer]
+preconditions of send_notice_via_secure_delivery: ?case is drawdown locked and ?notice is addressed to the signer ?borrower_signer in case ?case and ?notice has been created and ?case has the payment instruction ?payment_instruction and ?payment_instruction payment instruction was created and the package ?delivery_package is for the notice ?notice and the label of ?delivery_package has been scanned and ?notice is ready to be sent and ?notice is a disbursement notice and ?payment_instruction is a payment instruction and ?case is a drawdown case and ?delivery_package is a delivery package and ?borrower_signer is a borrower signatory and it is not the case that ?case has a frozen drawdown and ?notice has been sent
+effects of send_notice_via_secure_delivery: it becomes true that ?notice has been sent -> send {disbursement notice ?notice} using {payment instruction ?payment_instruction} for {drawdown case ?case} in {delivery package ?delivery_package} to {borrower signatory ?borrower_signer} via secure delivery
+action: complete_final_controls
+parameters: [?case, ?borrower_signer_1, ?borrower_signer_2, ?bank_officer_1, ?bank_officer_2, ?payment_instruction, ?notice]
+preconditions of complete_final_controls: ?case is drawdown locked and ?case is authorized for packet creation and ?case is approved for risk and the drawdown package for ?case is compiled and a two-officer signoff is recorded for ?case and ?borrower_signer_1 is the required person for ?case and ?borrower_signer_2 is the required person for ?case and ?bank_officer_1 is the required person for ?case and ?bank_officer_2 is the required person for ?case and ?borrower_signer_1 has full clearance and ?borrower_signer_2 has full clearance and ?bank_officer_1 has full clearance and ?bank_officer_2 has full clearance and funds for ?payment_instruction are settled and ?notice has been sent and ?case is a drawdown case and ?borrower_signer_1 is a borrower signatory and ?borrower_signer_2 is a borrower signatory and ?bank_officer_1 is a bank drawdown officer and ?bank_officer_2 is a bank drawdown officer and ?payment_instruction is a payment instruction and ?notice is a disbursement notice and it is not the case that ?borrower_signer_1 is equal to ?borrower_signer_2 and ?bank_officer_1 is equal to ?bank_officer_2 and ?case has a compliance hold flag and ?case has a suspicious payment flag and ?case has a frozen drawdown and final controls are complete for ?case
+effects of complete_final_controls: it becomes true that final controls are complete for ?case -> complete final controls for {drawdown_case ?case} with borrower signatories {borrower_signatory ?borrower_signer_1} and {borrower_signatory ?borrower_signer_2} and bank drawdown officers {bank_drawdown_officer ?bank_officer_1} and {bank_drawdown_officer ?bank_officer_2} for {payment_instruction ?payment_instruction} using {disbursement_notice ?notice}
+action: close_drawdown_case
+parameters: [?case, ?payment_instruction, ?notice]
+preconditions of close_drawdown_case: ?case is drawdown locked and final controls are complete for ?case and ?payment_instruction payment instruction was created and ?payment_instruction payment instruction has been executed and the beneficiary of ?payment_instruction is credited and ?notice has been sent and ?case is a drawdown case and ?payment_instruction is a payment instruction and ?notice is a disbursement notice and it is not the case that the drawdown for ?case is completed
+effects of close_drawdown_case: it becomes true that the drawdown for ?case is completed and it is not the case anymore that ?case is drawdown locked -> close drawdown case {drawdown-case ?case} using {payment-instruction ?payment_instruction} and {disbursement-notice ?notice}
+(drawdown_open ?case) -> the drawdown for {?case} is open
+(drawdown_locked ?case) -> {?case} is drawdown locked
+(drawdown_completed ?case) -> the drawdown for {?case} is completed
+(drawdown_frozen ?case) -> {?case} has a frozen drawdown
+(compliance_hold_flag ?case) -> {?case} has a compliance hold flag
+(suspicious_payment_flag ?case) -> {?case} has a suspicious payment flag
+(wire_released ?payment_instruction) -> {?payment_instruction} has been released by wire
+(notice_created ?notice) -> {?notice} has been created
+(facility_requires_fx_review ?facility_doc) -> {?facility_doc} requires fx review
+(facility_requires_agent_notice ?facility_doc) -> the facility requires agent notice for {?facility_doc}
+(channel_selected ?case ?channel) -> {?channel} is selected for case {?case}
+(facility_selected ?case ?facility_doc) -> the facility {?facility_doc} is selected for case {?case}
+(required_person ?case ?person) -> {?person} is the required person for {?case}
+(person_linked_to_case ?case ?person) -> {?person} is linked to the case {?case}
+(required_document ?case ?doc) -> {?doc} is a required document for {?case}
+(document_for_case ?doc ?case) -> {?doc} is a document for case {?case}
+(document_for_person ?doc ?person) -> {?doc} is a document for {?person}
+(document_received ?doc) -> {?doc} has been received
+(document_verified ?doc) -> {?doc} is verified
+(doc_is_borrowing_base_certificate ?doc) -> {?doc} is borrowing the base certificate
+(doc_is_compliance_certificate ?doc) -> the document {?doc} is a compliance certificate
+(doc_is_covenant_compliance_statement ?doc) -> {?doc} is a covenant compliance statement
+(doc_is_fee_calculation_sheet ?doc) -> {?doc} is a fee calculation sheet
+(doc_is_use_of_proceeds_statement ?doc) -> {?doc} is a use of proceeds statement
+(doc_is_authorization_kyc_record ?doc) -> {?doc} is an authorization kyc record
+(borrowing_base_verified ?case) -> {?case} has a verified borrowing base
+(compliance_certificate_verified ?case) -> {?case} has a verified compliance certificate
+(covenant_statement_verified ?case) -> the covenant statement for {?case} is verified
+(use_of_proceeds_verified ?case) -> the use of proceeds for {?case} has been verified
+(two_officer_signoff_recorded ?case) -> a two-officer signoff is recorded for {?case}
+(person_auth_doc_verified ?person) -> {?person} has their authorization documents verified
+(person_contact_verified ?person) -> {?person}'s contact is verified
+(person_in_required_set ?person) -> {?person} is in the required set
+(person_sanctions_checked ?person) -> sanctions have been checked for {?person}
+(person_pep_checked ?person) -> {?person} has been pep checked
+(person_full_clearance ?person) -> {?person} has full clearance
+(availability_calculated ?case) -> availability for {?case} has been calculated
+(limit_headroom_confirmed ?case) -> limit headroom is confirmed for {?case}
+(basic_drawdown_checks_complete ?case) -> basic drawdown checks are complete for {?case}
+(fast_track_enabled ?case) -> {?case} has fast track enabled
+(drawdown_package_compiled ?case) -> the drawdown package for {?case} is compiled
+(credit_ops_approved ?case) -> {?case} is approved by credit operations
+(risk_approved ?case) -> {?case} is approved for risk
+(auto_approved ?case) -> {?case} is auto approved
+(packet_creation_authorized ?case) -> {?case} is authorized for packet creation
+(facility_eligible_for_case ?case ?facility_doc) -> the facility {?facility_doc} is eligible for the case {?case}
+(facility_document_validated ?facility_doc) -> {?facility_doc} is a validated facility document
+(packet_for_case ?packet ?case) -> {?packet} is a packet for case {?case}
+(packet_created ?packet) -> {?packet} has been created
+(packet_attached_facility_document ?packet ?facility_doc) -> {?packet} is attached to the facility document {?facility_doc}
+(packet_assigned_signer ?packet ?borrower_signer) -> {?packet} is assigned to signer {?borrower_signer}
+(packet_has_signature_slot ?packet ?signature_slot) -> {?packet} has signature slot {?signature_slot}
+(signature_collection_started ?packet) -> signature collection has started for {?packet}
+(signature_captured ?packet ?borrower_signer) -> {?borrower_signer}'s signature is captured on {?packet}
+(two_signatures_verified ?packet) -> the two signatures on {?packet} are verified
+(packet_compliance_checked ?packet) -> {?packet} has been checked for packet compliance
+(packet_finalized ?packet) -> {?packet} is finalized
+(drawdown_packet_complete ?case) -> the drawdown packet for {?case} is complete
+(packet_reopened ?packet) -> {?packet} has been reopened
+(payment_instruction_drafted ?case) -> a payment instruction has been drafted for {?case}
+(case_has_payment_instruction ?case ?payment_instruction) -> {?case} has the payment instruction {?payment_instruction}
+(payment_instruction_created ?payment_instruction) -> {?payment_instruction} payment instruction was created
+(payment_instruction_validated ?case) -> {?case} payment instruction has been validated
+(payment_instruction_approved ?case) -> the payment instruction for {?case} is approved
+(payment_instruction_ready_to_sign ?case) -> the payment instruction for {?case} is ready to be signed
+(payment_instruction_signed ?payment_instruction) -> {?payment_instruction} is a signed payment instruction
+(payment_instruction_sent_to_treasury ?payment_instruction) -> {?payment_instruction} is sent to the treasury
+(payment_instruction_executed ?payment_instruction) -> {?payment_instruction} payment instruction has been executed
+(beneficiary_credited ?payment_instruction) -> the beneficiary of {?payment_instruction} is credited
+(funds_settled ?payment_instruction) -> funds for {?payment_instruction} are settled
+(token_available ?token) -> {?token} is available
+(token_consumed ?token) -> {?token} is consumed
+(wire_cutoff_reserved ?payment_instruction) -> wire cutoff is reserved for {?payment_instruction}
+(notice_addressed_to_signer ?notice ?case ?borrower_signer) -> {?notice} is addressed to the signer {?borrower_signer} in case {?case}
+(notice_approved ?notice) -> {?notice} is approved
+(delivery_package_created ?delivery_package) -> the delivery package {?delivery_package} has been created
+(package_for_notice ?delivery_package ?notice) -> the package {?delivery_package} is for the notice {?notice}
+(package_labeled ?delivery_package) -> {?delivery_package} is a labeled package
+(label_printed ?delivery_package) -> {?delivery_package} has a printed label
+(label_scanned ?delivery_package) -> the label of {?delivery_package} has been scanned
+(notice_ready_to_send ?notice) -> {?notice} is ready to be sent
+(notice_sent ?notice) -> {?notice} has been sent
+(senior_override_assigned ?case) -> {?case} is assigned a senior override
+(final_controls_complete ?case) -> final controls are complete for {?case}
+(= ?x1 ?x2) -> {?x1} is equal to {?x2}
+(!= ?x1 ?x2) -> {?x1} is not equal to {?x2}
+(drawdown_open ?case) -> the drawdown for {?case} is open
+(drawdown_locked ?case) -> {?case} is locked for drawdown
+(drawdown_completed ?case) -> drawdown for {?case} is completed
+(drawdown_frozen ?case) -> {?case} is frozen for drawdown
+(compliance_hold_flag ?case) -> {?case} has a compliance hold flag
+(suspicious_payment_flag ?case) -> {?case} has a suspicious payment flag
+(wire_released ?payment_instruction) -> the wire for {?payment_instruction} has been released
+(notice_created ?notice) -> {?notice} has been created
+(facility_requires_fx_review ?facility_doc) -> {?facility_doc} requires an fx review
+(facility_requires_agent_notice ?facility_doc) -> the facility {?facility_doc} requires agent notice
+(channel_selected ?case ?channel) -> {?case} has channel {?channel} selected
+(facility_selected ?case ?facility_doc) -> {?facility_doc} is the facility selected for {?case}
+(required_person ?case ?person) -> {?person} is the required person for {?case}
+(person_linked_to_case ?case ?person) -> {?person} is linked to the case {?case}
+(required_document ?case ?doc) -> {?case} requires document {?doc}
+(document_for_case ?doc ?case) -> {?doc} is a document for case {?case}
+(document_for_person ?doc ?person) -> {?doc} is a document for {?person}
+(document_received ?doc) -> {?doc} has been received
+(document_verified ?doc) -> {?doc} is verified
+(doc_is_borrowing_base_certificate ?doc) -> {?doc} is borrowing the base certificate
+(doc_is_compliance_certificate ?doc) -> {?doc} is a compliance certificate
+(doc_is_covenant_compliance_statement ?doc) -> {?doc} is a covenant compliance statement
+(doc_is_fee_calculation_sheet ?doc) -> {?doc} is a fee calculation sheet
+(doc_is_use_of_proceeds_statement ?doc) -> {?doc} is a use of proceeds statement
+(doc_is_authorization_kyc_record ?doc) -> {?doc} is an authorization kyc record
+(borrowing_base_verified ?case) -> the borrowing base for {?case} is verified
+(compliance_certificate_verified ?case) -> the compliance certificate for {?case} is verified
+(covenant_statement_verified ?case) -> the covenant statement for {?case} is verified
+(use_of_proceeds_verified ?case) -> the use of proceeds for {?case} is verified
+(two_officer_signoff_recorded ?case) -> a two officer signoff has been recorded for {?case}
+(person_auth_doc_verified ?person) -> {?person} has their authentication documents verified
+(person_contact_verified ?person) -> {?person}'s contact is verified
+(person_in_required_set ?person) -> {?person} is in the required set
+(person_sanctions_checked ?person) -> {?person}'s sanctions have been checked
+(person_pep_checked ?person) -> {?person} has been pep checked
+(person_full_clearance ?person) -> {?person} has full clearance
+(availability_calculated ?case) -> availability for {?case} has been calculated
+(limit_headroom_confirmed ?case) -> {?case} is confirmed to have limited headroom
+(basic_drawdown_checks_complete ?case) -> basic drawdown checks are complete for {?case}
+(fast_track_enabled ?case) -> fast track is enabled for {?case}
+(drawdown_package_compiled ?case) -> the drawdown package for {?case} is compiled
+(credit_ops_approved ?case) -> {?case} is approved by credit ops
+(risk_approved ?case) -> {?case} is approved for risk
+(auto_approved ?case) -> {?case} is auto approved
+(packet_creation_authorized ?case) -> packet creation is authorized for {?case}
+(facility_eligible_for_case ?case ?facility_doc) -> {?facility_doc} is eligible for case {?case}
+(facility_document_validated ?facility_doc) -> {?facility_doc} is a validated facility document
+(packet_for_case ?packet ?case) -> {?packet} is a packet for the case {?case}
+(packet_created ?packet) -> {?packet} is created
+(packet_attached_facility_document ?packet ?facility_doc) -> {?packet} has attached facility document {?facility_doc}
+(packet_assigned_signer ?packet ?borrower_signer) -> {?packet} is assigned to signer {?borrower_signer}
+(packet_has_signature_slot ?packet ?signature_slot) -> {?packet} has a signature slot {?signature_slot}
+(signature_collection_started ?packet) -> signature collection for {?packet} has started
+(signature_captured ?packet ?borrower_signer) -> {?borrower_signer}'s signature is captured on {?packet}
+(two_signatures_verified ?packet) -> two signatures on {?packet} are verified
+(packet_compliance_checked ?packet) -> {?packet} has been checked for compliance
+(packet_finalized ?packet) -> {?packet} is finalized
+(drawdown_packet_complete ?case) -> the drawdown packet for {?case} is complete
+(packet_reopened ?packet) -> {?packet} has been reopened
+(payment_instruction_drafted ?case) -> a payment instruction has been drafted for {?case}
+(case_has_payment_instruction ?case ?payment_instruction) -> {?case} has payment instruction {?payment_instruction}
+(payment_instruction_created ?payment_instruction) -> {?payment_instruction} payment instruction was created
+(payment_instruction_validated ?case) -> the payment instruction for {?case} is validated
+(payment_instruction_approved ?case) -> {?case} payment instruction is approved
+(payment_instruction_ready_to_sign ?case) -> payment instruction for {?case} is ready to sign
+(payment_instruction_signed ?payment_instruction) -> {?payment_instruction} is a signed payment instruction
+(payment_instruction_sent_to_treasury ?payment_instruction) -> {?payment_instruction} is a payment instruction sent to the treasury
+(payment_instruction_executed ?payment_instruction) -> payment instruction {?payment_instruction} has been executed
+(beneficiary_credited ?payment_instruction) -> the beneficiary is credited for {?payment_instruction}
+(funds_settled ?payment_instruction) -> funds for {?payment_instruction} are settled
+(token_available ?token) -> {?token} is available
+(token_consumed ?token) -> the token {?token} is consumed
+(wire_cutoff_reserved ?payment_instruction) -> {?payment_instruction} is reserved for the wire cutoff
+(notice_addressed_to_signer ?notice ?case ?borrower_signer) -> {?notice} is a notice addressed to signer {?borrower_signer} in case {?case}
+(notice_approved ?notice) -> {?notice} has been approved
+(delivery_package_created ?delivery_package) -> the delivery package {?delivery_package} has been created
+(package_for_notice ?delivery_package ?notice) -> {?delivery_package} is a package for {?notice}
+(package_labeled ?delivery_package) -> {?delivery_package} is a labeled package
+(label_printed ?delivery_package) -> {?delivery_package} has a printed label
+(label_scanned ?delivery_package) -> the label of {?delivery_package} has been scanned
+(notice_ready_to_send ?notice) -> {?notice} is ready to be sent
+(notice_sent ?notice) -> {?notice} has been sent
+(senior_override_assigned ?case) -> {?case} has a senior override assigned
+(final_controls_complete ?case) -> final controls are complete for {?case}
+(= ?x1 ?x2) -> {?x1} is equal to {?x2}
+(!= ?x1 ?x2) -> {?x1} is not equal to {?x2}
+action: open_drawdown_case
+parameters: [?case]
+preconditions of open_drawdown_case: ?case is a drawdown case and it is not the case that the drawdown for ?case is open and drawdown for ?case is completed and ?case is frozen for drawdown
+effects of open_drawdown_case: it becomes true that the drawdown for ?case is open -> open drawdown case {drawdown case ?case}
+action: select_request_channel
+parameters: [?case, ?channel]
+preconditions of select_request_channel: the drawdown for ?case is open and ?case is a drawdown case and ?channel is a request channel and it is not the case that ?case is locked for drawdown and ?case is frozen for drawdown
+effects of select_request_channel: it becomes true that ?case has channel ?channel selected -> 
+action: select_facility_document
+parameters: [?case, ?facility_doc]
+preconditions of select_facility_document: the drawdown for ?case is open and ?case is a drawdown case and ?facility_doc is a facility document and it is not the case that ?case is locked for drawdown and ?case is frozen for drawdown
+effects of select_facility_document: it becomes true that ?facility_doc is the facility selected for ?case -> select {facility document ?facility_doc} for {drawdown case ?case} when drawdown is open and not locked and frozen
+action: verify_borrowing_base_certificate
+parameters: [?case, ?borrowing_base_doc]
+preconditions of verify_borrowing_base_certificate: the drawdown for ?case is open and ?case requires document ?borrowing_base_doc and ?borrowing_base_doc is a document for case ?case and ?borrowing_base_doc has been received and ?borrowing_base_doc is borrowing the base certificate and ?case is a drawdown case and ?borrowing_base_doc is a drawdown document and it is not the case that ?case is locked for drawdown and ?borrowing_base_doc is verified
+effects of verify_borrowing_base_certificate: it becomes true that ?borrowing_base_doc is verified and the borrowing base for ?case is verified -> verify borrowing base certificate for {drawdown case ?case} with {drawdown document ?borrowing_base_doc}
+action: verify_compliance_certificate
+parameters: [?case, ?compliance_cert_doc]
+preconditions of verify_compliance_certificate: the drawdown for ?case is open and ?case requires document ?compliance_cert_doc and ?compliance_cert_doc is a document for case ?case and ?compliance_cert_doc has been received and ?compliance_cert_doc is a compliance certificate and ?case is a drawdown case and ?compliance_cert_doc is a drawdown document and it is not the case that ?case is locked for drawdown and ?compliance_cert_doc is verified
+effects of verify_compliance_certificate: it becomes true that ?compliance_cert_doc is verified and the compliance certificate for ?case is verified -> verify compliance certificate {compliance certificate ?compliance_cert_doc} for {drawdown case ?case}
+action: verify_covenant_compliance_statement
+parameters: [?case, ?covenant_statement_doc]
+preconditions of verify_covenant_compliance_statement: the drawdown for ?case is open and ?case requires document ?covenant_statement_doc and ?covenant_statement_doc is a document for case ?case and ?covenant_statement_doc has been received and ?covenant_statement_doc is a covenant compliance statement and ?case is a drawdown case and ?covenant_statement_doc is a drawdown document and it is not the case that ?case is locked for drawdown and ?covenant_statement_doc is verified
+effects of verify_covenant_compliance_statement: it becomes true that ?covenant_statement_doc is verified and the covenant statement for ?case is verified -> verify covenant compliance statement for {drawdown-case ?case} with {document ?covenant_statement_doc}
+action: verify_use_of_proceeds_statement
+parameters: [?case, ?use_of_proceeds_doc]
+preconditions of verify_use_of_proceeds_statement: the drawdown for ?case is open and ?case requires document ?use_of_proceeds_doc and ?use_of_proceeds_doc is a document for case ?case and ?use_of_proceeds_doc has been received and ?use_of_proceeds_doc is a use of proceeds statement and ?case is a drawdown case and ?use_of_proceeds_doc is a drawdown document and it is not the case that ?case is locked for drawdown and ?use_of_proceeds_doc is verified
+effects of verify_use_of_proceeds_statement: it becomes true that ?use_of_proceeds_doc is verified and the use of proceeds for ?case is verified -> verify {use-of-proceeds-statement ?use_of_proceeds_doc} for {drawdown-case ?case}
+action: verify_fee_calculation_sheet
+parameters: [?case, ?fee_calc_doc]
+preconditions of verify_fee_calculation_sheet: the drawdown for ?case is open and ?case requires document ?fee_calc_doc and ?fee_calc_doc is a document for case ?case and ?fee_calc_doc has been received and ?fee_calc_doc is a fee calculation sheet and ?case is a drawdown case and ?fee_calc_doc is a drawdown document and it is not the case that ?case is locked for drawdown and ?fee_calc_doc is verified
+effects of verify_fee_calculation_sheet: it becomes true that ?fee_calc_doc is verified -> verify {fee_calculation_sheet ?fee_calc_doc} for {drawdown_case ?case}
+action: record_two_officer_signoff
+parameters: [?case, ?fee_calc_doc, ?officer_1, ?officer_2]
+preconditions of record_two_officer_signoff: the drawdown for ?case is open and ?fee_calc_doc is a document for case ?case and ?fee_calc_doc is a fee calculation sheet and ?fee_calc_doc is verified and ?officer_1 is the required person for ?case and ?officer_2 is the required person for ?case and ?officer_1 has full clearance and ?officer_2 has full clearance and ?case is a drawdown case and ?fee_calc_doc is a drawdown document and ?officer_1 is a bank drawdown officer and ?officer_2 is a bank drawdown officer and it is not the case that ?case is locked for drawdown and ?officer_1 is equal to ?officer_2
+effects of record_two_officer_signoff: it becomes true that a two officer signoff has been recorded for ?case -> 
+action: verify_person_authorization_record
+parameters: [?case, ?person, ?auth_kyc_doc]
+preconditions of verify_person_authorization_record: the drawdown for ?case is open and ?case requires document ?auth_kyc_doc and ?auth_kyc_doc is a document for ?person and ?auth_kyc_doc has been received and ?auth_kyc_doc is an authorization kyc record and ?case is a drawdown case and ?person is a participant person and ?auth_kyc_doc is a drawdown document and it is not the case that ?case is locked for drawdown and ?auth_kyc_doc is verified
+effects of verify_person_authorization_record: it becomes true that ?auth_kyc_doc is verified and ?person has their authentication documents verified -> verify {authorization kyc record ?auth_kyc_doc} for {participant person ?person} on {drawdown case ?case}
+action: verify_person_contact_details
+parameters: [?case, ?person]
+preconditions of verify_person_contact_details: the drawdown for ?case is open and ?person has their authentication documents verified and ?person is in the required set and ?case is a drawdown case and ?person is a participant person and it is not the case that ?case is locked for drawdown and ?person's contact is verified
+effects of verify_person_contact_details: it becomes true that ?person's contact is verified -> verify contact details for {participant person ?person} in {drawdown case ?case}
+action: run_full_person_screening
+parameters: [?case, ?person]
+preconditions of run_full_person_screening: the drawdown for ?case is open and ?person is linked to the case ?case and ?person has their authentication documents verified and ?person's contact is verified and ?case is a drawdown case and ?person is a participant person and it is not the case that ?case is locked for drawdown and ?person has full clearance
+effects of run_full_person_screening: it becomes true that ?person's sanctions have been checked and ?person has been pep checked and ?person has full clearance -> 
+action: run_sanctions_screening_only
+parameters: [?case, ?person]
+preconditions of run_sanctions_screening_only: the drawdown for ?case is open and ?person is linked to the case ?case and ?person has their authentication documents verified and ?case is a drawdown case and ?person is a participant person and it is not the case that ?case is locked for drawdown and ?person's sanctions have been checked
+effects of run_sanctions_screening_only: it becomes true that ?person's sanctions have been checked -> run sanctions screening only on {participant_person ?
+Revised: action: run_sanctions_screening_only
+parameters: [?case, ?person]
+preconditions of run_sanctions_screening_only: the drawdown for ?case is open and ?person is linked to the case ?case and ?person has their authentication documents verified and ?case is a drawdown case and ?person is a participant person and it is not the case that ?case is locked for drawdown and ?person's sanctions have been checked
+effects of run_sanctions_screening_only: it becomes true that ?person's sanctions have been checked -> 
+action: run_pep_screening_only
+parameters: [?case, ?person]
+preconditions of run_pep_screening_only: the drawdown for ?case is open and ?person is linked to the case ?case and ?person has their authentication documents verified and ?case is a drawdown case and ?person is a participant person and it is not the case that ?case is locked for drawdown and ?person has been pep checked
+effects of run_pep_screening_only: it becomes true that ?person has been pep checked -> run pep screening only for {drawdown case ?case} and {participant person ?person}
+action: complete_basic_drawdown_checks
+parameters: [?case]
+preconditions of complete_basic_drawdown_checks: the drawdown for ?case is open and the borrowing base for ?case is verified and ?case is a drawdown case and it is not the case that ?case is locked for drawdown and basic drawdown checks are complete for ?case
+effects of complete_basic_drawdown_checks: it becomes true that availability for ?case has been calculated and ?case is confirmed to have limited headroom and basic drawdown checks are complete for ?case -> complete basic drawdown checks for {drawdown_case ?case}
+action: enable_fast_track
+parameters: [?case]
+preconditions of enable_fast_track: the drawdown for ?case is open and the borrowing base for ?case is verified and ?case is a drawdown case and it is not the case that ?case is locked for drawdown and fast track is enabled for ?case
+effects of enable_fast_track: it becomes true that fast track is enabled for ?case -> 
+action: compile_drawdown_package
+parameters: [?case, ?borrower_signer_1, ?borrower_signer_2, ?bank_officer_1, ?bank_officer_2, ?borrowing_base_doc, ?covenant_statement_doc, ?compliance_cert_doc, ?use_of_proceeds_doc, ?fee_calc_doc]
+preconditions of compile_drawdown_package: the drawdown for ?case is open and the borrowing base for ?case is verified and the covenant statement for ?case is verified and the compliance certificate for ?case is verified and the use of proceeds for ?case is verified and ?borrowing_base_doc is a document for case ?case and ?borrowing_base_doc is borrowing the base certificate and ?borrowing_base_doc is verified and ?covenant_statement_doc is a document for case ?case and ?covenant_statement_doc is a covenant compliance statement and ?covenant_statement_doc is verified and ?compliance_cert_doc is a document for case ?case and ?compliance_cert_doc is a compliance certificate and ?compliance_cert_doc is verified and ?use_of_proceeds_doc is a document for case ?case and ?use_of_proceeds_doc is a use of proceeds statement and ?use_of_proceeds_doc is verified and ?fee_calc_doc is a document for case ?case and ?fee_calc_doc is a fee calculation sheet and ?fee_calc_doc is verified and ?borrower_signer_1 is the required person for ?case and ?borrower_signer_2 is the required person for ?case and ?bank_officer_1 is the required person for ?case and ?bank_officer_2 is the required person for ?case and ?borrower_signer_1 has full clearance and ?borrower_signer_2 has full clearance and ?bank_officer_1 has full clearance and ?bank_officer_2 has full clearance and basic drawdown checks are complete for ?case and ?case is a drawdown case and ?borrower_signer_1 is a borrower signatory and ?borrower_signer_2 is a borrower signatory and ?bank_officer_1 is a bank drawdown officer and ?bank_officer_2 is a bank drawdown officer and ?borrowing_base_doc is a drawdown document and ?covenant_statement_doc is a drawdown document and ?compliance_cert_doc is a drawdown document and ?use_of_proceeds_doc is a drawdown document and ?fee_calc_doc is a drawdown document and it is not the case that ?case is locked for drawdown and the drawdown package for ?case is compiled and ?borrower_signer_1 is equal to ?borrower_signer_2 and ?bank_officer_1 is equal to ?bank_officer_2
+effects of compile_drawdown_package: it becomes true that the drawdown package for ?case is compiled -> 
+action: approve_drawdown_package_four_eyes
+parameters: [?case, ?borrower_signer_1, ?borrower_signer_2, ?bank_officer_1, ?bank_officer_2]
+preconditions of approve_drawdown_package_four_eyes: the drawdown for ?case is open and the drawdown package for ?case is compiled and a two officer signoff has been recorded for ?case and ?borrower_signer_1 is the required person for ?case and ?borrower_signer_2 is the required person for ?case and ?bank_officer_1 is the required person for ?case and ?bank_officer_2 is the required person for ?case and ?borrower_signer_1 has full clearance and ?borrower_signer_2 has full clearance and ?bank_officer_1 has full clearance and ?bank_officer_2 has full clearance and ?case is a drawdown case and ?borrower_signer_1 is a borrower signatory and ?borrower_signer_2 is a borrower signatory and ?bank_officer_1 is a bank drawdown officer and ?bank_officer_2 is a bank drawdown officer and it is not the case that ?case is locked for drawdown and ?case is approved by credit ops and ?borrower_signer_1 is equal to ?borrower_signer_2 and ?bank_officer_1 is equal to ?bank_officer_2
+effects of approve_drawdown_package_four_eyes: it becomes true that ?case is approved by credit ops and ?case is approved for risk -> 
+action: approve_drawdown_package_fast_track
+parameters: [?case]
+preconditions of approve_drawdown_package_fast_track: the drawdown for ?case is open and fast track is enabled for ?case and the borrowing base for ?case is verified and the covenant statement for ?case is verified and ?case is a drawdown case and it is not the case that ?case is locked for drawdown and ?case is approved by credit ops
+effects of approve_drawdown_package_fast_track: it becomes true that ?case is approved by credit ops and ?case is auto approved -> 
+action: authorize_packet_creation
+parameters: [?case]
+preconditions of authorize_packet_creation: the drawdown for ?case is open and ?case is approved by credit ops and ?case is a drawdown case and it is not the case that ?case is locked for drawdown and ?case has a compliance hold flag and ?case has a suspicious payment flag and ?case is frozen for drawdown and packet creation is authorized for ?case
+effects of authorize_packet_creation: it becomes true that packet creation is authorized for ?case -> authorize packet creation for {drawdown-case ?case}
+action: raise_compliance_hold
+parameters: [?case]
+preconditions of raise_compliance_hold: the drawdown for ?case is open and ?case is a drawdown case and it is not the case that ?case is locked for drawdown and ?case has a compliance hold flag
+effects of raise_compliance_hold: it becomes true that ?case has a compliance hold flag -> raise compliance hold on {drawdown case ?case}
+action: validate_facility_document
+parameters: [?case, ?facility_doc]
+preconditions of validate_facility_document: the drawdown for ?case is open and ?facility_doc is eligible for case ?case and packet creation is authorized for ?case and ?case is a drawdown case and ?facility_doc is a facility document and it is not the case that ?case is locked for drawdown and ?facility_doc is a validated facility document
+effects of validate_facility_document: it becomes true that ?facility_doc is a validated facility document -> validate {facility document ?facility_doc} for {drawdown case ?case}
+action: create_drawdown_packet
+parameters: [?case, ?packet, ?signature_slot_1, ?signature_slot_2]
+preconditions of create_drawdown_packet: the drawdown for ?case is open and packet creation is authorized for ?case and ?case is a drawdown case and ?packet is a drawdown packet and ?signature_slot_1 is a signature slot and ?signature_slot_2 is a signature slot and it is not the case that ?case is locked for drawdown and ?packet is created and ?signature_slot_1 is equal to ?signature_slot_2
+effects of create_drawdown_packet: it becomes true that ?packet is created and ?packet is a packet for the case ?case and ?packet has a signature slot ?signature_slot_1 and ?packet has a signature slot ?signature_slot_2 -> create drawdown packet {drawdown packet ?packet} for {drawdown case ?case} with {signature slot ?signature_slot_1} and {signature slot ?signature_slot_2}
+action: attach_facility_document_to_packet
+parameters: [?case, ?packet, ?facility_doc]
+preconditions of attach_facility_document_to_packet: the drawdown for ?case is open and ?packet is a packet for the case ?case and ?packet is created and ?facility_doc is a validated facility document and ?case is a drawdown case and ?packet is a drawdown packet and ?facility_doc is a facility document and it is not the case that ?case is locked for drawdown and ?packet is finalized and ?packet has attached facility document ?facility_doc
+effects of attach_facility_document_to_packet: it becomes true that ?packet has attached facility document ?facility_doc -> 
+action: assign_signer_to_packet_slot
+parameters: [?case, ?packet, ?borrower_signer, ?signature_slot]
+preconditions of assign_signer_to_packet_slot: the drawdown for ?case is open and ?packet is a packet for the case ?case and ?packet is created and ?borrower_signer is the required person for ?case and ?borrower_signer has their authentication documents verified and ?borrower_signer's contact is verified and ?packet has a signature slot ?signature_slot and ?case is a drawdown case and ?packet is a drawdown packet and ?borrower_signer is a borrower signatory and ?signature_slot is a signature slot and it is not the case that ?case is locked for drawdown and ?packet is assigned to signer ?borrower_signer
+effects of assign_signer_to_packet_slot: it becomes true that ?packet is assigned to signer ?borrower_signer and it is not the case anymore that ?packet has a signature slot ?signature_slot -> 
+action: start_signature_collection
+parameters: [?packet]
+preconditions of start_signature_collection: ?packet is created and ?packet is a drawdown packet and it is not the case that ?packet is finalized and signature collection for ?packet has started
+effects of start_signature_collection: it becomes true that signature collection for ?packet has started -> start signature collection for {drawdown-packet ?packet}
+action: capture_signer_signature
+parameters: [?packet, ?borrower_signer]
+preconditions of capture_signer_signature: signature collection for ?packet has started and ?packet is assigned to signer ?borrower_signer and ?packet is a drawdown packet and ?borrower_signer is a borrower signatory and it is not the case that ?borrower_signer's signature is captured on ?packet
+effects of capture_signer_signature: it becomes true that ?borrower_signer's signature is captured on ?packet -> capture signature for {drawdown_packet ?packet} from {borrower_signatory ?borrower_signer}
+action: verify_two_distinct_signatures
+parameters: [?packet, ?borrower_signer_1, ?borrower_signer_2]
+preconditions of verify_two_distinct_signatures: ?packet is assigned to signer ?borrower_signer_1 and ?packet is assigned to signer ?borrower_signer_2 and ?borrower_signer_1's signature is captured on ?packet and ?borrower_signer_2's signature is captured on ?packet and ?packet is a drawdown packet and ?borrower_signer_1 is a borrower signatory and ?borrower_signer_2 is a borrower signatory and it is not the case that two signatures on ?packet are verified and ?borrower_signer_1 is equal to ?borrower_signer_2
+effects of verify_two_distinct_signatures: it becomes true that two signatures on ?packet are verified -> 
+action: perform_packet_compliance_check
+parameters: [?packet]
+preconditions of perform_packet_compliance_check: two signatures on ?packet are verified and ?packet is a drawdown packet and it is not the case that ?packet has been checked for compliance
+effects of perform_packet_compliance_check: it becomes true that ?packet has been checked for compliance -> perform packet compliance check on {drawdown-packet ?packet}
+action: finalize_drawdown_packet
+parameters: [?packet]
+preconditions of finalize_drawdown_packet: ?packet has been checked for compliance and ?packet is a drawdown packet and it is not the case that ?packet is finalized
+effects of finalize_drawdown_packet: it becomes true that ?packet is finalized and it is not the case anymore that signature collection for ?packet has started -> 
+action: confirm_packet_has_three_facility_docs
+parameters: [?case, ?packet, ?facility_doc_1, ?facility_doc_2, ?facility_doc_3]
+preconditions of confirm_packet_has_three_facility_docs: the drawdown for ?case is open and ?packet is a packet for the case ?case and ?packet is finalized and ?packet has attached facility document ?facility_doc_1 and ?packet has attached facility document ?facility_doc_2 and ?packet has attached facility document ?facility_doc_3 and ?case is a drawdown case and ?packet is a drawdown packet and ?facility_doc_1 is a facility document and ?facility_doc_2 is a facility document and ?facility_doc_3 is a facility document and it is not the case that ?case is locked for drawdown and the drawdown packet for ?case is complete and ?facility_doc_1 is equal to ?facility_doc_2 and ?facility_doc_1 is equal to ?facility_doc_3 and ?facility_doc_2 is equal to ?facility_doc_3
+effects of confirm_packet_has_three_facility_docs: it becomes true that the drawdown packet for ?case is complete -> 
+action: reopen_packet_and_reset_signatures
+parameters: [?case, ?packet, ?reopen_token, ?signature_slot_1, ?signature_slot_2]
+preconditions of reopen_packet_and_reset_signatures: the drawdown for ?case is open and ?packet is a packet for the case ?case and ?packet is created and ?reopen_token is available and ?case is a drawdown case and ?packet is a drawdown packet and ?reopen_token is a reopen key token and ?signature_slot_1 is a signature slot and ?signature_slot_2 is a signature slot and it is not the case that ?case is locked for drawdown and ?packet has been reopened
+effects of reopen_packet_and_reset_signatures: it becomes true that ?packet has been reopened and the token ?reopen_token is consumed and ?packet has a signature slot ?signature_slot_1 and ?packet has a signature slot ?signature_slot_2 and it is not the case anymore that ?reopen_token is available and ?packet is finalized and ?packet has been checked for compliance and two signatures on ?packet are verified and signature collection for ?packet has started -> reopen {drawdown packet ?packet} for {drawdown case ?case} with {reopen key token ?reopen_token} and reset {signature slot ?signature_slot_1} and {signature slot ?signature_slot_2}
+action: lock_case_for_execution
+parameters: [?case, ?packet]
+preconditions of lock_case_for_execution: the drawdown for ?case is open and the drawdown packet for ?case is complete and ?packet is a packet for the case ?case and ?packet is finalized and packet creation is authorized for ?case and ?case is a drawdown case and ?packet is a drawdown packet and it is not the case that ?case is locked for drawdown and ?case is frozen for drawdown
+effects of lock_case_for_execution: it becomes true that ?case is locked for drawdown and it is not the case anymore that the drawdown for ?case is open -> lock {drawdown-case ?case} for execution using {drawdown-packet ?packet}
+action: reopen_locked_case
+parameters: [?case, ?reopen_token]
+preconditions of reopen_locked_case: ?case is locked for drawdown and ?reopen_token is available and ?case is a drawdown case and ?reopen_token is a reopen key token and it is not the case that ?case is frozen for drawdown
+effects of reopen_locked_case: it becomes true that the drawdown for ?case is open and ?case has a compliance hold flag and the token ?reopen_token is consumed and it is not the case anymore that ?case is locked for drawdown and ?reopen_token is available -> reopen drawdown for {drawdown-case ?case} with {reopen-key-token ?reopen_token}
+action: freeze_case_due_to_suspicious_payment
+parameters: [?case, ?payment_instruction]
+preconditions of freeze_case_due_to_suspicious_payment: the drawdown for ?case is open and ?case is a drawdown case and ?payment_instruction is a payment instruction and it is not the case that ?case is locked for drawdown and packet creation is authorized for ?case and ?case is frozen for drawdown
+effects of freeze_case_due_to_suspicious_payment: it becomes true that ?case has payment instruction ?payment_instruction and ?case has a suspicious payment flag and ?case is frozen for drawdown -> freeze {drawdown case ?case} due to suspicious {payment instruction ?payment_instruction}
+action: draft_payment_instruction
+parameters: [?case, ?payment_instruction]
+preconditions of draft_payment_instruction: ?case is locked for drawdown and packet creation is authorized for ?case and the drawdown packet for ?case is complete and ?case is a drawdown case and ?payment_instruction is a payment instruction and it is not the case that a payment instruction has been drafted for ?case and ?case has payment instruction ?payment_instruction
+effects of draft_payment_instruction: it becomes true that a payment instruction has been drafted for ?case and ?case has payment instruction ?payment_instruction and ?payment_instruction payment instruction was created and the payment instruction for ?case is validated -> draft payment instruction {payment instruction ?payment_instruction} for {drawdown case ?case}
+action: validate_payment_instruction
+parameters: [?case]
+preconditions of validate_payment_instruction: ?case is locked for drawdown and the payment instruction for ?case is validated and ?case is a drawdown case and it is not the case that ?case payment instruction is approved
+effects of validate_payment_instruction: it becomes true that ?case payment instruction is approved -> validate payment instruction for {drawdown-case ?case}
+action: approve_payment_instruction
+parameters: [?case]
+preconditions of approve_payment_instruction: ?case is locked for drawdown and ?case payment instruction is approved and ?case is a drawdown case and it is not the case that payment instruction for ?case is ready to sign
+effects of approve_payment_instruction: it becomes true that payment instruction for ?case is ready to sign -> approve payment instruction for {case ?case}
+action: sign_payment_instruction
+parameters: [?payment_instruction, ?case]
+preconditions of sign_payment_instruction: ?case is locked for drawdown and ?payment_instruction payment instruction was created and payment instruction for ?case is ready to sign and ?payment_instruction is a payment instruction and ?case is a drawdown case and it is not the case that ?payment_instruction is a signed payment instruction
+effects of sign_payment_instruction: it becomes true that ?payment_instruction is a signed payment instruction -> 
+action: send_instruction_to_treasury
+parameters: [?payment_instruction]
+preconditions of send_instruction_to_treasury: ?payment_instruction is a signed payment instruction and ?payment_instruction is a payment instruction and it is not the case that ?payment_instruction is a payment instruction sent to the treasury
+effects of send_instruction_to_treasury: it becomes true that ?payment_instruction is a payment instruction sent to the treasury -> send {signed payment instruction ?payment_instruction} to the treasury
+action: execute_treasury_release
+parameters: [?payment_instruction, ?case, ?packet, ?facility_doc]
+preconditions of execute_treasury_release: ?case is locked for drawdown and packet creation is authorized for ?case and ?case is approved for risk and ?payment_instruction is a payment instruction sent to the treasury and ?packet is a packet for the case ?case and ?packet is finalized and ?packet has attached facility document ?facility_doc and ?facility_doc is eligible for case ?case and ?facility_doc requires an fx review and the covenant statement for ?case is verified and the use of proceeds for ?case is verified and ?payment_instruction is a payment instruction and ?case is a drawdown case and ?packet is a drawdown packet and ?facility_doc is a facility document and it is not the case that payment instruction ?payment_instruction has been executed
+effects of execute_treasury_release: it becomes true that payment instruction ?payment_instruction has been executed -> 
+action: reserve_wire_cutoff_window
+parameters: [?payment_instruction, ?cutoff_window_token]
+preconditions of reserve_wire_cutoff_window: payment instruction ?payment_instruction has been executed and ?cutoff_window_token is available and ?payment_instruction is a payment instruction and ?cutoff_window_token is a wire cutoff window token and it is not the case that ?payment_instruction is reserved for the wire cutoff
+effects of reserve_wire_cutoff_window: it becomes true that ?payment_instruction is reserved for the wire cutoff and the token ?cutoff_window_token is consumed and it is not the case anymore that ?cutoff_window_token is available -> reserve wire cutoff window for {payment instruction ?payment_instruction} using {wire cutoff window token ?cutoff_window_token}
+action: consume_cutoff_window_without_reservation
+parameters: [?case, ?cutoff_window_token]
+preconditions of consume_cutoff_window_without_reservation: ?case is locked for drawdown and ?cutoff_window_token is available and ?case is a drawdown case and ?cutoff_window_token is a wire cutoff window token and it is not the case that ?case is frozen for drawdown
+effects of consume_cutoff_window_without_reservation: it becomes true that the token ?cutoff_window_token is consumed and it is not the case anymore that ?cutoff_window_token is available -> consume {wire cutoff window token ?cutoff_window_token} for {drawdown case ?case}
+action: release_wire_payment
+parameters: [?payment_instruction]
+preconditions of release_wire_payment: ?payment_instruction is reserved for the wire cutoff and ?payment_instruction is a payment instruction and it is not the case that the beneficiary is credited for ?payment_instruction and the wire for ?payment_instruction has been released
+effects of release_wire_payment: it becomes true that the wire for ?payment_instruction has been released -> release wire payment for {payment_instruction ?payment_instruction}
+action: confirm_beneficiary_credit
+parameters: [?payment_instruction]
+preconditions of confirm_beneficiary_credit: the wire for ?payment_instruction has been released and ?payment_instruction is a payment instruction and it is not the case that the beneficiary is credited for ?payment_instruction
+effects of confirm_beneficiary_credit: it becomes true that the beneficiary is credited for ?payment_instruction -> confirm beneficiary credit for {payment instruction ?payment_instruction}
+action: mark_funds_settled
+parameters: [?payment_instruction]
+preconditions of mark_funds_settled: the beneficiary is credited for ?payment_instruction and ?payment_instruction is a payment instruction and it is not the case that funds for ?payment_instruction are settled
+effects of mark_funds_settled: it becomes true that funds for ?payment_instruction are settled -> mark funds settled for {payment_instruction ?payment_instruction}
+action: create_disbursement_notice
+parameters: [?case, ?notice, ?borrower_signer, ?dispatch_window_token, ?packet, ?facility_doc]
+preconditions of create_disbursement_notice: ?case is locked for drawdown and ?dispatch_window_token is available and ?packet is a packet for the case ?case and ?packet is finalized and ?packet has attached facility document ?facility_doc and ?facility_doc is eligible for case ?case and the facility ?facility_doc requires agent notice and ?borrower_signer is the required person for ?case and ?borrower_signer has full clearance and ?case is a drawdown case and ?notice is a disbursement notice and ?borrower_signer is a borrower signatory and ?dispatch_window_token is a notice dispatch window token and ?packet is a drawdown packet and ?facility_doc is a facility document and it is not the case that ?notice is a notice addressed to signer ?borrower_signer in case ?case
+effects of create_disbursement_notice: it becomes true that ?notice is a notice addressed to signer ?borrower_signer in case ?case and ?notice has been created and the token ?dispatch_window_token is consumed and it is not the case anymore that ?dispatch_window_token is available -> create {disbursement notice ?notice} for {case ?case} addressed to {borrower signatory ?borrower_signer} using {notice dispatch window token ?dispatch_window_token} from {drawdown packet ?packet} with {facility document ?facility_doc}
+action: approve_disbursement_notice
+parameters: [?notice]
+preconditions of approve_disbursement_notice: ?notice has been created and ?notice is a disbursement notice and it is not the case that ?notice has been approved
+effects of approve_disbursement_notice: it becomes true that ?notice has been approved -> approve {disbursement_notice ?notice}
+action: create_notice_delivery_package
+parameters: [?delivery_package, ?notice]
+preconditions of create_notice_delivery_package: ?notice has been created and ?notice has been approved and ?delivery_package is a delivery package and ?notice is a disbursement notice and it is not the case that the delivery package ?delivery_package has been created
+effects of create_notice_delivery_package: it becomes true that the delivery package ?delivery_package has been created and ?delivery_package is a package for ?notice -> create delivery package {delivery package ?delivery_package} for {disbursement notice ?notice}
+action: apply_delivery_label
+parameters: [?delivery_package, ?delivery_slot_token]
+preconditions of apply_delivery_label: the delivery package ?delivery_package has been created and ?delivery_slot_token is available and ?delivery_package is a delivery package and ?delivery_slot_token is a delivery slot token and it is not the case that ?delivery_package is a labeled package
+effects of apply_delivery_label: it becomes true that ?delivery_package is a labeled package and the token ?delivery_slot_token is consumed and it is not the case anymore that ?delivery_slot_token is available -> apply delivery label to {delivery package ?delivery_package} using {delivery slot token ?delivery_slot_token}
+action: assign_senior_override_review
+parameters: [?case, ?delivery_slot_token]
+preconditions of assign_senior_override_review: ?case is locked for drawdown and ?delivery_slot_token is available and ?case is a drawdown case and ?delivery_slot_token is a delivery slot token and it is not the case that ?case has a senior override assigned
+effects of assign_senior_override_review: it becomes true that ?case has a senior override assigned and the token ?delivery_slot_token is consumed and it is not the case anymore that ?delivery_slot_token is available -> assign senior override review to {drawdown_case ?case} using {delivery_slot_token ?delivery_slot_token}
+action: print_delivery_label
+parameters: [?delivery_package]
+preconditions of print_delivery_label: ?delivery_package is a labeled package and ?delivery_package is a delivery package and it is not the case that ?delivery_package has a printed label
+effects of print_delivery_label: it becomes true that ?delivery_package has a printed label -> print delivery label for {labeled delivery package ?delivery_package}
+action: scan_delivery_label
+parameters: [?delivery_package]
+preconditions of scan_delivery_label: ?delivery_package has a printed label and ?delivery_package is a delivery package and it is not the case that the label of ?delivery_package has been scanned
+effects of scan_delivery_label: it becomes true that the label of ?delivery_package has been scanned -> 
+action: mark_notice_ready
+parameters: [?notice]
+preconditions of mark_notice_ready: ?notice is ready to be sent and ?notice is a disbursement notice
+effects of mark_notice_ready: it becomes true that ?notice is ready to be sent -> mark {disbursement notice ?notice} ready to be sent
+action: send_notice_via_secure_delivery
+parameters: [?notice, ?payment_instruction, ?case, ?delivery_package, ?borrower_signer]
+preconditions of send_notice_via_secure_delivery: ?case is locked for drawdown and ?notice is a notice addressed to signer ?borrower_signer in case ?case and ?notice has been created and ?case has payment instruction ?payment_instruction and ?payment_instruction payment instruction was created and ?delivery_package is a package for ?notice and the label of ?delivery_package has been scanned and ?notice is ready to be sent and ?notice is a disbursement notice and ?payment_instruction is a payment instruction and ?case is a drawdown case and ?delivery_package is a delivery package and ?borrower_signer is a borrower signatory and it is not the case that ?case is frozen for drawdown and ?notice has been sent
+effects of send_notice_via_secure_delivery: it becomes true that ?notice has been sent -> send {disbursement notice ?notice} via secure delivery package {delivery package ?delivery_package} for {drawdown case ?case} with {payment instruction ?payment_instruction} to {borrower signatory ?borrower_signer}
+action: complete_final_controls
+parameters: [?case, ?borrower_signer_1, ?borrower_signer_2, ?bank_officer_1, ?bank_officer_2, ?payment_instruction, ?notice]
+preconditions of complete_final_controls: ?case is locked for drawdown and packet creation is authorized for ?case and ?case is approved for risk and the drawdown package for ?case is compiled and a two officer signoff has been recorded for ?case and ?borrower_signer_1 is the required person for ?case and ?borrower_signer_2 is the required person for ?case and ?bank_officer_1 is the required person for ?case and ?bank_officer_2 is the required person for ?case and ?borrower_signer_1 has full clearance and ?borrower_signer_2 has full clearance and ?bank_officer_1 has full clearance and ?bank_officer_2 has full clearance and funds for ?payment_instruction are settled and ?notice has been sent and ?case is a drawdown case and ?borrower_signer_1 is a borrower signatory and ?borrower_signer_2 is a borrower signatory and ?bank_officer_1 is a bank drawdown officer and ?bank_officer_2 is a bank drawdown officer and ?payment_instruction is a payment instruction and ?notice is a disbursement notice and it is not the case that ?borrower_signer_1 is equal to ?borrower_signer_2 and ?bank_officer_1 is equal to ?bank_officer_2 and ?case has a compliance hold flag and ?case has a suspicious payment flag and ?case is frozen for drawdown and final controls are complete for ?case
+effects of complete_final_controls: it becomes true that final controls are complete for ?case -> 
+action: close_drawdown_case
+parameters: [?case, ?payment_instruction, ?notice]
+preconditions of close_drawdown_case: ?case is locked for drawdown and final controls are complete for ?case and ?payment_instruction payment instruction was created and payment instruction ?payment_instruction has been executed and the beneficiary is credited for ?payment_instruction and ?notice has been sent and ?case is a drawdown case and ?payment_instruction is a payment instruction and ?notice is a disbursement notice and it is not the case that drawdown for ?case is completed
+effects of close_drawdown_case: it becomes true that drawdown for ?case is completed and it is not the case anymore that ?case is locked for drawdown -> close drawdown case {drawdown_case ?case} with {payment_instruction ?payment_instruction} and {disbursement_notice ?notice}

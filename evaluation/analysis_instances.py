@@ -1,3 +1,4 @@
+import utils.python313_compat  # noqa: F401 - must run before tarski/antlr4
 import os
 from typing import Tuple
 from tarski.io import PDDLReader

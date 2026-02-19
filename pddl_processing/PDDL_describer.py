@@ -1,19 +1,24 @@
+import utils.python313_compat  # noqa: F401 - must run before tarski/antlr4
 import os
 import re
 import string
 from typing import Dict, Union
 from collections import defaultdict, OrderedDict
 from tarski.syntax import BuiltinPredicateSymbol
+from diskcache import Cache
 from model_classes.llm_models import LLMModel
 from model_classes.planning_game_models import create_llm_model
 from pddl_processing.preconditions_and_effects import *
 from pddl_processing.domain_class import Domain
+from pddl_processing.parallel_http_openrouter import parallel_chat_completions
 import json
 import openai
 from set_env import set_env_vars
 
 set_env_vars()
-openai.api_key = os.environ['OPENAI_API_KEY']
+if 'OPENAI_API_KEY' in os.environ:
+    openai.api_key = os.environ['OPENAI_API_KEY']
+# When using OpenRouter, api_key is passed to the model in create_model(); OPENAI_API_KEY not required
 
 
 
@@ -130,7 +135,12 @@ class PDDLDescriber:
                                                 pddl2text_model_type: str = 'openai_chat',
                                                 pddl2text_version: str = 'full',
                                                 examples_chat: bool = True,
-                                                seed: int = 0):
+                                                seed: int = 0,
+                                                base_url: Union[str, None] = None,
+                                                api_key: Union[str, None] = None,
+                                                max_tokens: int = 1024,
+                                                use_cache: bool = True,
+                                                parallel_workers: int = 1):
         self.seed = seed
         self.output_log = self.domain_file.replace('domain.pddl', f'output_log_{seed}.txt')
 
@@ -141,14 +151,24 @@ class PDDLDescriber:
                                                                                              pddl2text_version=pddl2text_version,
                                                                                              pddl2text_model_type=pddl2text_model_type,
                                                                                              examples_chat=examples_chat,
-                                                                                             seed=seed)
+                                                                                             seed=seed,
+                                                                                             base_url=base_url,
+                                                                                             api_key=api_key,
+                                                                                             max_tokens=max_tokens,
+                                                                                             use_cache=use_cache,
+                                                                                             parallel_workers=parallel_workers)
 
         self.action_mappings, self.action_nl_templates = self.create_action_mapping(prompt_file=prompt_file,
                                                                                     pddl2text_llm=pddl2text_llm,
                                                                                     pddl2text_version=pddl2text_version,
                                                                                     pddl2text_model_type=pddl2text_model_type,
                                                                                     examples_chat=examples_chat,
-                                                                                    seed=seed)
+                                                                                    seed=seed,
+                                                                                    base_url=base_url,
+                                                                                    api_key=api_key,
+                                                                                    max_tokens=max_tokens,
+                                                                                    use_cache=use_cache,
+                                                                                    parallel_workers=parallel_workers)
 
         self.formal_mapping_check()
 
@@ -213,9 +233,9 @@ class PDDLDescriber:
         with open(output_file, 'w') as out:
             json.dump(domain_description_dict, out, indent=4)
 
-    def create_action_mapping(self, prompt_file, pddl2text_llm, pddl2text_version, pddl2text_model_type, examples_chat: bool, seed=0) -> Tuple[Dict[str, str], Dict[str, str]]:
+    def create_action_mapping(self, prompt_file, pddl2text_llm, pddl2text_version, pddl2text_model_type, examples_chat: bool, seed=0, base_url: Union[str, None] = None, api_key: Union[str, None] = None, max_tokens: int = 1024, use_cache: bool = True, parallel_workers: int = 1) -> Tuple[Dict[str, str], Dict[str, str]]:
 
-        llm_model = self.create_model(llm_name=pddl2text_llm, model_type=pddl2text_model_type, seed=seed)
+        llm_model = self.create_model(llm_name=pddl2text_llm, model_type=pddl2text_model_type, seed=seed, base_url=base_url, api_key=api_key, max_tokens=max_tokens, use_cache=use_cache)
 
         if pddl2text_version == 'simple' or pddl2text_version == 'annotated':
             prompt, examples = self.create_prompt(prompt_file=prompt_file, example_keys=['examples_pred', 'examples_act'], examples_chat=examples_chat)
@@ -226,13 +246,13 @@ class PDDLDescriber:
         if examples_chat:
             llm_model.add_examples(examples)
         model_inputs = self.create_llm_inputs_actions(pddl2text_version=pddl2text_version)
-        mappings, mappings_templates = self.run_generation(inputs=model_inputs, llm_model=llm_model, is_action=True)
+        mappings, mappings_templates = self.run_generation(inputs=model_inputs, llm_model=llm_model, is_action=True, parallel_workers=parallel_workers, api_url=base_url, api_key=api_key)
 
         return mappings, mappings_templates
 
-    def create_predicate_mapping(self, prompt_file, pddl2text_llm, pddl2text_version, pddl2text_model_type, examples_chat: bool, seed=0) -> Tuple[Dict[str, str], Dict[str, str]]:
+    def create_predicate_mapping(self, prompt_file, pddl2text_llm, pddl2text_version, pddl2text_model_type, examples_chat: bool, seed=0, base_url: Union[str, None] = None, api_key: Union[str, None] = None, max_tokens: int = 1024, use_cache: bool = True, parallel_workers: int = 1) -> Tuple[Dict[str, str], Dict[str, str]]:
 
-        llm_model = self.create_model(llm_name=pddl2text_llm, model_type=pddl2text_model_type, seed=seed)
+        llm_model = self.create_model(llm_name=pddl2text_llm, model_type=pddl2text_model_type, seed=seed, base_url=base_url, api_key=api_key, max_tokens=max_tokens, use_cache=use_cache)
 
         if pddl2text_version == 'simple' or pddl2text_version == 'annotated':
             prompt, examples = self.create_prompt(prompt_file=prompt_file, example_keys = ['examples_pred', 'examples_act'], examples_chat=examples_chat)
@@ -243,7 +263,7 @@ class PDDLDescriber:
         if examples_chat:
             llm_model.add_examples(examples)
         model_inputs = self.create_llm_inputs_predicates()
-        mappings, mappings_templates = self.run_generation(inputs=model_inputs, llm_model=llm_model, is_action=False)
+        mappings, mappings_templates = self.run_generation(inputs=model_inputs, llm_model=llm_model, is_action=False, parallel_workers=parallel_workers, api_url=base_url, api_key=api_key)
 
         # mappings, mappings_templates = self.add_predicate_mappings_builtin_preds(mappings, mappings_templates)
 
@@ -257,45 +277,147 @@ class PDDLDescriber:
 
         return mappings, mappings_temp
 
-    def run_generation(self, inputs: dict, llm_model: LLMModel, is_action: bool) -> Tuple[Dict[str, str], Dict[str, str]]:
+    def run_generation(
+        self,
+        inputs: dict,
+        llm_model: LLMModel,
+        is_action: bool,
+        parallel_workers: int = 1,
+        api_url: Union[str, None] = None,
+        api_key: Union[str, None] = None,
+    ) -> Tuple[Dict[str, str], Dict[str, str]]:
         """
 
         :param inputs:
         :param llm_model:
+        :param parallel_workers: if > 1 and api_url/api_key set, use parallel HTTP requests
         :return: mappings:              e.g. "pick up {}"
                  mappings_templates:    e.g. "pick up {?ob}"
         """
         mappings = dict()
         mappings_templates = dict()
 
-        for name, instance in inputs.items():
-            model_output = llm_model.generate(user_message=instance)
-            model_output = model_output.replace('Output: ', '')
+        items = list(inputs.items())
+        use_parallel = parallel_workers > 1 and api_url and api_key and len(items) > 0
 
-            if instance == '(supply_resource ?s ?r)':
-                print('Test')
+        if use_parallel:
+            base_messages = [dict(h) for h in llm_model.history]
+            user_messages = [inst for _, inst in items]
+            results = [""] * len(items)
+            use_cache_parallel = bool(llm_model.cache and getattr(llm_model, 'temp', 1) == 0)
+            seed_val = getattr(llm_model, 'seed', None)
+
+            def _parallel_cache_key(base_messages, user_msg, seed):
+                """Same key format as OpenRouterChatModel.create_cache_query (history + user_msg)."""
+                messages = base_messages + [{"role": "user", "content": user_msg}]
+                text_query = ""
+                for entry in messages:
+                    for k, v in entry.items():
+                        text_query += f"{k}: {v} // "
+                return (text_query, seed)
+
+            if use_cache_parallel:
+                with Cache(directory=llm_model.cache) as cache:
+                    to_fetch = []
+                    for i, (name, inst) in enumerate(items):
+                        key = _parallel_cache_key(base_messages, inst, seed_val)
+                        if key in cache:
+                            resp = cache[key]
+                            content = (resp.get("choices") or [{}])[0].get("message", {}).get("content")
+                            results[i] = content if isinstance(content, str) else ""
+                        else:
+                            to_fetch.append((i, inst))
+                    if to_fetch:
+                        fetch_msgs = [inst for _, inst in to_fetch]
+                        responses = parallel_chat_completions(
+                            api_url=api_url,
+                            api_key=api_key,
+                            model=llm_model.model_path,
+                            base_messages=base_messages,
+                            user_messages=fetch_msgs,
+                            max_workers=min(parallel_workers, len(to_fetch)),
+                            temperature=llm_model.temp,
+                            max_tokens=llm_model.max_tokens,
+                            seed=seed_val,
+                        )
+                        for j, (idx, _) in enumerate(to_fetch):
+                            content = responses[j] if j < len(responses) else ""
+                            if isinstance(content, str) and content.strip():
+                                key = _parallel_cache_key(base_messages, fetch_msgs[j], seed_val)
+                                cache[key] = {
+                                    "choices": [{"message": {"content": content, "role": "assistant"}, "finish_reason": "stop", "index": 0}],
+                                    "usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
+                                }
+                            results[idx] = content
+                n_cached = len(items) - len(to_fetch)
+                n_fetched = len(to_fetch)
+                print(f"Parallel HTTP: {len(items)} requests done ({n_cached} from cache, {n_fetched} from API).")
+            else:
+                responses = parallel_chat_completions(
+                    api_url=api_url,
+                    api_key=api_key,
+                    model=llm_model.model_path,
+                    base_messages=base_messages,
+                    user_messages=user_messages,
+                    max_workers=min(parallel_workers, len(items)),
+                    temperature=llm_model.temp,
+                    max_tokens=llm_model.max_tokens,
+                    seed=seed_val,
+                )
+                for i in range(len(items)):
+                    results[i] = responses[i] if i < len(responses) else ""
+                print(f"Parallel HTTP: {len(items)} requests done.")
+
+            name_to_output = {name: (results[i].replace('Output: ', '').strip() if results[i] else '') for i, (name, _) in enumerate(items)}
+        else:
+            name_to_output = None
+
+        for idx, (name, instance) in enumerate(items):
+            # Verify PDDL passed to the model matches domain data (predicates only; actions use extended format)
+            if not is_action:
+                expected_pddl = self.predicate_data[name]['pddl']
+                assert instance == expected_pddl, f"Predicate PDDL mismatch for {name}: got {instance!r}, expected {expected_pddl!r}"
+
+            if name_to_output is not None:
+                model_output = name_to_output[name]
+            else:
+                model_output = llm_model.generate(user_message=instance)
+                model_output = model_output.replace('Output: ', '').strip() if model_output else ''
+            # Show that we got a response (request was system prompt + few-shot examples + instance)
+            preview = (model_output[:70] + '…') if len(model_output) > 70 else model_output
+            print(f"  → response: {preview!r}")
 
             with open(self.output_log, 'a') as f:
                 f.write(f'{instance} -> {model_output}\n')
 
             output_formatted, output_template = self.format_model_output(model_output=model_output, is_action=is_action)
-            # check output format
             correct_args = self.check_number_args(action_name=name,
                                                   action_nl_template=output_template,
                                                   is_action=is_action)
-            # if not formatted correctly call once again the llm
-            if not correct_args:
+            # If model returned empty, skip revision (it won't help) and use fallback
+            if not model_output:
+                correct_args = False
+            # if not formatted correctly, try revision once (unless we already know output was empty)
+            elif not correct_args:
                 user_message = f'There is a mistake in the last response. The number of parameters does not match the parameters of {name} or the format is not correct.\nPlease provide the revised natural language description. Make sure that all parameters are part of your response and are surrounded by brackets and start with "?"\nDo not inlcude anything else than the fixed description in your response.'
                 model_output = self.llm_model.generate(user_message=user_message)
-                model_output = model_output.replace('Output: ', '')
+                model_output = model_output.replace('Output: ', '').strip() if model_output else ''
                 print('FIRST ATTEMPT INCORRECT; RUNNING REVISION')
                 with open(self.output_log, 'a') as f:
                     f.write(f'Revised: {instance} -> {model_output}\n')
                 output_formatted, output_template = self.format_model_output(model_output=model_output,
                                                                              is_action=is_action)
+                correct_args = self.check_number_args(action_name=name,
+                                                     action_nl_template=output_template,
+                                                     is_action=is_action)
+            # if still wrong (or was empty), use fallback template so the run can continue
+            if not correct_args:
+                output_formatted, output_template = self._fallback_template(name=name, is_action=is_action)
+                print(f'Using fallback template for {name} (model output had wrong parameter count).')
+                model_output = output_template  # so indefinite template is built from same placeholder string
 
             if is_action:
-                output_formatted_indef, output_indef_template = self.create_action_template_indefinite(model_output=model_output)
+                output_formatted_indef, output_indef_template = self.create_action_template_indefinite(model_output=model_output, action_name=name)
                 self.action_mappings_indef[name] = output_formatted_indef
                 self.action_nl_templates_indef[name] = output_indef_template
 
@@ -323,6 +445,20 @@ class PDDLDescriber:
         else:
             return True
 
+    def _fallback_template(self, name: str, is_action: bool) -> Tuple[str, str]:
+        """Build a minimal template with correct parameter placeholders when the model output is invalid."""
+        if is_action:
+            details = self.action_data[name]
+        else:
+            details = self.predicate_data[name]
+        param_names = list(details['parameter_types'].keys())
+        short_name = name.replace('_', ' ').replace('-', ' ')
+        # Placeholder must be {?x} so formal_mapping_check matches; param names may already include "?" (e.g. ?case)
+        placeholders = [f'{{{p}}}' if p.startswith('?') else f'{{?{p}}}' for p in param_names]
+        template = short_name + ' ' + ' '.join(placeholders)
+        formatted = short_name + ' ' + ' '.join('{}' for _ in param_names)
+        return formatted.strip(), template.strip()
+
     def format_model_output(self, model_output: str, is_action: bool) -> Tuple[str, str]:
 
         reg = r'{.*?}'
@@ -342,7 +478,7 @@ class PDDLDescriber:
 
         return nl_description, nl_template
 
-    def create_action_template_indefinite(self, model_output: str):
+    def create_action_template_indefinite(self, model_output: str, action_name: str = None):
 
         reg = r'{.*?}'
 
@@ -385,6 +521,21 @@ class PDDLDescriber:
         tmp_description_indef = tmp_description_indef.replace('?', '{?')
         placeholders = re.findall(reg, tmp_description_indef)
 
+        # When template came from fallback it has only "a {?param}" with no type name; insert type from domain
+        if action_name and action_name in self.action_data:
+            param_types = self.action_data[action_name]['parameter_types']
+            for param_name, type_name in param_types.items():
+                # Placeholder in template is "{?case}" (one ?), param_name is "?case"
+                ph = ('{' + param_name + '}') if param_name.startswith('?') else ('{?' + param_name + '}')
+                if ph not in tmp_description_indef:
+                    continue
+                type_nl = type_name.replace('_', ' ').replace('-', ' ')
+                determiner = 'an' if type_name and type_name[0].lower() in 'aeiou' else 'a'
+                # Replace both " a {?x}" and " an {?x}" so we get " a/an type {?x}" with correct article
+                tmp_description_indef = tmp_description_indef.replace(f' a {ph}', f' {determiner} {type_nl} {ph}')
+                tmp_description_indef = tmp_description_indef.replace(f' an {ph}', f' {determiner} {type_nl} {ph}')
+            placeholders = re.findall(reg, tmp_description_indef)
+
         assert re.findall(reg, tmp_description_indef) == placeholders
         nl_description_indef = tmp_description_indef
         for ph in placeholders:
@@ -394,13 +545,19 @@ class PDDLDescriber:
         return nl_description_indef, nl_description_indef_templates
 
 
-    def create_model(self, llm_name: str, model_type, max_tokens=200, temperature=0.0, seed=0) -> LLMModel:
+    def create_model(self, llm_name: str, model_type, max_tokens=1024, temperature=0.0, seed=0, base_url: Union[str, None] = None, api_key: Union[str, None] = None, use_cache: bool = True) -> LLMModel:
         model_param = {'model_name': model_type,
                        'model_path': llm_name,
                        'max_tokens': max_tokens,
                        'temp': temperature,
                        'max_history': 1,
                        'seed': seed}
+        if base_url is not None:
+            model_param['base_url'] = base_url
+        if api_key is not None:
+            model_param['api_key'] = api_key
+        if not use_cache:
+            model_param['caching'] = None
         llm_model = create_llm_model(model_type=model_type, model_param=model_param)
         self.llm_model = llm_model
         print(self.llm_model.seed)
@@ -499,13 +656,14 @@ class PDDLDescriber:
         pos_precond_nl = self.get_pred_nl_description_for_prompt(predicates=pos_precond_action)
         neg_precond_nl = self.get_pred_nl_description_for_prompt(predicates=neg_precond_action)
 
-        # add the types as positive preconditions
+        # add the types as positive preconditions (type names human-readable: underscores -> spaces)
         for param_name, param_type in self.domain.actions[action_name]['parameters'].items():
+            param_type_nl = param_type.replace('_', ' ').replace('-', ' ')
             if param_type.startswith('a') or param_type.startswith('e') or param_type.startswith('i') \
                 or param_type.startswith('o') or param_type.startswith('u'):
-                pos_precond_nl.append(f'{param_name} is an {param_type}')
+                pos_precond_nl.append(f'{param_name} is an {param_type_nl}')
             else:
-                pos_precond_nl.append(f'{param_name} is a {param_type}')
+                pos_precond_nl.append(f'{param_name} is a {param_type_nl}')
 
         positive_description = f'{" and ".join(pos_precond_nl)}' if pos_precond_nl else ''
         negative_description = f'it is not the case that {" and ".join(neg_precond_nl)}' if neg_precond_nl else ''
@@ -529,7 +687,10 @@ class PDDLDescriber:
             pred_params_ac_names = pred[1:]
             pred_params_orig_names = self.domain.predicates[pred_name].keys()
             pred_params_dict = dict([(orig_p, ac_p) for (orig_p, ac_p) in zip(pred_params_orig_names, pred_params_ac_names)])
-            pred_description = self.predicate_nl_templates[pred_name].format(**pred_params_dict)
+            template = self.predicate_nl_templates[pred_name]
+            # Model may output {??x} instead of {?x}; normalize so format() finds key "?x"
+            template = template.replace('{??', '{?')
+            pred_description = template.format(**pred_params_dict)
             predicate_descriptions.append(pred_description)
 
         return predicate_descriptions
@@ -542,20 +703,24 @@ class PDDLDescriber:
         :param description_version:
         :return:
         """
+        def _nl_clean(s: str) -> str:
+            """Human-readable: replace underscores with spaces (e.g. type names from PDDL/model)."""
+            return s.replace('_', ' ').replace('-', ' ') if isinstance(s, str) else s
+
         for action_name in self.action_mappings_indef.keys():
             action_dict = self.domain.actions[action_name]
-            action_description = self.get_action_nl(action_name=action_name)
+            action_description = _nl_clean(self.get_action_nl(action_name=action_name))
             self.action_data[action_name]['description'] = action_description
 
-            positive_precond_descriptions = self.get_predicate_nls(predicates=action_dict['pos_preconditions'],
-                                                                   action_name=action_name)
-            negative_precond_descriptions = self.get_predicate_nls(predicates=action_dict['neg_preconditions'],
-                                                                   action_name=action_name)
+            positive_precond_descriptions = [_nl_clean(s) for s in self.get_predicate_nls(predicates=action_dict['pos_preconditions'],
+                                                                   action_name=action_name)]
+            negative_precond_descriptions = [_nl_clean(s) for s in self.get_predicate_nls(predicates=action_dict['neg_preconditions'],
+                                                                   action_name=action_name)]
 
-            add_effects = self.get_predicate_nls(predicates=action_dict['add_effects'],
-                                                 action_name=action_name)
-            del_effects = self.get_predicate_nls(predicates=action_dict['del_effects'],
-                                                 action_name=action_name)
+            add_effects = [_nl_clean(s) for s in self.get_predicate_nls(predicates=action_dict['add_effects'],
+                                                 action_name=action_name)]
+            del_effects = [_nl_clean(s) for s in self.get_predicate_nls(predicates=action_dict['del_effects'],
+                                                 action_name=action_name)]
 
             if description_version == 'long':
                 action_conditions_description, action_effect_description = create_long_version(
@@ -634,7 +799,8 @@ class PDDLDescriber:
                 def_param = pred_params_definition_names[parameter_position]    # the name of the parameter in the predicate definition
                 pred_params_refs[def_param] = parameter_ref
 
-            predicate_description = self.predicate_nl_templates[pred_name].format_map(pred_params_refs)
+            template = self.predicate_nl_templates[pred_name].replace('{??', '{?')
+            predicate_description = template.format_map(pred_params_refs)
             descriptions.append(predicate_description)
 
         return descriptions
@@ -643,9 +809,10 @@ class PDDLDescriber:
         descriptions = []
 
         for parent_type, sub_types in self.domain.types.items():
-            disjunct_sub_types = ' or a '.join(sub_types)
-            #for sub_t in sub_types:
-            desc = f'Everything that is a {disjunct_sub_types} is also a {parent_type}'
+            parent_nl = parent_type.replace('_', ' ').replace('-', ' ')
+            sub_types_nl = [t.replace('_', ' ').replace('-', ' ') for t in sub_types]
+            disjunct_sub_types = ' or a '.join(sub_types_nl)
+            desc = f'Everything that is a {disjunct_sub_types} is also a {parent_nl}'
             descriptions.append(desc)
 
         return descriptions

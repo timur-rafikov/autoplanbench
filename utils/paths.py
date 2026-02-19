@@ -20,6 +20,27 @@ TEMP_DIR = PROJ_DIR / Path('temp_files')
 
 APPROACHES = ['basic', 'act', 'react', 'cot', 'act_pddl', 'basic_pddl']
 
+
+def get_val_validate_path() -> Union[str, None]:
+    """Return path to VAL validate executable, or None if not found.
+    Tries VAL/build/bin/Validate, VAL/build/bin/validate, VAL/Validate, VAL/validate.
+    Set env VAL to the VAL repo root (e.g. /path/to/VAL) or to the dir containing the binary."""
+    val = os.environ.get('VAL')
+    if not val:
+        return None
+    val_path = Path(val)
+    candidates = [
+        val_path / 'build' / 'bin' / 'Validate',
+        val_path / 'build' / 'bin' / 'validate',
+        val_path / 'Validate',
+        val_path / 'validate',
+    ]
+    for p in candidates:
+        if p.is_file():
+            return str(p)
+    return None
+
+
 THOUGHT_GEN_EXAMPLE_DOMAIN = os.path.join(PROJ_DIR, 'llm_planning', 'manual_react_examples', 'logistics_domain_description.json')
 THOUGHT_GEN_EXAMPLE_FILE = os.path.join(PROJ_DIR, 'llm_planning', 'manual_react_examples', 'logistics_react.json')
 

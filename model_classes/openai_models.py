@@ -4,6 +4,12 @@ from model_classes.llm_models import LLMModel
 from openai.types.chat import ChatCompletion
 
 
+# OpenRouter: same API shape as OpenAI (POST /v1/chat/completions).
+# Docs: https://openrouter.ai/docs/api-reference — model, messages, max_tokens, temperature, seed, logprobs are supported.
+# Auth: Authorization: Bearer <OPENROUTER_API_KEY> (set via api_key= or env OPENROUTER_API_KEY).
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+
+
 class OpenAIChatModel(LLMModel):
 
     def __init__(self,
@@ -15,12 +21,14 @@ class OpenAIChatModel(LLMModel):
                  cache_directory: Union[str, None] = None,
                  seed: Union[int, None] = None,
                  logprobs: Union[bool, None] = True,
-                 api_key: Union[None, str]=None):
+                 api_key: Union[None, str] = None,
+                 base_url: Union[None, str] = None):
         """
 
         :param model_name: the general name of the model to identify the correct LLMModel subclass, e.g. openai_chat
         :param model_path: the path to the model weights if using local weights
                            or the original name of the model for using Huggingface or OpenAI models
+                           For OpenRouter use model id e.g. "openai/gpt-4o" or "anthropic/claude-3-sonnet"
         :param max_tokens: maximum number of output tokens
         :param temp: temperature
         :param max_history: maximum length of the dialogue history at each point of the interaction (only for chat models)
@@ -28,19 +36,28 @@ class OpenAIChatModel(LLMModel):
                             of the system prompt + the 5 last interactions, where an interaction is both the input and output
                             i.e. the length of the dialogue history is always 1 + 2 * max_history
         :param cache_directory:
+        :param api_key: API key (OpenAI or OpenRouter). If base_url is set, use OpenRouter key.
+        :param base_url: Optional base URL. Set to OPENROUTER_BASE_URL or "https://openrouter.ai/api/v1" for OpenRouter.
         """
 
         super().__init__(model_name=model_name, model_path=model_path, max_tokens=max_tokens,
                          temp=temp, max_history=max_history, cache_directory=cache_directory, seed=seed)
         self.api_key = api_key
+        self.base_url = base_url
         self.logprobs = logprobs
         self.client = self.create_client()
 
     def create_client(self):
-        if self.api_key is None:
-            client = OpenAI()
-        else:
-            client = OpenAI(api_key=self.api_key)
+        kwargs = {}
+        if self.api_key is not None:
+            kwargs["api_key"] = self.api_key
+        if self.base_url is not None:
+            kwargs["base_url"] = self.base_url
+        # OpenRouter may strip message.content if Referer is missing; set for local/server use
+        if self.base_url and OPENROUTER_BASE_URL in (self.base_url or ""):
+            kwargs.setdefault("default_headers", {"Referer": "http://localhost"})
+        kwargs.setdefault("timeout", 120.0)
+        client = OpenAI(**kwargs)
         return client
 
     def init_model(self, init_prompt: str):
@@ -77,6 +94,9 @@ class OpenAIChatModel(LLMModel):
     def _generate(self, prompt: str):
         assert self.seed is not None
 
+        short = (prompt[:60] + "…") if len(prompt) > 60 else prompt
+        print(f"[API] Sending request (model={self.model_path}): {short!r}")
+
         if self.seed:
             output = self.client.chat.completions.create(model=self.model_path, messages=self.history, temperature=self.temp, max_tokens=self.max_tokens, seed=self.seed, logprobs=self.logprobs)
         else:
@@ -99,6 +119,10 @@ class OpenAIChatModel(LLMModel):
         self.max_input_tokens = usage_dict['prompt_tokens'] if usage_dict['prompt_tokens'] > self.max_input_tokens else self.max_input_tokens
         self.max_output_tokens = usage_dict['completion_tokens'] if usage_dict['completion_tokens'] > self.max_output_tokens else self.max_output_tokens
         self.max_total_tokens = usage_dict['total_tokens'] if usage_dict['total_tokens'] > self.max_total_tokens else self.max_total_tokens
+
+    def _is_response_empty(self, response) -> bool:
+        content = response.get('choices', [{}])[0].get('message', {}).get('content')
+        return content is None or (isinstance(content, str) and not content.strip())
 
     def create_cache_query(self, prompt: str):
         # put together everything that is in the chat history (this already includes the prompt)
@@ -124,25 +148,25 @@ class OpenAIChatModel(LLMModel):
 
     def clean_up_from_generation(self, model_response: dict, response_source: Union[str, None] = None) -> str:
         """
-        extract the part of interest from the model response,
-            e.g. get the "message" from the object returned by the OpenAI API
-        update the history based on the generated response
-        optionally, update the self.full_history_w_source to include the source of the response (e.g. generated, cache, initial input)
-        update token counts
-        :param model_response:
-        :param response_source:
-        :return:
+        Extract the main text from the API response (OpenAI/OpenRouter compatible).
+        Response shape: choices[0].message.content; OpenRouter may also have .reasoning (we use .content only).
+        Cached or malformed responses may lack choices/message/content — handled safely.
         """
-
-        # text part of the response
-        text_output = model_response['choices'][0]['message']['content']
+        # choices[0].message.content per OpenAI/OpenRouter chat completions spec
+        choices = model_response.get("choices") or []
+        first = choices[0] if choices else {}
+        message = first.get("message") or {}
+        text_output = message.get("content")
+        if text_output is None:
+            text_output = ""
 
         # add the generated response to the history
         self.history.append({"role": self.role_assistant, "content": text_output})
         self.full_history_w_source.append({"role": self.role_assistant, "content": text_output, "source": response_source})
 
-        # update token counts
-        self.update_token_counts(model_response['usage'])
+        # update token counts (cached response may lack 'usage')
+        if 'usage' in model_response:
+            self.update_token_counts(model_response['usage'])
 
         return text_output
 
@@ -171,7 +195,7 @@ class OpenAIChatModel(LLMModel):
                                          'role': choice.message.role,
                                          'function_call': choice.message.function_call,
                                          'tool_calls': choice.message.tool_calls}
-            if self.logprobs:
+            if self.logprobs and choice.logprobs is not None and getattr(choice.logprobs, 'content', None):
                 current_choice['logprobs'] = []
                 for token_logprob in choice.logprobs.content:
                     current_token = {'token': token_logprob.token,

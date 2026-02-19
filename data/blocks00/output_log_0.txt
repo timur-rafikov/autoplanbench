@@ -1,0 +1,23 @@
+(on ?x ?y) -> {?x} is on {?y}
+(ontable ?x) -> {?x} is on the table
+(clear ?x) -> there is nothing on {?x}
+(handempty) -> the hand is empty
+(holding ?x) -> {?x} is being held
+(= ?x1 ?x2) -> {?x1} is equal to {?x2}
+(!= ?x1 ?x2) -> {?x1} is not equal to {?x2}
+action: pick-up
+parameters: [?x]
+preconditions of pick-up: there is nothing on ?x and ?x is on the table and the hand is empty and ?x is an object
+effects of pick-up: it becomes true that ?x is being held and it is not the case anymore that ?x is on the table and there is nothing on ?x and the hand is empty -> pick up {object ?x} from the table
+action: put-down
+parameters: [?x]
+preconditions of put-down: ?x is being held and ?x is an object
+effects of put-down: it becomes true that there is nothing on ?x and the hand is empty and ?x is on the table and it is not the case anymore that ?x is being held -> put down {object ?x} on the table
+action: stack
+parameters: [?x, ?y]
+preconditions of stack: ?x is being held and there is nothing on ?y and ?x is an object and ?y is an object
+effects of stack: it becomes true that there is nothing on ?x and the hand is empty and ?x is on ?y and it is not the case anymore that ?x is being held and there is nothing on ?y -> stack {object ?x} on {object ?y}
+action: unstack
+parameters: [?x, ?y]
+preconditions of unstack: ?x is on ?y and there is nothing on ?x and the hand is empty and ?x is an object and ?y is an object
+effects of unstack: it becomes true that ?x is being held and there is nothing on ?y and it is not the case anymore that there is nothing on ?x and the hand is empty and ?x is on ?y -> unstack {object ?x} from {object ?y}

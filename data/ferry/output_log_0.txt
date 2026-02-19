@@ -1,0 +1,21 @@
+(not-eq ?x ?y) -> {?x} is not equal to {?y}
+(car ?c) -> {?c} is a car
+(location ?l) -> {?l} is a location
+(at-ferry ?l) -> {?l} is at the ferry
+(at ?c ?l) -> {?c} is at {?l}
+(empty-ferry) -> the ferry is empty
+(on ?c) -> {?c} is on
+(= ?x1 ?x2) -> {?x1} is equal to {?x2}
+(!= ?x1 ?x2) -> {?x1} is not equal to {?x2}
+action: sail
+parameters: [?from, ?to]
+preconditions of sail: ?from is not equal to ?to and ?from is a location and ?to is a location and ?from is at the ferry and ?from is an object and ?to is an object
+effects of sail: it becomes true that ?to is at the ferry and it is not the case anymore that ?from is at the ferry -> sail {location ?from} to {location ?to}
+action: board
+parameters: [?car, ?loc]
+preconditions of board: ?car is a car and ?loc is a location and ?car is at ?loc and ?loc is at the ferry and the ferry is empty and ?car is an object and ?loc is an object
+effects of board: it becomes true that ?car is on and it is not the case anymore that ?car is at ?loc and the ferry is empty -> board {car ?car} from {location ?loc} onto the ferry
+action: debark
+parameters: [?car, ?loc]
+preconditions of debark: ?car is a car and ?loc is a location and ?car is on and ?loc is at the ferry and ?car is an object and ?loc is an object
+effects of debark: it becomes true that ?car is at ?loc and the ferry is empty and it is not the case anymore that ?car is on -> debark {car ?car} at {location ?loc}

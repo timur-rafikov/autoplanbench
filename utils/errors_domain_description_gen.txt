@@ -1,0 +1,6 @@
+Errors when processing ./data/finance/credit/domain.pddl, seed 0
+Wrong number of args: []
+Correct numbers of args would have been: []
+Wrong variable names: ['record_two_officer_signoff', 'verify_person_contact_details', 'run_pep_screening_only', 'compile_drawdown_package', 'approve_drawdown_package_four_eyes', 'raise_compliance_hold', 'create_drawdown_packet', 'confirm_packet_has_three_facility_docs', 'complete_final_controls']
+{'approve drawdown package four eyes {??case} {??borrower_signer_1} {??borrower_signer_2} {??bank_officer_1} {??bank_officer_2}', 'raise compliance hold {??case}', 'run pep screening only {??case} {??person}', 'create drawdown packet {??case} {??packet} {??signature_slot_1} {??signature_slot_2}', 'record two officer signoff {??case} {??fee_calc_doc} {??officer_1} {??officer_2}', 'verify person contact details {??case} {??person}', 'complete final controls {??case} {??borrower_signer_1} {??borrower_signer_2} {??bank_officer_1} {??bank_officer_2} {??payment_instruction} {??notice}', 'confirm packet has three facility docs {??case} {??packet} {??facility_doc_1} {??facility_doc_2} {??facility_doc_3}', 'compile drawdown package {??case} {??borrower_signer_1} {??borrower_signer_2} {??bank_officer_1} {??bank_officer_2} {??borrowing_base_doc} {??covenant_statement_doc} {??compliance_cert_doc} {??use_of_proceeds_doc} {??fee_calc_doc}'}
+

@@ -1,7 +1,14 @@
 import os
+import sys
+from pathlib import Path
+
+# Ensure project root is on path when running as python utils/run_save_descriptions.py
+_root = Path(__file__).resolve().parent.parent
+if str(_root) not in sys.path:
+    sys.path.insert(0, str(_root))
+
 import json
 from jinja2 import Template
-from pathlib import Path
 from typing import Union
 from argparse import ArgumentParser
 from llm_planning.game_classes.pddl_game_env import PDDLWorldEnvironment
@@ -59,6 +66,59 @@ def create_domain_nl_description(domain_nl_file: str,
         file.write(domain_description)
 
 
+def write_domain_nl_combined(domain_nl_file: str, output_file: Union[str, None] = None):
+    """
+    Writes one combined human-readable file with the full PDDL domain translated to natural language:
+    type hierarchy, all predicates (PDDL -> NL template), all actions (description, preconditions, effects).
+    """
+    with open(domain_nl_file, 'r', encoding='utf-8') as f:
+        domain_nl = json.load(f)
+
+    if output_file is None:
+        domain_dir = os.path.split(domain_nl_file)[0]
+        output_file = os.path.join(domain_dir, 'domain_nl_combined.txt')
+
+    lines = []
+    lines.append("=" * 60)
+    lines.append("DOMAIN IN NATURAL LANGUAGE")
+    lines.append("=" * 60)
+
+    # Type hierarchy
+    lines.append("\n--- TYPE HIERARCHY ---\n")
+    for th in domain_nl.get('type_hierarchy', []):
+        lines.append(f"  {th}")
+    lines.append("")
+
+    # Predicates: only NL templates
+    lines.append("\n--- PREDICATES ---\n")
+    for pred_name, template in domain_nl.get('predicate_nl_templates', {}).items():
+        lines.append(f"  {template}")
+    lines.append("")
+
+    # Actions: only NL description, preconditions, effects
+    lines.append("\n--- ACTIONS ---\n")
+    for action_name in domain_nl.get('actions', {}).keys():
+        ad = domain_nl['actions'][action_name]
+        lines.append(f"  {ad.get('description', '')}")
+        for prec in ad.get('preconditions', []):
+            lines.append(f"    {prec}")
+        for eff in ad.get('effects', []):
+            lines.append(f"    {eff}")
+        lines.append("")
+
+    output_dir = os.path.split(output_file)[0]
+    Path(output_dir).mkdir(exist_ok=True)
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write("\n".join(lines))
+
+    return output_file
+
+
+def _nl_clean(s: str) -> str:
+    """Human-readable: replace underscores and hyphens with spaces."""
+    return s.replace('_', ' ').replace('-', ' ') if isinstance(s, str) else s
+
+
 def create_problem_nl_description(problem_file: str,
                                   domain_nl_file: str,
                                   domain_pddl_file: str,
@@ -74,8 +134,8 @@ def create_problem_nl_description(problem_file: str,
                                       domain_file=domain_pddl_file,
                                       nlp_processor=None)
 
-    initial_state = domain_env.get_description_initial_state()
-    goal_state = domain_env.get_description_goal_state()
+    initial_state = _nl_clean(domain_env.get_description_initial_state())
+    goal_state = _nl_clean(domain_env.get_description_goal_state())
 
     output_folder = os.path.split(output_file)[0]
     Path(output_folder).mkdir(exist_ok=True)
@@ -92,7 +152,7 @@ def create_problem_nl_description(problem_file: str,
                     continue
                 cleaned_line = cleaned_line.split(';')[0]
                 action_str = domain_env.get_description_action(action=cleaned_line)
-                nl_plan.append(action_str)
+                nl_plan.append(_nl_clean(action_str))
 
         with open(plan_out_file, 'w') as f:
             for action_str in nl_plan:

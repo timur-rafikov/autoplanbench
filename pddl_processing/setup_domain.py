@@ -7,7 +7,7 @@ from pddl_processing.adapt_instances import adapt_instance_files
 from pddl_processing.create_translation_examples import create_translation_examples
 from pddl_processing.create_gold_plans import create_gold_plan_files
 from pddl_processing.problem_generator_filter import select_problems
-from utils.run_save_descriptions import create_domain_nl_description
+from utils.run_save_descriptions import create_domain_nl_description, write_domain_nl_combined
 from utils.paths import GOLD_PLAN_FOLDER, ORIG_GOLD_PLAN_FOLDER 
 
 
@@ -23,7 +23,12 @@ def setup_pddl_domain(domain_file: str,
                       overwrite: bool = False,
                       description_version: str = 'medium',
                       pddl2text_version: str = 'extended',
-                      seed: int = 0):
+                      seed: int = 0,
+                      base_url: Union[str, None] = None,
+                      api_key: Union[str, None] = None,
+                      max_tokens: int = 1024,
+                      use_cache: bool = True,
+                      parallel_workers: int = 1):
     """
 
     :param domain_file:
@@ -59,10 +64,18 @@ def setup_pddl_domain(domain_file: str,
         pddl2text_version=pddl2text_version,
         pddl2text_model_type=llm_type,
         examples_chat=examples_chat,
-        seed=seed
+        seed=seed,
+        base_url=base_url,
+        api_key=api_key,
+        max_tokens=max_tokens,
+        use_cache=use_cache,
+        parallel_workers=parallel_workers
     )
 
-    create_domain_nl_description(domain_nl_file=os.path.join(output_dir, nl_descrip_file))
+    nl_file_path = os.path.join(output_dir, nl_descrip_file)
+    create_domain_nl_description(domain_nl_file=nl_file_path)
+    combined_path = write_domain_nl_combined(domain_nl_file=nl_file_path)
+    print(f"Combined NL translation written to: {combined_path}")
     # TODO: make sure to change this again!!
     len_constraint = None
     if n_instances != 0:

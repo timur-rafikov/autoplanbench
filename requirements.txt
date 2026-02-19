@@ -5,6 +5,7 @@ diskcache
 fschat
 numpy
 openai
+openrouter
 peft
 pddl==0.2.0
 scipy
